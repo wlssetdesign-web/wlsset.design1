@@ -8,13 +8,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col relative" dir={direction}>
       {/* Animated Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none opacity-20">
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-20 dark:opacity-20 opacity-10">
         <div 
-          className="absolute inset-0 animate-fall"
+          className="absolute inset-0 animate-fall dark:brightness-100 brightness-0"
           style={{
             backgroundImage: "url('/assets/pattern.png')",
             backgroundRepeat: "repeat",
-            backgroundSize: "400px" // Adjust size as needed
+            backgroundSize: "400px"
           }}
         />
         {/* Gradient Overlay to fade bottom/top */}

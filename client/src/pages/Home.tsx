@@ -18,9 +18,9 @@ export default function Home() {
       >
         <div className="w-full flex justify-center mb-8">
            <img 
-              src="/assets/logo.jpg" 
+              src="/assets/logo.png" 
               alt="wlsset design" 
-              className="h-32 md:h-48 object-contain drop-shadow-2xl"
+              className="h-32 md:h-48 object-contain drop-shadow-2xl dark:brightness-100 brightness-0 invert transition-all"
             />
         </div>
         

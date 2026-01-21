@@ -2,13 +2,29 @@ import { Link, useLocation } from "wouter";
 import { useI18n } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Globe } from "lucide-react";
-import { useState } from "react";
+import { Menu, Globe, Moon, Sun } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export function Navbar() {
   const { t, toggleLanguage, language } = useI18n();
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window !== "undefined") {
+      return document.documentElement.classList.contains("dark") ? "dark" : "light";
+    }
+    return "dark";
+  });
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.remove("light", "dark");
+    root.classList.add(theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === "light" ? "dark" : "light"));
+  };
 
   const links = [
     { href: "/", label: "nav.home" },
@@ -27,15 +43,15 @@ export function Navbar() {
         <Link href="/">
           <a className="flex items-center gap-2">
             <img 
-              src="/assets/logo.jpg" 
+              src="/assets/logo.png" 
               alt="wlsset design" 
-              className="h-10 w-auto object-contain"
+              className={`h-10 w-auto object-contain transition-all ${theme === 'light' ? 'invert brightness-0' : ''}`}
             />
           </a>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
               <a 
@@ -48,15 +64,27 @@ export function Navbar() {
             </Link>
           ))}
           
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            onClick={toggleLanguage}
-            className="rounded-full hover:bg-white/5"
-          >
-            <Globe className="h-5 w-5" />
-            <span className="sr-only">Toggle Language</span>
-          </Button>
+          <div className="flex items-center gap-2 ml-4">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={toggleTheme}
+              className="rounded-full hover:bg-white/5"
+            >
+              {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+              <span className="sr-only">Toggle Theme</span>
+            </Button>
+
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={toggleLanguage}
+              className="rounded-full hover:bg-white/5"
+            >
+              <Globe className="h-5 w-5" />
+              <span className="sr-only">Toggle Language</span>
+            </Button>
+          </div>
 
           <Link href="/contact">
             <Button className="font-bold bg-primary hover:bg-primary/90 text-white">
@@ -66,7 +94,16 @@ export function Navbar() {
         </div>
 
         {/* Mobile Nav */}
-        <div className="md:hidden flex items-center gap-4">
+        <div className="md:hidden flex items-center gap-2">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={toggleTheme}
+            className="rounded-full hover:bg-white/5"
+          >
+            {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+          </Button>
+
           <Button 
             variant="ghost" 
             size="icon" 
