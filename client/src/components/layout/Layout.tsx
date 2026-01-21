@@ -10,7 +10,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       {/* Animated Background */}
       <div className="fixed inset-0 z-0 pointer-events-none dark:opacity-20 opacity-10 overflow-hidden">
         <div 
-          className="absolute inset-[-100px] animate-fall dark:invert-0 invert transition-all"
+          className="absolute inset-[-100px] animate-fall transition-all"
           style={{
             backgroundImage: "url('/assets/pattern.png')",
             backgroundRepeat: "repeat",
