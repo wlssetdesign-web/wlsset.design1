@@ -29,7 +29,7 @@ export function Navbar() {
             <img 
               src="/assets/logo.png" 
               alt="wlsset design" 
-              className="h-20 w-auto object-contain transition-transform hover:scale-105"
+              className="h-14 w-auto object-contain transition-transform hover:scale-105"
             />
           </a>
         </Link>
