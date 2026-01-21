@@ -55,8 +55,8 @@ export function Navbar() {
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
               <a 
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  isActive(link.href) ? "text-primary" : "text-foreground"
+                className={`text-sm font-medium transition-colors hover:opacity-80 ${
+                  isActive(link.href) ? "underline underline-offset-8" : "text-foreground"
                 }`}
               >
                 {t(link.label)}

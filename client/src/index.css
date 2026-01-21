@@ -5,34 +5,54 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.dark {
+  --color-background: 0 0% 0%; /* Pure Black #000000 */
+  --color-foreground: 0 0% 100%;
+  
+  --color-card: 0 0% 5%; 
+  --color-card-foreground: 0 0% 100%;
+  
+  --color-popover: 0 0% 0%;
+  --color-popover-foreground: 0 0% 100%;
+  
+  --color-secondary: 0 0% 8%;
+  --color-secondary-foreground: 0 0% 100%;
+  
+  --color-muted: 0 0% 10%;
+  --color-muted-foreground: 0 0% 70%;
+  
+  --color-border: 0 0% 12%;
+  --color-input: 0 0% 12%;
+}
+
 @theme inline {
-  --color-background: 0 0% 100%; /* Default Light Background */
-  --color-foreground: 0 0% 12%; /* Dark Text */
+  --color-background: 0 88% 34%; /* Primary Red #A30A0A */
+  --color-foreground: 0 0% 100%; /* White Text on Red */
   
-  --color-card: 0 0% 98%; 
-  --color-card-foreground: 0 0% 12%;
+  --color-card: 0 0% 12%; /* Dark Card #1E1E1E */
+  --color-card-foreground: 0 0% 100%;
   
-  --color-popover: 0 0% 100%;
-  --color-popover-foreground: 0 0% 12%;
+  --color-popover: 0 88% 30%;
+  --color-popover-foreground: 0 0% 100%;
   
-  --color-primary: 0 88% 34%; /* #A30A0A - Primary Red */
-  --color-primary-foreground: 0 0% 100%;
+  --color-primary: 0 0% 100%; /* White Primary on Red */
+  --color-primary-foreground: 0 88% 34%;
   
-  --color-secondary: 0 0% 96%;
-  --color-secondary-foreground: 0 0% 12%;
+  --color-secondary: 0 0% 100%;
+  --color-secondary-foreground: 0 88% 34%;
   
-  --color-muted: 0 0% 96%;
-  --color-muted-foreground: 0 0% 45%;
+  --color-muted: 0 88% 25%;
+  --color-muted-foreground: 0 0% 90%;
   
-  --color-accent: 0 88% 34%;
-  --color-accent-foreground: 0 0% 100%;
+  --color-accent: 0 0% 100%;
+  --color-accent-foreground: 0 88% 34%;
   
   --color-destructive: 0 84.2% 60.2%;
   --color-destructive-foreground: 0 0% 98%;
   
-  --color-border: 0 0% 90%;
-  --color-input: 0 0% 90%;
-  --color-ring: 0 88% 34%;
+  --color-border: 0 88% 40%;
+  --color-input: 0 88% 40%;
+  --color-ring: 0 0% 100%;
   
   --radius-sm: 0.2rem;
   --radius-md: 0.4rem;
@@ -40,26 +60,6 @@
 
   --font-heading: 'Montserrat', sans-serif;
   --font-sans: 'Inter', sans-serif;
-}
-
-.dark {
-  --color-background: 0 0% 7%; /* Deeper Dark Background */
-  --color-foreground: 0 0% 100%;
-  
-  --color-card: 0 0% 10%; 
-  --color-card-foreground: 0 0% 100%;
-  
-  --color-popover: 0 0% 7%;
-  --color-popover-foreground: 0 0% 100%;
-  
-  --color-secondary: 0 0% 12%;
-  --color-secondary-foreground: 0 0% 100%;
-  
-  --color-muted: 0 0% 12%;
-  --color-muted-foreground: 0 0% 70%;
-  
-  --color-border: 0 0% 15%;
-  --color-input: 0 0% 15%;
 }
 
 :root {

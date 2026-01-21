@@ -8,17 +8,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col relative" dir={direction}>
       {/* Animated Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none dark:opacity-20 opacity-10 overflow-hidden">
+      <div className="fixed inset-0 z-0 pointer-events-none dark:opacity-20 opacity-20 overflow-hidden">
         <div 
-          className="absolute inset-[-100px] animate-fall transition-all"
+          className="absolute inset-[-100px] animate-fall transition-all dark:invert-0 invert-0"
           style={{
             backgroundImage: "url('/assets/pattern.png')",
             backgroundRepeat: "repeat",
-            backgroundSize: "400px"
+            backgroundSize: "400px",
+            filter: "brightness(2)"
           }}
         />
         {/* Gradient Overlay to fade bottom/top */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-transparent to-background/90" />
       </div>
 
       <Navbar />
