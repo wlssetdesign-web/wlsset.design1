@@ -87,6 +87,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-fall {
   animation: fall 60s linear infinite;
+  /* Use smooth rendering to avoid pixel borders */
+  image-rendering: auto;
+  /* Mask edges and blend */
+  filter: contrast(1.1) brightness(1.1) blur(0.5px);
 }
 
 .glass-panel {
