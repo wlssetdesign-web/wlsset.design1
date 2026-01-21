@@ -1,0 +1,62 @@
+Create a full-featured multi-page website for a high-end creative design agency called "wlsset design" with the following specifications:
+
+1️⃣ Branding & Style
+- Logo: [Upload your Logo file]
+- Brand Colors: Primary Red #A30A0A, Dark #1E1E1E, White #FFFFFF
+- Typography: Strong, clear, modern, premium style
+- Animated Background: Cubes Pattern (PNG or SVG), falling down slowly, elegant loop, opacity 20%, subtle motion
+- Overall Style: Creative, Premium, Clean, Brand-driven, High-End look
+- Language: Default English, with toggle for Arabic, full RTL support
+
+2️⃣ Pages
+1. Home
+   - Hero section with Logo
+   - Animated Cubes Background
+   - Short introduction about wlsset design
+   - Call-to-action button "Request a Project"
+2. About Us
+   - Company story, vision, style, High-End positioning
+3. Services
+   - Display all services as cards with icons:
+     - Brand Identity Design: Logo Design, Complete Brand Identity, Brand Guidelines, Color Palette & Typography, Rebranding
+     - Print Design: Business Cards, Brochures & Flyers, Posters, Roll-Up Banners, Menus, Letterheads, Invoices, Stickers & Labels
+     - NFC Business Cards
+     - Social Media Design: Instagram & Facebook posts, Stories, Covers, Ads
+     - Image Editing: Photoshop, Retouch, Background Removal, Color Correction, Compositing
+     - Vector Tracing
+     - Infographic Design
+     - Video & Motion: Editing, VFX, Intro/Outro, Social Media video, Audio/Video enhancement, simple motion graphics
+4. Portfolio
+   - Display all uploaded images and videos in a responsive grid layout
+   - Each card includes hover effects, title, and optional description
+   - Lightbox for images, modal for videos
+   - Optional filter categories: Branding, Print, Social Media, Video
+   - Ability to add new items by updating a JSON file with file name, category, type, title, description
+5. Contact / Request a Project
+   - Form fields: Name, Email, Company (Optional), Service Type (Dropdown), Message/Project Details
+   - Submit button in brand color
+   - On submit: send form data to Gmail and append as a new row in Google Sheets with: Date, Name, Email, Service, Message
+
+3️⃣ Functionality
+- Fully responsive for mobile and desktop
+- Easy to update portfolio via JSON file
+- Smooth animations without affecting performance
+- Elegant UI/UX
+- Form integration with Google Sheets using API or Zapier (no backend coding required)
+- All animations subtle and non-distracting
+
+4️⃣ Technical Requirements
+- Build using React (recommended) for scalability
+- Use HTML/CSS/JS if React not preferred
+- Modular structure for easy maintenance
+- Clean code, organized folders for assets: images, videos, patterns, logos
+- Placeholder content where images/videos not yet uploaded
+
+5️⃣ Extra Instructions
+- Ensure the background pattern uses the uploaded cubes pattern file
+- Pattern should continuously loop and fall from top to bottom with 20% opacity
+- Make sure the website is ready to launch on Replit or custom domain
+- Include toggle switch for English/Arabic with full RTL support
+- Highlight “Request a Project” form as a primary CTA
+- Ensure all portfolio items (images/videos) are displayed neatly with lightbox/modal functionality
+- Add subtle hover effects to service and portfolio cards
