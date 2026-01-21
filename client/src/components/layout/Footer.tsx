@@ -10,7 +10,7 @@ export function Footer() {
            <img 
               src="/assets/logo.png" 
               alt="wlsset design" 
-              className="h-8 w-auto opacity-80"
+              className="h-12 w-auto opacity-80 transition-transform hover:opacity-100"
             />
         </div>
         <p className="text-sm text-muted-foreground text-center md:text-right">
