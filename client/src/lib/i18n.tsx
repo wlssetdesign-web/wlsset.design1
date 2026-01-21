@@ -32,7 +32,7 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.service": "Service Type",
     "contact.message": "Project Details",
     "contact.submit": "Send Request",
-    "footer.rights": "© 2024 wlsset design. All rights reserved.",
+    "footer.rights": "© 2026 wlsset design. All rights reserved.",
   },
   ar: {
     "nav.home": "الرئيسية",
