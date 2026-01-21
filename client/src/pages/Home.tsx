@@ -24,7 +24,7 @@ export default function Home() {
             />
         </div>
         
-        <h1 className="text-4xl md:text-7xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
+        <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-[#191919]">
           {t("hero.intro")}
         </h1>
         
