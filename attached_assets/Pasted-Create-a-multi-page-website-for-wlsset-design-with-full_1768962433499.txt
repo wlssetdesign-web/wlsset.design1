@@ -1,0 +1,46 @@
+Create a multi-page website for "wlsset design" with full Dark and Light Theme support and animated cubes background.
+
+1️⃣ Theme Settings:
+- Dark Theme:
+   - Page Background: Black (#000000)
+   - Text & Elements: White or light colors for contrast
+   - Cubes Background: Use white cubes, falling animation, opacity 20%
+- Light Theme:
+   - Page Background: White (#FFFFFF)
+   - Text & Elements: Dark colors for readability
+   - Cubes Background: Use brand colors (Primary Red #A30A0A, Dark #1E1E1E, White #FFFFFF), falling animation, opacity 20%
+
+2️⃣ Theme Toggle:
+- Include a visible toggle switch in the header
+- Switching themes smoothly changes:
+   - Page background
+   - Cubes pattern colors
+   - Text and element colors
+- Animation continues in both themes without disruption
+
+3️⃣ Pages:
+- Home: Hero section with Logo, short intro, CTA button "Request a Project"
+- About Us: Company story, vision, style, high-end positioning
+- Services: Cards with all services (Brand Identity, Print, NFC, Social Media, Image Editing, Vector Tracing, Infographic, Video & Motion)
+- Portfolio: Grid layout of images and videos, hover effects, lightbox/modal, filter categories
+- Contact / Request a Project: Form sends data to Gmail + Google Sheets (Name, Email, Company, Service, Message), Submit button in brand color
+
+4️⃣ Animations:
+- Cubes Pattern Background:
+   - Falling from top to bottom
+   - Continuous loop
+   - Opacity 20%
+   - Colors change depending on theme (white for dark theme, brand colors for light theme)
+   - Smooth and elegant motion, not distracting
+
+5️⃣ Responsiveness:
+- Fully responsive on desktop and mobile
+- Smooth animations without affecting performance
+- Clean and elegant UI/UX
+- All portfolio items, services, and buttons adapt to theme
+
+6️⃣ Additional Instructions:
+- Use brand colors consistently in Light Theme
+- Ensure all hover effects, cards, and portfolio items look correct in both themes
+- Include language toggle (EN/AR) with full RTL support for Arabic
+- Ready to deploy on Replit or custom domain
