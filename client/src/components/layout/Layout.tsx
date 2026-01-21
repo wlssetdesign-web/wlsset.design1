@@ -6,7 +6,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const { direction } = useI18n();
 
   return (
-    <div className="min-h-screen flex flex-col relative" dir={direction}>
+    <div className="min-h-screen flex flex-col relative bg-background" dir={direction}>
       {/* Animated Background */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-20 overflow-hidden">
         <div 
