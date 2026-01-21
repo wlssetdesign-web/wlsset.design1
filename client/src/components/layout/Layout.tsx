@@ -10,7 +10,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       {/* Animated Background */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-20 overflow-hidden">
         <div 
-          className="absolute inset-[-100px] animate-fall transition-all dark:invert-0 invert"
+          className="absolute inset-[-100px] animate-fall"
           style={{
             backgroundImage: "url('/assets/pattern.png')",
             backgroundRepeat: "repeat",
@@ -18,7 +18,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
           }}
         />
         {/* Gradient Overlay to fade bottom/top */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-transparent to-white/90" />
       </div>
 
       <Navbar />

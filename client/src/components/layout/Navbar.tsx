@@ -2,29 +2,13 @@ import { Link, useLocation } from "wouter";
 import { useI18n } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Globe, Moon, Sun } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Menu, Globe } from "lucide-react";
+import { useState } from "react";
 
 export function Navbar() {
   const { t, toggleLanguage, language } = useI18n();
   const [location] = useLocation();
   const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
-    if (typeof window !== "undefined") {
-      return document.documentElement.classList.contains("dark") ? "dark" : "light";
-    }
-    return "dark";
-  });
-
-  useEffect(() => {
-    const root = window.document.documentElement;
-    root.classList.remove("light", "dark");
-    root.classList.add(theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(prev => (prev === "light" ? "dark" : "light"));
-  };
 
   const links = [
     { href: "/", label: "nav.home" },
@@ -37,7 +21,7 @@ export function Navbar() {
   const isActive = (path: string) => location === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-background/80 backdrop-blur-md">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-black/5 bg-white/80 backdrop-blur-md">
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
@@ -45,7 +29,7 @@ export function Navbar() {
             <img 
               src="/assets/logo.png" 
               alt="wlsset design" 
-              className="h-10 w-auto object-contain transition-all dark:invert-0 invert"
+              className="h-10 w-auto object-contain"
             />
           </a>
         </Link>
@@ -68,18 +52,8 @@ export function Navbar() {
             <Button 
               variant="ghost" 
               size="icon" 
-              onClick={toggleTheme}
-              className="rounded-full hover:bg-white/5"
-            >
-              {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
-              <span className="sr-only">Toggle Theme</span>
-            </Button>
-
-            <Button 
-              variant="ghost" 
-              size="icon" 
               onClick={toggleLanguage}
-              className="rounded-full hover:bg-white/5"
+              className="rounded-full hover:bg-black/5"
             >
               <Globe className="h-5 w-5" />
               <span className="sr-only">Toggle Language</span>
@@ -98,17 +72,8 @@ export function Navbar() {
           <Button 
             variant="ghost" 
             size="icon" 
-            onClick={toggleTheme}
-            className="rounded-full hover:bg-white/5"
-          >
-            {theme === "light" ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
-          </Button>
-
-          <Button 
-            variant="ghost" 
-            size="icon" 
             onClick={toggleLanguage}
-            className="rounded-full hover:bg-white/5"
+            className="rounded-full hover:bg-black/5"
           >
             <span className="font-bold text-xs">{language.toUpperCase()}</span>
           </Button>
@@ -119,7 +84,7 @@ export function Navbar() {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side={language === 'ar' ? 'right' : 'left'} className="w-[300px] border-white/10 bg-background/95 backdrop-blur-xl">
+            <SheetContent side={language === 'ar' ? 'right' : 'left'} className="w-[300px] border-black/5 bg-white/95 backdrop-blur-xl">
               <div className="flex flex-col gap-8 mt-10">
                 {links.map((link) => (
                   <Link key={link.href} href={link.href}>

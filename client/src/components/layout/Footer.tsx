@@ -10,7 +10,7 @@ export function Footer() {
            <img 
               src="/assets/logo.png" 
               alt="wlsset design" 
-              className="h-8 w-auto opacity-80 transition-all dark:invert-0 invert"
+              className="h-8 w-auto opacity-80"
             />
         </div>
         <p className="text-sm text-muted-foreground text-center md:text-right">

@@ -5,26 +5,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-.dark {
-  --color-background: 0 0% 0%; /* Pure Black #000000 */
-  --color-foreground: 0 0% 100%;
-  
-  --color-card: 0 0% 5%; 
-  --color-card-foreground: 0 0% 100%;
-  
-  --color-popover: 0 0% 0%;
-  --color-popover-foreground: 0 0% 100%;
-  
-  --color-secondary: 0 0% 8%;
-  --color-secondary-foreground: 0 0% 100%;
-  
-  --color-muted: 0 0% 10%;
-  --color-muted-foreground: 0 0% 70%;
-  
-  --color-border: 0 0% 12%;
-  --color-input: 0 0% 12%;
-}
-
 @theme inline {
   --color-background: 0 0% 100%; /* Pure White #FFFFFF */
   --color-foreground: 0 0% 12%; /* Dark Text */
@@ -63,11 +43,11 @@
 }
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
 html, body {
-  @apply bg-background text-foreground transition-colors duration-300;
+  @apply bg-background text-foreground;
   margin: 0;
   padding: 0;
   min-height: 100vh;
