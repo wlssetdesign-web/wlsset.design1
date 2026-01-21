@@ -20,7 +20,7 @@ export default function Home() {
            <img 
               src="/assets/logo.png" 
               alt="wlsset design" 
-              className="h-32 md:h-48 object-contain drop-shadow-2xl dark:brightness-100 brightness-0 invert transition-all"
+              className="h-32 md:h-48 object-contain drop-shadow-2xl transition-all"
             />
         </div>
         

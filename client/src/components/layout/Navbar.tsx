@@ -45,7 +45,7 @@ export function Navbar() {
             <img 
               src="/assets/logo.png" 
               alt="wlsset design" 
-              className={`h-10 w-auto object-contain transition-all ${theme === 'light' ? 'invert brightness-0' : ''}`}
+              className="h-10 w-auto object-contain transition-all"
             />
           </a>
         </Link>
