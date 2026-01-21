@@ -8,9 +8,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col relative" dir={direction}>
       {/* Animated Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none opacity-20 dark:opacity-20 opacity-10">
+      <div className="fixed inset-0 z-0 pointer-events-none dark:opacity-20 opacity-10">
         <div 
-          className="absolute inset-0 animate-fall dark:brightness-100 brightness-0"
+          className="absolute inset-0 animate-fall dark:invert-0 invert transition-all"
           style={{
             backgroundImage: "url('/assets/pattern.png')",
             backgroundRepeat: "repeat",
