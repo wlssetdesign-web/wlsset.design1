@@ -22,25 +22,25 @@ export function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-black/5 bg-white/80 backdrop-blur-md">
-      <div className="container mx-auto px-4 h-24 flex items-center justify-between">
+      <div className="container mx-auto px-4 h-28 flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
           <a className="flex items-center gap-2">
             <img 
               src="/assets/logo.png" 
               alt="wlsset design" 
-              className="h-18 w-auto object-contain transition-transform hover:scale-105"
+              className="h-20 w-auto object-contain transition-transform hover:scale-105"
             />
           </a>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-10">
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
               <a 
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  isActive(link.href) ? "text-primary font-bold" : "text-foreground"
+                className={`text-lg font-bold transition-colors hover:text-primary ${
+                  isActive(link.href) ? "text-primary underline underline-offset-8" : "text-foreground"
                 }`}
               >
                 {t(link.label)}
@@ -48,20 +48,20 @@ export function Navbar() {
             </Link>
           ))}
           
-          <div className="flex items-center gap-2 ml-4">
+          <div className="flex items-center gap-4 ml-4">
             <Button 
               variant="ghost" 
               size="icon" 
               onClick={toggleLanguage}
-              className="rounded-full hover:bg-black/5"
+              className="rounded-full hover:bg-black/5 h-12 w-12"
             >
-              <Globe className="h-5 w-5" />
+              <Globe className="h-6 w-6" />
               <span className="sr-only">Toggle Language</span>
             </Button>
           </div>
 
           <Link href="/contact">
-            <Button className="font-bold bg-primary hover:bg-primary/90 text-white">
+            <Button className="font-bold text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-full">
               {t("hero.cta")}
             </Button>
           </Link>
