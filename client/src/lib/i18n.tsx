@@ -55,7 +55,7 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.service": "نوع الخدمة",
     "contact.message": "تفاصيل المشروع",
     "contact.submit": "إرسال الطلب",
-    "footer.rights": "© 2024 wlsset design. جميع الحقوق محفوظة.",
+    "footer.rights": "© 2026 wlsset design. جميع الحقوق محفوظة.",
   }
 };
 
