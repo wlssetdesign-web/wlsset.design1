@@ -61,7 +61,7 @@ export function Navbar() {
           </div>
 
           <Link href="/contact">
-            <Button className="font-bold text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-full btn-glow">
+            <Button className="font-bold text-lg px-8 py-6 bg-primary hover:bg-primary/90 text-white rounded-full">
               {t("hero.cta")}
             </Button>
           </Link>
@@ -100,7 +100,7 @@ export function Navbar() {
                 ))}
                 <Link href="/contact">
                   <Button 
-                    className="w-full font-bold bg-primary hover:bg-primary/90 btn-glow"
+                    className="w-full font-bold bg-primary hover:bg-primary/90"
                     onClick={() => setIsOpen(false)}
                   >
                     {t("hero.cta")}
