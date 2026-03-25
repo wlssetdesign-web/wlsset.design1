@@ -10,6 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { X, ChevronRight, ChevronLeft, Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useI18n } from "@/lib/i18n";
 
 const userInfoSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -42,6 +43,7 @@ export default function ServiceRequestForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [userInfo, setUserInfo] = useState<UserInfoFormData | null>(null);
   const { toast } = useToast();
+  const { t } = useI18n();
 
   const userForm = useForm<UserInfoFormData>({
     resolver: zodResolver(userInfoSchema),
@@ -138,23 +140,23 @@ export default function ServiceRequestForm({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 20, stiffness: 300 }}
-            className="relative w-full max-w-lg bg-card/95 backdrop-blur border border-white/10 rounded-2xl p-8 shadow-2xl"
+            className="relative w-full max-w-lg bg-white border border-gray-300 rounded-2xl p-8 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={handleClose}
-              className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-lg transition-colors"
+              className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-lg transition-colors"
             >
-              <X className="w-5 h-5" />
+              <X className="w-5 h-5 text-black" />
             </button>
 
             {!isSubmitted ? (
               <>
                 <div className="mb-6">
-                  <h2 className="text-2xl font-bold text-primary mb-2">
+                  <h2 className="text-3xl font-bold text-[#A30A0A] mb-2">
                     {serviceName}
                   </h2>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-base text-gray-600">
                     Step {step} of 2
                   </p>
                   <div className="mt-3 h-1 bg-white/10 rounded-full overflow-hidden">
@@ -183,9 +185,9 @@ export default function ServiceRequestForm({
                             name="name"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Full Name</FormLabel>
+                                <FormLabel className="text-base font-semibold text-black">{t("form.fullName")}</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="Mohammed Al Dmour" {...field} className="bg-background/50" />
+                                  <Input placeholder="Mohammed Al Dmour" {...field} className="bg-white border-2 border-gray-300 text-black text-base placeholder:text-gray-500" />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -197,9 +199,9 @@ export default function ServiceRequestForm({
                             name="phone"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Phone Number</FormLabel>
+                                <FormLabel className="text-base font-semibold text-black">{t("form.phone")}</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="+962 (799) 123-456" {...field} className="bg-background/50" />
+                                  <Input placeholder="+962 (799) 123-456" {...field} className="bg-white border-2 border-gray-300 text-black text-base placeholder:text-gray-500" />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -211,9 +213,9 @@ export default function ServiceRequestForm({
                             name="email"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Email Address</FormLabel>
+                                <FormLabel className="text-base font-semibold text-black">{t("form.email")}</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="mohammed.aldmour@gmail.com" type="email" {...field} className="bg-background/50" />
+                                  <Input placeholder="mohammed.aldmour@gmail.com" type="email" {...field} className="bg-white border-2 border-gray-300 text-black text-base placeholder:text-gray-500" />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -223,9 +225,9 @@ export default function ServiceRequestForm({
                           <div className="flex gap-3 pt-4">
                             <Button
                               type="submit"
-                              className="flex-1 bg-[#A30A0A] hover:bg-[#8B0808] text-white"
+                              className="flex-1 bg-[#A30A0A] hover:bg-[#8B0808] text-white text-base font-semibold py-3"
                             >
-                              Next
+                              {t("form.next")}
                               <ChevronRight className="ml-2 w-4 h-4" />
                             </Button>
                           </div>
@@ -247,19 +249,19 @@ export default function ServiceRequestForm({
                             name="preferredColors"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Preferred Colors</FormLabel>
+                                <FormLabel className="text-base font-semibold text-black">{t("form.preferredColors")}</FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                   <FormControl>
-                                    <SelectTrigger className="bg-background/50">
+                                    <SelectTrigger className="bg-white border-2 border-gray-300 text-black text-base">
                                       <SelectValue placeholder="Select colors" />
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent className="bg-[#1E1E1E] border-white/10">
-                                    <SelectItem value="vibrant" className="text-white">Vibrant & Bold</SelectItem>
-                                    <SelectItem value="minimal" className="text-white">Minimal & Neutral</SelectItem>
-                                    <SelectItem value="warm" className="text-white">Warm & Earthy</SelectItem>
-                                    <SelectItem value="cool" className="text-white">Cool & Modern</SelectItem>
-                                    <SelectItem value="custom" className="text-white">Custom Palette</SelectItem>
+                                    <SelectItem value="vibrant" className="text-white">{t("form.vibrant")}</SelectItem>
+                                    <SelectItem value="minimal" className="text-white">{t("form.minimal")}</SelectItem>
+                                    <SelectItem value="warm" className="text-white">{t("form.warm")}</SelectItem>
+                                    <SelectItem value="cool" className="text-white">{t("form.cool")}</SelectItem>
+                                    <SelectItem value="custom" className="text-white">{t("form.custom")}</SelectItem>
                                   </SelectContent>
                                 </Select>
                                 <FormMessage />
@@ -272,19 +274,19 @@ export default function ServiceRequestForm({
                             name="fontStyle"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Font Style Preference</FormLabel>
+                                <FormLabel className="text-base font-semibold text-black">{t("form.fontStyle")}</FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                   <FormControl>
-                                    <SelectTrigger className="bg-background/50">
+                                    <SelectTrigger className="bg-white border-2 border-gray-300 text-black text-base">
                                       <SelectValue placeholder="Select font style" />
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent className="bg-[#1E1E1E] border-white/10">
-                                    <SelectItem value="modern" className="text-white">Modern & Clean</SelectItem>
-                                    <SelectItem value="serif" className="text-white">Classic Serif</SelectItem>
-                                    <SelectItem value="display" className="text-white">Bold Display</SelectItem>
-                                    <SelectItem value="minimal" className="text-white">Minimalist</SelectItem>
-                                    <SelectItem value="playful" className="text-white">Playful & Creative</SelectItem>
+                                    <SelectItem value="modern" className="text-white">{t("form.modern")}</SelectItem>
+                                    <SelectItem value="serif" className="text-white">{t("form.serif")}</SelectItem>
+                                    <SelectItem value="display" className="text-white">{t("form.display")}</SelectItem>
+                                    <SelectItem value="minimal" className="text-white">{t("form.minimal")}</SelectItem>
+                                    <SelectItem value="playful" className="text-white">{t("form.playful")}</SelectItem>
                                   </SelectContent>
                                 </Select>
                                 <FormMessage />
@@ -297,11 +299,11 @@ export default function ServiceRequestForm({
                             name="designNotes"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>Design Notes & Details</FormLabel>
+                                <FormLabel className="text-base font-semibold text-black">{t("form.designNotes")}</FormLabel>
                                 <FormControl>
                                   <Textarea 
                                     placeholder="Tell us about your vision, specific requirements, inspiration, or any other details..."
-                                    className="min-h-[100px] bg-background/50"
+                                    className="min-h-[100px] bg-white border-2 border-gray-300 text-black text-base placeholder:text-gray-500"
                                     {...field}
                                   />
                                 </FormControl>
@@ -315,15 +317,15 @@ export default function ServiceRequestForm({
                               type="button"
                               variant="outline"
                               onClick={() => setStep(1)}
-                              className="flex-1"
+                              className="flex-1 border-2 border-gray-300 text-black text-base font-semibold hover:bg-gray-100"
                             >
                               <ChevronLeft className="mr-2 w-4 h-4" />
-                              Back
+                              {t("form.back")}
                             </Button>
                             <Button
                               type="submit"
                               disabled={isSubmitting}
-                              className="flex-1 bg-[#A30A0A] hover:bg-[#8B0808] text-white"
+                              className="flex-1 bg-[#A30A0A] hover:bg-[#8B0808] text-white text-base font-semibold py-3"
                             >
                               {isSubmitting ? "Submitting..." : "Submit Request"}
                             </Button>

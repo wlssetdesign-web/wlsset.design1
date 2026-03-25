@@ -1,0 +1,27 @@
+I have reviewed the current website (referencing image_8.png for design and image_9.png for localization) and need to make several key improvements and fixes to enhance clarity for customers and ensure a complete Arabic version. Please execute the following tasks:
+
+**Task 1: Revamp Order Popup Design (referencing image_8.png structure)**
+
+Currently, the Order Request popup/overlay design is unclear (light text on a blurry grey background). Please improve this as follows:
+
+1.  **Container Background:** Change the background of the main order popup container to a solid, opaque white (#FFFFFF) instead of transparent or semi-transparent grey.
+2.  **Text Clarity:** Change all text colors within the popup to a dark color (e.g., black #000000 or a dark grey) to provide high contrast against the new white background.
+3.  **Font Size and Weight:** Significantly increase the font size of all elements within the popup for readability. This includes the main service title ("Print Design"), all field labels (like "Full Name", etc.), and the text on the "Next" button.
+4.  **Input Fields:** Ensure the text inside the input fields (the placeholders and the user's typed text) is clear and easily readable with increased font size and a dark color. The input fields themselves should have a simple white background with a clear dark border, making them look like traditional form fields.
+
+**Task 2: Complete Arabic Localization (referencing image_9.png)**
+
+The Arabic version (image_9.png) has incomplete translations. Please ensure that **every single English text** is translated when the language is switched to Arabic. The goal is a seamless and consistent experience for Arabic-speaking users.
+
+Specifically, please translate:
+
+1.  **Main Header:** Translate the English "Request a Project" button text in the top right of the main header to Arabic (e.g., "ابدأ مشروعك").
+2.  **Services Section (referencing image_9.png):** While the main service titles are translated, the detailed descriptions (bullet points) and the interactive text are still in English. Please translate:
+ * All bulleted description points for each service block (e.g., in Social Media design, translate "Instagram Posts/Stories", "Facebook Covers", etc. to Arabic).
+ * The interaction text below the descriptions "Click to request this service" to Arabic (e.g., "اضغط لطلب هذه الخدمة").
+3.  **Order Popups (Arabic Version, referencing image_8.png for structure):** Ensure that when an order popup is opened in Arabic mode, all its content is translated:
+ * The main service title (e.g., "Print Design" -> "تصميم المطبوعات").
+ * All field labels (e.g., "Full Name" -> "الاسم الثلاثي", "Phone Number" -> "رقم الهاتف", "Email Address" -> "البريد الإلكتروني").
+ * Button text (e.g., "Next" -> "التالي").
+
+Ensure design consistency, high readability, and smooth localization logic between languages
