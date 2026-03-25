@@ -10,11 +10,22 @@ export default function Portfolio() {
   const [filter, setFilter] = useState("All");
   const [selectedItem, setSelectedItem] = useState<typeof portfolioData[0] | null>(null);
 
+  const categoryMap: { [key: string]: string } = {
+    "Branding": "portfolio.branding",
+    "Print": "portfolio.print",
+    "Social Media": "portfolio.socialMedia",
+    "Video": "portfolio.video",
+  };
+
   const categories = ["All", ...Array.from(new Set(portfolioData.map(item => item.category)))];
 
   const filteredItems = filter === "All" 
     ? portfolioData 
     : portfolioData.filter(item => item.category === filter);
+
+  const translateCategoryName = (cat: string): string => {
+    return categoryMap[cat] ? t(categoryMap[cat]) : cat;
+  };
 
   return (
     <div className="container mx-auto px-4 py-16">
@@ -31,7 +42,7 @@ export default function Portfolio() {
             onClick={() => setFilter(cat)}
             className={`rounded-full ${filter === cat ? 'bg-primary hover:bg-primary/90' : 'hover:border-primary/50'}`}
           >
-            {cat === "All" ? t("portfolio.all") : cat}
+            {cat === "All" ? t("portfolio.all") : translateCategoryName(cat)}
           </Button>
         ))}
       </div>
@@ -58,8 +69,12 @@ export default function Portfolio() {
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
-                <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-sm text-primary font-medium">{item.category}</p>
+                <h3 className="text-xl font-bold text-white mb-2">{
+                  item.title === "Eco Packaging" ? t("portfolio.ecoPackaging") :
+                  item.title === "Lumina Tech Brochure" ? t("portfolio.luminaTechBrochure") :
+                  item.title
+                }</h3>
+                <p className="text-sm text-primary font-medium">{translateCategoryName(item.category)}</p>
               </div>
             </motion.div>
           ))}
@@ -80,9 +95,13 @@ export default function Portfolio() {
               </div>
               <div className="p-6">
                 <div className="flex items-center justify-between mb-2">
-                  <h2 className="text-2xl font-bold">{selectedItem.title}</h2>
+                  <h2 className="text-2xl font-bold">{
+                    selectedItem.title === "Eco Packaging" ? t("portfolio.ecoPackaging") :
+                    selectedItem.title === "Lumina Tech Brochure" ? t("portfolio.luminaTechBrochure") :
+                    selectedItem.title
+                  }</h2>
                   <span className="text-primary text-sm font-medium px-3 py-1 bg-primary/10 rounded-full border border-primary/20">
-                    {selectedItem.category}
+                    {translateCategoryName(selectedItem.category)}
                   </span>
                 </div>
                 <p className="text-muted-foreground">{selectedItem.description}</p>

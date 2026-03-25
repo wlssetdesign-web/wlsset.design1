@@ -21,14 +21,10 @@ export default function About() {
         <Card className="bg-card/50 backdrop-blur border-white/5">
           <CardContent className="p-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>
-              wlsset design is not just a creative agency; we are architects of visual identity. 
-              Founded on the principles of precision, luxury, and innovation, we strive to elevate 
-              brands beyond the ordinary.
+              {t("about.storyParagraph1")}
             </p>
             <p>
-              Our philosophy is rooted in the belief that design should be purposeful. Every pixel, 
-              every color, and every motion is calculated to tell a story—your story. We merge 
-              artistic intuition with strategic thinking to deliver high-end results that resonate.
+              {t("about.storyParagraph2")}
             </p>
           </CardContent>
         </Card>
@@ -37,15 +33,13 @@ export default function About() {
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-white">{t("about.vision")}</h2>
             <p className="text-muted-foreground">
-              To define the visual language of the future, empowering brands to connect with their 
-              audience through immersive and premium design experiences.
+              {t("about.visionText")}
             </p>
           </div>
           <div className="space-y-4">
-             <h2 className="text-2xl font-bold text-white">Style</h2>
+             <h2 className="text-2xl font-bold text-white">{t("about.styleTitle")}</h2>
             <p className="text-muted-foreground">
-              Clean, bold, and sophisticated. We embrace minimalism with impact, ensuring that 
-              every design element serves a distinct purpose while maintaining an aura of exclusivity.
+              {t("about.styleText")}
             </p>
           </div>
         </div>

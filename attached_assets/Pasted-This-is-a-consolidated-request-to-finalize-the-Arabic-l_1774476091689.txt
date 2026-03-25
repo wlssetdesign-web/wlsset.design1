@@ -1,0 +1,46 @@
+This is a consolidated request to finalize the Arabic localization and apply specific design fixes across three key sections/popups of my website, referencing the provided images (image_c31788.png, image_c31f26.png, image_c32ee6.png, image_c32f04.png, and image_c380fc.jpg). Please implement the following changes precisely:
+
+**PHASE 1: Design Fixes for Popups (Referencing image_c31788.png and image_c32ee6.png structure)**
+
+1. **Fix Order Popup Contrast (Critical):** The main Order Request popup (image_c31788.png) needs better clarity. Change the background of this popup container from blurry grey to a solid, opaque white (#FFFFFF). Change all text within it to a dark color for high contrast. Increase the font size for the title ("Print Design"), labels ("Full Name", etc.), and the "Next" button. Make the input fields have a white background, dark borders, and large, dark text.
+2. **Placeholder Colors:** In the "Get in Touch" section (image_c32ee6.png), ensure the placeholder text "...Your message or inquiry" is clear and legible. Use a high-contrast color.
+
+**PHASE 2: Complete Arabic Localization (Section by Section)**
+
+When the language is switched to Arabic, apply the following translations and remove specific elements as noted:
+
+**1. Global Header:** Translate the English "Request a Project" button in the top right to Arabic: "**ابدأ مشروعك**".
+
+**2. Portfolio Section (Referencing image_c380fc.jpg):**
+* **Filter Buttons:**
+    * "All" -> "**الكل**"
+    * "Branding" -> "**هويات بصرية**"
+    * "Print" -> "**مطبوعات**"
+    * "Social Media" -> "**سوشيال ميديا**"
+    * "Video" -> "**فيديو**"
+* **Project Labels (Translations):**
+    * "Eco Packaging" -> "**تغليف صديق للبيئة**"
+    * "Lumina Tech Brochure" -> "**بروشور لومينا تيك**"
+
+**3. Services Section (Referencing image_c31f26.png for structure):**
+* **Bullet Point Descriptions:** Ensure *all* detailed descriptions for *every* service block are translated from English to Arabic (e.g., inside Social Media, translate specific content types).
+* **Interaction Text:** Change "Click to request this service" below the descriptions to "**اضغط لطلب هذه الخدمة**".
+
+**4. Get in Touch Section (Referencing image_c32ee6.png):**
+* **Main Title:** "Get in Touch" -> "**تواصل معنا**"
+* **Description Text:** Translate the entire description paragraph: "Have questions or general inquiries? We’d love to hear from you. For project requests, please use the Services section above" -> "**لديك أسئلة أو استفسارات عامة؟ يسعدنا أن نسمع منك. لطلبات المشاريع، يرجى استخدام قسم الخدمات في الأعلى**".
+* **Message Field Placeholder:** "...Your message or inquiry" -> "**...رسالتك أو استفسارك**".
+
+**5. Our Story Section (Referencing image_c32f04.png):**
+* **Title:** Ensure the header is "**قصتنا**".
+* **Paragraph 1:** "wlsset design is not just a creative agency..." -> "**wlsset design ليست مجرد وكالة إبداعية؛ نحن مهندسو الهوية البصرية. تأسست على مبادئ الدقة والفخامة والابتكار، ونسعى جاهدين للارتقاء بالعلامات التجارية لتبهر الجميع.**".
+* **Paragraph 2:** "Our philosophy is rooted in the belief that design should be purposeful..." -> "**تتجذر فلسفتنا في الإيمان بأن التصميم يجب أن يكون هادفاً. يتم حساب كل بكسل ولون وحركة لسرد قصة—قصتك. ندمج الحدس الفني مع التفكير الاستراتيجي لتقديم نتائج راقية تلقى صدى.**".
+* **Left Block Text:** "Clean, bold, and sophisticated..." -> "**نظيفة وجريئة ومتطورة. نحن نتبنى البساطة ذات التأثير، ونضمن أن كل عنصر تصميم يخدم هدفاً متميزاً مع الحفاظ على هالة من الحصرية.**".
+* **Right Block Text:** "To define the visual language of the future..." -> "**لتحديد اللغة البصرية للمستقبل، وتمكين العلامات التجارية من التواصل مع جمهورها من خلال تجارب تصميم غامرة وممتازة.**".
+
+**6. Order Popups (Arabic Version, Referencing image_c31788.png structure):**
+* Ensure all field labels ("Full Name", "Email Address", etc.) and button text ("Next") within the Order popups are translated to their exact Arabic equivalents when Arabic mode is active.
+
+**7. Footer:** Translate "All rights reserved" to "**جميع الحقوق محفوظة**".
+
+**Technical instruction:** Ensure the translation logic accurately updates all these elements without breaking layout, maintaining high readability with the new design changes. Do not make any design changes not listed above.

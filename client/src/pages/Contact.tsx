@@ -84,10 +84,10 @@ export default function Contact() {
       <Card className="w-full max-w-2xl bg-card/50 backdrop-blur border-white/5">
         <CardHeader>
           <CardTitle className="text-3xl font-bold text-center text-primary">
-            Get in Touch
+            {t("contact.getInTouchTitle")}
           </CardTitle>
           <p className="text-center text-muted-foreground mt-3 text-base">
-            Have questions or general inquiries? We'd love to hear from you. For project requests, please use the Services section above.
+            {t("contact.getInTouchDescription")}
           </p>
         </CardHeader>
         <CardContent>
@@ -144,7 +144,7 @@ export default function Contact() {
                     <FormLabel>{t("contact.message")}</FormLabel>
                     <FormControl>
                       <Textarea 
-                        placeholder="Your message or inquiry..." 
+                        placeholder={t("contact.messageLabel")}
                         className="min-h-[120px] bg-background/50" 
                         {...field} 
                       />
