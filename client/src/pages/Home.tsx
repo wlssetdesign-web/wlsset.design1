@@ -27,6 +27,17 @@ export default function Home() {
         <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-[#191919]">
           {t("hero.intro")}
         </h1>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 1.2 }}
+          className="h-20 flex items-center justify-center"
+        >
+          <p className="text-2xl md:text-4xl font-light italic text-[#A30A0A] tracking-wide">
+            {t("hero.slogan")}
+          </p>
+        </motion.div>
         
         <p className="text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto">
           {t("hero.subtitle")}
