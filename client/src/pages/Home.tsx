@@ -34,7 +34,10 @@ export default function Home() {
           transition={{ delay: 0.3, duration: 1.2 }}
           className="h-20 flex items-center justify-center"
         >
-          <p className="text-2xl md:text-4xl font-light italic text-[#A30A0A] tracking-wide">
+          <p 
+            className="text-2xl md:text-4xl font-bold text-[#A30A0A] tracking-wide"
+            style={{ fontFamily: isRTL ? "'Cairo', sans-serif" : "'Quicksand', sans-serif" }}
+          >
             {t("hero.slogan")}
           </p>
         </motion.div>
