@@ -71,7 +71,7 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel>{t("contact.name")}</FormLabel>
                       <FormControl>
-                        <Input placeholder="Mohammad Al-Abadi" {...field} className="bg-background/50" />
+                        <Input placeholder="Mohammed Al Dmour" {...field} className="bg-background/50" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
