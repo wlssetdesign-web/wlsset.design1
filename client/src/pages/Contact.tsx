@@ -35,17 +35,48 @@ export default function Contact() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    // Simulate API call to Google Sheets/Gmail
-    await new Promise(resolve => setTimeout(resolve, 2000));
     
-    console.log("Form submitted:", values);
+    try {
+      const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyXy7Mh4dIpiChqd57MIp8oX0MLBkDWfP8YUVoL_U3sRG1lv205Q9LaQPzFM9gO3-Sg/exec";
+      
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          phone: "",
+          service: "General Inquiry",
+          preferredColors: "",
+          fontStyle: "",
+          designNotes: values.message,
+          company: values.company,
+        }),
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        toast({
+          title: "Request Sent",
+          description: "We'll get back to you shortly.",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Error",
+          description: result.message || "Failed to submit form",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast({
+        title: "Error",
+        description: "Failed to submit form. Please try again.",
+        variant: "destructive",
+      });
+    }
     
-    toast({
-      title: "Request Sent",
-      description: "We'll get back to you shortly.",
-    });
-    
-    form.reset();
     setIsSubmitting(false);
   }
 

@@ -70,18 +70,43 @@ export default function ServiceRequestForm({
     setIsSubmitting(true);
     
     const fullFormData = {
-      ...userInfo,
+      name: userInfo?.name,
+      email: userInfo?.email,
+      phone: userInfo?.phone,
       service: serviceName,
-      ...values,
-      submittedAt: new Date().toISOString(),
+      preferredColors: values.preferredColors,
+      fontStyle: values.fontStyle,
+      designNotes: values.designNotes,
     };
 
-    console.log("Service Request Submission:", fullFormData);
+    try {
+      const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyXy7Mh4dIpiChqd57MIp8oX0MLBkDWfP8YUVoL_U3sRG1lv205Q9LaQPzFM9gO3-Sg/exec";
+      
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify(fullFormData),
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        toast({
+          title: "Error",
+          description: result.message || "Failed to submit form",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast({
+        title: "Error",
+        description: "Failed to submit form. Please try again.",
+        variant: "destructive",
+      });
+    }
     
-    // Simulate API call to Google Sheets/Gmail via backend
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitted(true);
     setIsSubmitting(false);
   };
 
