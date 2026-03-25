@@ -37,7 +37,7 @@ export default function Contact() {
     setIsSubmitting(true);
     
     try {
-      const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyXy7Mh4dIpiChqd57MIp8oX0MLBkDWfP8YUVoL_U3sRG1lv205Q9LaQPzFM9gO3-Sg/exec";
+      const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxWVnj9zrbB3VnRrrBMdxpp-b2Z2YDd8kMPDI4oiiwZVmo045TnxHl1kti0CHeZWU4/exec";
       
       const response = await fetch(APPS_SCRIPT_URL, {
         method: "POST",
@@ -49,7 +49,6 @@ export default function Contact() {
           preferredColors: "",
           fontStyle: "",
           designNotes: values.message,
-          company: values.company,
         }),
       });
       
