@@ -46,6 +46,10 @@
   color-scheme: light;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html, body {
   @apply bg-background text-foreground;
   margin: 0;

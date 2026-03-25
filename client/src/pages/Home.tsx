@@ -33,7 +33,7 @@ export default function Home() {
         </p>
 
         <div className="pt-8">
-          <Link href="#services">
+          <Link href="/services">
             <Button size="lg" className="text-lg px-8 py-6 rounded-full group bg-[#A30A0A] hover:bg-[#8B0808] shadow-lg hover:shadow-[0_0_30px_rgba(163,10,10,0.6)] transition-all duration-300 text-white">
               {t("hero.cta")}
               <ArrowRight className={`ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : ''}`} />
