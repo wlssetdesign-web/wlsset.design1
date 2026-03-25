@@ -84,7 +84,7 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel>{t("contact.email")}</FormLabel>
                       <FormControl>
-                        <Input placeholder="mohammad.alabbadi@gmail.com" {...field} className="bg-background/50" />
+                        <Input placeholder="mohammed.aldmour@gmail.com" {...field} className="bg-background/50" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
