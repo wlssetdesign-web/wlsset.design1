@@ -71,7 +71,7 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel>{t("contact.name")}</FormLabel>
                       <FormControl>
-                        <Input placeholder="John Doe" {...field} className="bg-background/50" />
+                        <Input placeholder="Mohammad Al-Abadi" {...field} className="bg-background/50" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -84,7 +84,7 @@ export default function Contact() {
                     <FormItem>
                       <FormLabel>{t("contact.email")}</FormLabel>
                       <FormControl>
-                        <Input placeholder="john@example.com" {...field} className="bg-background/50" />
+                        <Input placeholder="mohammad.alabbadi@gmail.com" {...field} className="bg-background/50" />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -99,7 +99,7 @@ export default function Contact() {
                   <FormItem>
                     <FormLabel>{t("contact.company")}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Company Name" {...field} className="bg-background/50" />
+                      <Input placeholder="Amman Tech Solutions" {...field} className="bg-background/50" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

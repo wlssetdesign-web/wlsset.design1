@@ -160,7 +160,7 @@ export default function ServiceRequestForm({
                               <FormItem>
                                 <FormLabel>Full Name</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="Your name" {...field} className="bg-background/50" />
+                                  <Input placeholder="Mohammad Al-Abadi" {...field} className="bg-background/50" />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -174,7 +174,7 @@ export default function ServiceRequestForm({
                               <FormItem>
                                 <FormLabel>Phone Number</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="+1 (555) 000-0000" {...field} className="bg-background/50" />
+                                  <Input placeholder="+962 (799) 123-456" {...field} className="bg-background/50" />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -188,7 +188,7 @@ export default function ServiceRequestForm({
                               <FormItem>
                                 <FormLabel>Email Address</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="you@example.com" type="email" {...field} className="bg-background/50" />
+                                  <Input placeholder="mohammad.alabbadi@gmail.com" type="email" {...field} className="bg-background/50" />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -229,12 +229,12 @@ export default function ServiceRequestForm({
                                       <SelectValue placeholder="Select colors" />
                                     </SelectTrigger>
                                   </FormControl>
-                                  <SelectContent>
-                                    <SelectItem value="vibrant">Vibrant & Bold</SelectItem>
-                                    <SelectItem value="minimal">Minimal & Neutral</SelectItem>
-                                    <SelectItem value="warm">Warm & Earthy</SelectItem>
-                                    <SelectItem value="cool">Cool & Modern</SelectItem>
-                                    <SelectItem value="custom">Custom Palette</SelectItem>
+                                  <SelectContent className="bg-[#1E1E1E] border-white/10">
+                                    <SelectItem value="vibrant" className="text-white">Vibrant & Bold</SelectItem>
+                                    <SelectItem value="minimal" className="text-white">Minimal & Neutral</SelectItem>
+                                    <SelectItem value="warm" className="text-white">Warm & Earthy</SelectItem>
+                                    <SelectItem value="cool" className="text-white">Cool & Modern</SelectItem>
+                                    <SelectItem value="custom" className="text-white">Custom Palette</SelectItem>
                                   </SelectContent>
                                 </Select>
                                 <FormMessage />
@@ -254,12 +254,12 @@ export default function ServiceRequestForm({
                                       <SelectValue placeholder="Select font style" />
                                     </SelectTrigger>
                                   </FormControl>
-                                  <SelectContent>
-                                    <SelectItem value="modern">Modern & Clean</SelectItem>
-                                    <SelectItem value="serif">Classic Serif</SelectItem>
-                                    <SelectItem value="display">Bold Display</SelectItem>
-                                    <SelectItem value="minimal">Minimalist</SelectItem>
-                                    <SelectItem value="playful">Playful & Creative</SelectItem>
+                                  <SelectContent className="bg-[#1E1E1E] border-white/10">
+                                    <SelectItem value="modern" className="text-white">Modern & Clean</SelectItem>
+                                    <SelectItem value="serif" className="text-white">Classic Serif</SelectItem>
+                                    <SelectItem value="display" className="text-white">Bold Display</SelectItem>
+                                    <SelectItem value="minimal" className="text-white">Minimalist</SelectItem>
+                                    <SelectItem value="playful" className="text-white">Playful & Creative</SelectItem>
                                   </SelectContent>
                                 </Select>
                                 <FormMessage />
