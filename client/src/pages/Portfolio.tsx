@@ -27,6 +27,21 @@ export default function Portfolio() {
     "Video & Motion": "Video",
   };
 
+  // Reverse mapping: from data category to display label
+  const categoryToLabelMap: { [key: string]: string } = {
+    "Branding": "Brands",
+    "Print": "Print Design",
+    "Social Media": "Social Media Design",
+    "Image Editing": "Image Editing",
+    "Vector Tracing": "Vector Tracing",
+    "Infographic Design": "Infographic Design",
+    "Video": "Video & Motion",
+  };
+
+  const getCategoryLabel = (category: string): string => {
+    return categoryToLabelMap[category] || category;
+  };
+
   const filteredItems = useMemo(() => {
     let items = portfolioData;
     
@@ -123,7 +138,7 @@ export default function Portfolio() {
                   item.title === "Lumina Tech Brochure" ? t("portfolio.luminaTechBrochure") :
                   item.title
                 }</h3>
-                <p className="text-sm text-primary font-medium">{translateCategoryName(item.category)}</p>
+                <p className="text-sm text-primary font-medium">{getCategoryLabel(item.category)}</p>
               </div>
             </motion.div>
           ))}
@@ -151,7 +166,7 @@ export default function Portfolio() {
                     selectedItem.title
                   }</h2>
                   <span className="text-primary text-sm font-medium px-3 py-1 bg-primary/10 rounded-full border border-primary/20">
-                    {translateCategoryName(selectedItem.category)}
+                    {getCategoryLabel(selectedItem.category)}
                   </span>
                 </div>
                 <p className="text-muted-foreground">{selectedItem.description}</p>
