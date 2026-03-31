@@ -80,6 +80,8 @@ const translations: Record<Language, Record<string, string>> = {
     "portfolio.video": "Video",
     "portfolio.ecoPackaging": "Eco Packaging",
     "portfolio.luminaTechBrochure": "Lumina Tech Brochure",
+    "portfolio.searchPlaceholder": "Search for a service or project...",
+    "portfolio.noResults": "No projects found. Try searching for another service!",
     "footer.rights": "© 2026 wlsset design. All rights reserved.",
   },
   ar: {
@@ -151,6 +153,8 @@ const translations: Record<Language, Record<string, string>> = {
     "portfolio.video": "فيديو",
     "portfolio.ecoPackaging": "تغليف صديق للبيئة",
     "portfolio.luminaTechBrochure": "بروشور لومينا تيك",
+    "portfolio.searchPlaceholder": "ابحث عن خدمة أو مشروع...",
+    "portfolio.noResults": "لم يتم العثور على مشاريع. جرب البحث عن خدمة أخرى!",
     "footer.rights": "© 2026 wlsset design. جميع الحقوق محفوظة.",
   }
 };

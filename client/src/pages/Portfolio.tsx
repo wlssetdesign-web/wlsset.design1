@@ -1,31 +1,59 @@
 import { useI18n } from "@/lib/i18n";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import portfolioData from "@/data/portfolio.json";
 import { Button } from "@/components/ui/button";
+import { Search } from "lucide-react";
 
 export default function Portfolio() {
   const { t } = useI18n();
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState("Brand Identity");
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedItem, setSelectedItem] = useState<typeof portfolioData[0] | null>(null);
 
-  const categoryMap: { [key: string]: string } = {
-    "Branding": "portfolio.branding",
-    "Print": "portfolio.print",
-    "Social Media": "portfolio.socialMedia",
-    "Video": "portfolio.video",
+  const serviceToDataCategoryMap: { [key: string]: string } = {
+    "Brand Identity": "Branding",
+    "Print Design": "Print",
+    "Social Media": "Social Media",
+    "Image Editing": "Image Editing",
+    "Vector Tracing": "Vector Tracing",
+    "Infographic Design": "Infographic Design",
+    "Video & Motion": "Video",
   };
 
-  const categories = ["All", ...Array.from(new Set(portfolioData.map(item => item.category)))];
+  const categoryMap: { [key: string]: string } = {
+    "Brand Identity": "portfolio.branding",
+    "Print Design": "portfolio.print",
+    "Social Media": "portfolio.socialMedia",
+    "Image Editing": "portfolio.print",
+    "Vector Tracing": "portfolio.print",
+    "Infographic Design": "portfolio.print",
+    "Video & Motion": "portfolio.video",
+  };
 
-  const filteredItems = filter === "All" 
-    ? portfolioData 
-    : portfolioData.filter(item => item.category === filter);
+  const services = ["Brand Identity", "Print Design", "Social Media", "Image Editing", "Vector Tracing", "Infographic Design", "Video & Motion"];
 
   const translateCategoryName = (cat: string): string => {
     return categoryMap[cat] ? t(categoryMap[cat]) : cat;
   };
+
+  const filteredItems = useMemo(() => {
+    const dataCategory = serviceToDataCategoryMap[filter] || filter;
+    let items = portfolioData.filter(item => item.category === dataCategory);
+    
+    if (searchTerm.trim()) {
+      const searchLower = searchTerm.toLowerCase();
+      items = items.filter(item => 
+        item.title.toLowerCase().includes(searchLower) ||
+        item.description.toLowerCase().includes(searchLower) ||
+        item.category.toLowerCase().includes(searchLower)
+      );
+    }
+    
+    return items;
+  }, [filter, searchTerm]);
 
   return (
     <div className="container mx-auto px-4 py-16">
@@ -33,21 +61,48 @@ export default function Portfolio() {
         <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">{t("portfolio.title")}</h1>
       </div>
 
+      {/* Search Bar */}
+      <div className="mb-8 flex justify-center">
+        <div className="relative w-full max-w-2xl">
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+          <Input
+            type="text"
+            placeholder={t("portfolio.searchPlaceholder")}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="pl-12 py-3 text-base border-2 border-gray-300 rounded-lg focus:border-[#A30A0A] focus:outline-none transition-colors"
+            style={{ fontFamily: "'Quicksand', sans-serif", fontWeight: "600" }}
+          />
+        </div>
+      </div>
+
       {/* Filters */}
       <div className="flex flex-wrap justify-center gap-2 mb-12">
-        {categories.map((cat) => (
+        {services.map((service) => (
           <Button
-            key={cat}
-            variant={filter === cat ? "default" : "outline"}
-            onClick={() => setFilter(cat)}
-            className={`rounded-full ${filter === cat ? 'bg-primary hover:bg-primary/90' : 'hover:border-primary/50'}`}
+            key={service}
+            variant={filter === service ? "default" : "outline"}
+            onClick={() => setFilter(service)}
+            className={`rounded-full font-bold transition-all ${
+              filter === service 
+                ? 'bg-[#A30A0A] hover:bg-[#8B0808] text-white border-2 border-[#A30A0A]' 
+                : 'border-2 border-gray-300 text-foreground hover:border-[#A30A0A] hover:bg-gray-50'
+            }`}
+            style={{ fontFamily: "'Quicksand', sans-serif" }}
           >
-            {cat === "All" ? t("portfolio.all") : translateCategoryName(cat)}
+            {translateCategoryName(service)}
           </Button>
         ))}
       </div>
 
       {/* Grid */}
+      {filteredItems.length === 0 ? (
+        <div className="flex flex-col items-center justify-center py-16">
+          <p className="text-xl text-muted-foreground text-center">
+            {t("portfolio.noResults")}
+          </p>
+        </div>
+      ) : (
       <motion.div 
         layout
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -80,6 +135,7 @@ export default function Portfolio() {
           ))}
         </AnimatePresence>
       </motion.div>
+      )}
 
       {/* Lightbox Modal */}
       <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
