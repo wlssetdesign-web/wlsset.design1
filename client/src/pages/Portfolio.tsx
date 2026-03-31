@@ -9,11 +9,15 @@ import { Search } from "lucide-react";
 
 export default function Portfolio() {
   const { t } = useI18n();
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedItem, setSelectedItem] = useState<typeof portfolioData[0] | null>(null);
 
-  const serviceToDataCategoryMap: { [key: string]: string } = {
+  // Clean array of exactly 7 buttons - NO DUPLICATES
+  const filterButtons = ["Brands", "Print Design", "Social Media Design", "Image Editing", "Vector Tracing", "Infographic Design", "Video & Motion"];
+
+  // Mapping from button label to actual portfolio data category
+  const buttonToCategoryMap: { [key: string]: string } = {
     "Brands": "Branding",
     "Print Design": "Print",
     "Social Media Design": "Social Media",
@@ -23,30 +27,16 @@ export default function Portfolio() {
     "Video & Motion": "Video",
   };
 
-  const categoryMap: { [key: string]: string } = {
-    "Brands": "portfolio.branding",
-    "Print Design": "portfolio.print",
-    "Social Media Design": "portfolio.socialMedia",
-    "Image Editing": "portfolio.print",
-    "Vector Tracing": "portfolio.print",
-    "Infographic Design": "portfolio.print",
-    "Video & Motion": "portfolio.video",
-  };
-
-  const services = ["Brands", "Print Design", "Social Media Design", "Image Editing", "Vector Tracing", "Infographic Design", "Video & Motion"];
-
-  const translateCategoryName = (cat: string): string => {
-    return categoryMap[cat] ? t(categoryMap[cat]) : cat;
-  };
-
   const filteredItems = useMemo(() => {
     let items = portfolioData;
     
-    if (filter !== "All") {
-      const dataCategory = serviceToDataCategoryMap[filter] || filter;
+    // If a filter is selected, filter by category
+    if (filter) {
+      const dataCategory = buttonToCategoryMap[filter];
       items = items.filter(item => item.category === dataCategory);
     }
     
+    // Apply search term
     if (searchTerm.trim()) {
       const searchLower = searchTerm.toLowerCase();
       items = items.filter(item => 
@@ -80,33 +70,21 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* Filters */}
+      {/* Filters - CLEAN 7 BUTTONS ONLY */}
       <div className="flex flex-wrap justify-center gap-3 mb-12">
-        <Button
-          variant={filter === "All" ? "default" : "outline"}
-          onClick={() => setFilter("All")}
-          className={`rounded-full font-bold transition-all ${
-            filter === "All" 
-              ? 'bg-[#A30A0A] hover:bg-[#8B0808] text-white border-2 border-[#A30A0A]' 
-              : 'border-2 border-gray-300 text-foreground hover:border-[#A30A0A] hover:bg-gray-50'
-          }`}
-          style={{ fontFamily: "'Quicksand', sans-serif" }}
-        >
-          {t("portfolio.all")}
-        </Button>
-        {services.map((service) => (
+        {filterButtons.map((buttonLabel) => (
           <Button
-            key={service}
-            variant={filter === service ? "default" : "outline"}
-            onClick={() => setFilter(service)}
+            key={buttonLabel}
+            variant={filter === buttonLabel ? "default" : "outline"}
+            onClick={() => setFilter(buttonLabel)}
             className={`rounded-full font-bold transition-all ${
-              filter === service 
+              filter === buttonLabel 
                 ? 'bg-[#A30A0A] hover:bg-[#8B0808] text-white border-2 border-[#A30A0A]' 
                 : 'border-2 border-gray-300 text-foreground hover:border-[#A30A0A] hover:bg-gray-50'
             }`}
             style={{ fontFamily: "'Quicksand', sans-serif" }}
           >
-            {translateCategoryName(service)}
+            {buttonLabel}
           </Button>
         ))}
       </div>
