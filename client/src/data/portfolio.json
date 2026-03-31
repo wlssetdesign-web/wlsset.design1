@@ -3,9 +3,10 @@
     "id": 1,
     "title": "Khalil Barber Shop",
     "category": "Branding",
-    "image": "https://images.unsplash.com/photo-1576092160562-40f7d7be7551?q=80&w=1470&auto=format&fit=crop",
+    "image": "/public/images/KHALIL-LOGO-RGB2.jpg",
     "description": "Custom logo design for men's barbershop in Amman, Jordan.",
-    "isFullPage": true
+    "isFullPage": true,
+    "showImageOnHover": false
   },
   {
     "id": 2,

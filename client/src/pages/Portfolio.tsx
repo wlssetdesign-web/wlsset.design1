@@ -131,13 +131,15 @@ export default function Portfolio() {
                 alt={item.title}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center" style={{ backgroundColor: 'rgba(163, 10, 10, 0.6)' }}>
-                <h3 className="text-2xl font-bold text-white">{
-                  item.title === "Eco Packaging" ? t("portfolio.ecoPackaging") :
-                  item.title === "Lumina Tech Brochure" ? t("portfolio.luminaTechBrochure") :
-                  item.title
-                }</h3>
-              </div>
+              {item.showImageOnHover !== false && (
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center" style={{ backgroundColor: 'rgba(163, 10, 10, 0.6)' }}>
+                  <h3 className="text-2xl font-bold text-white">{
+                    item.title === "Eco Packaging" ? t("portfolio.ecoPackaging") :
+                    item.title === "Lumina Tech Brochure" ? t("portfolio.luminaTechBrochure") :
+                    item.title
+                  }</h3>
+                </div>
+              )}
             </motion.div>
           ))}
         </AnimatePresence>
