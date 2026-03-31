@@ -9,14 +9,14 @@ import { Search } from "lucide-react";
 
 export default function Portfolio() {
   const { t } = useI18n();
-  const [filter, setFilter] = useState("Brand Identity");
+  const [filter, setFilter] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedItem, setSelectedItem] = useState<typeof portfolioData[0] | null>(null);
 
   const serviceToDataCategoryMap: { [key: string]: string } = {
-    "Brand Identity": "Branding",
+    "Brands": "Branding",
     "Print Design": "Print",
-    "Social Media": "Social Media",
+    "Social Media Design": "Social Media",
     "Image Editing": "Image Editing",
     "Vector Tracing": "Vector Tracing",
     "Infographic Design": "Infographic Design",
@@ -24,24 +24,28 @@ export default function Portfolio() {
   };
 
   const categoryMap: { [key: string]: string } = {
-    "Brand Identity": "portfolio.branding",
+    "Brands": "portfolio.branding",
     "Print Design": "portfolio.print",
-    "Social Media": "portfolio.socialMedia",
+    "Social Media Design": "portfolio.socialMedia",
     "Image Editing": "portfolio.print",
     "Vector Tracing": "portfolio.print",
     "Infographic Design": "portfolio.print",
     "Video & Motion": "portfolio.video",
   };
 
-  const services = ["Brand Identity", "Print Design", "Social Media", "Image Editing", "Vector Tracing", "Infographic Design", "Video & Motion"];
+  const services = ["Brands", "Print Design", "Social Media Design", "Image Editing", "Vector Tracing", "Infographic Design", "Video & Motion"];
 
   const translateCategoryName = (cat: string): string => {
     return categoryMap[cat] ? t(categoryMap[cat]) : cat;
   };
 
   const filteredItems = useMemo(() => {
-    const dataCategory = serviceToDataCategoryMap[filter] || filter;
-    let items = portfolioData.filter(item => item.category === dataCategory);
+    let items = portfolioData;
+    
+    if (filter !== "All") {
+      const dataCategory = serviceToDataCategoryMap[filter] || filter;
+      items = items.filter(item => item.category === dataCategory);
+    }
     
     if (searchTerm.trim()) {
       const searchLower = searchTerm.toLowerCase();
@@ -62,22 +66,34 @@ export default function Portfolio() {
       </div>
 
       {/* Search Bar */}
-      <div className="mb-8 flex justify-center">
-        <div className="relative w-full max-w-2xl">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+      <div className="mb-12 flex justify-center">
+        <div className="relative w-full max-w-2xl group">
+          <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#A30A0A] transition-colors group-focus-within:text-[#A30A0A]" />
           <Input
             type="text"
             placeholder={t("portfolio.searchPlaceholder")}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-12 py-3 text-base border-2 border-gray-300 rounded-lg focus:border-[#A30A0A] focus:outline-none transition-colors"
+            className="w-full pl-14 pr-5 py-4 text-base bg-white border-2 border-gray-200 rounded-2xl focus:border-[#A30A0A] focus:outline-none transition-all duration-300 shadow-sm focus:shadow-lg focus:shadow-[rgba(163,10,10,0.15)]"
             style={{ fontFamily: "'Quicksand', sans-serif", fontWeight: "600" }}
           />
         </div>
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap justify-center gap-2 mb-12">
+      <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <Button
+          variant={filter === "All" ? "default" : "outline"}
+          onClick={() => setFilter("All")}
+          className={`rounded-full font-bold transition-all ${
+            filter === "All" 
+              ? 'bg-[#A30A0A] hover:bg-[#8B0808] text-white border-2 border-[#A30A0A]' 
+              : 'border-2 border-gray-300 text-foreground hover:border-[#A30A0A] hover:bg-gray-50'
+          }`}
+          style={{ fontFamily: "'Quicksand', sans-serif" }}
+        >
+          {t("portfolio.all")}
+        </Button>
         {services.map((service) => (
           <Button
             key={service}
