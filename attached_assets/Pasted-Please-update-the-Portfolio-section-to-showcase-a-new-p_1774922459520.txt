@@ -1,0 +1,15 @@
+Please update the Portfolio section to showcase a new project: 'Khalil Barber Shop'.
+
+Replace content: Swap all instances of 'Apex Fitness Rebrand' with 'Khalil Barber Shop'.
+
+Layout (Full Page Scroll): Instead of a static card, make this project a single, tall content block within the Portfolio area that requires scrolling. Retain the Wlsset Design site header and navigation.
+
+Project Start (Logo): Center the turquoise and black calligraphy logo from image_14.png on a clean white field.
+
+Text Block: Below the centered logo, create a content block with a solid deep turquoise-green background (matching the project color palette, e.g., #1D695A from image_15.png). On this background, place the following verbatim text in bold, clean, non-italic white text: 'Khalil – Men's Barbershop | Amman, Jordan I designed a custom logo for Khalil, a men's barbershop located in Amman, Jordan. The business was built from the ground up, and the logo I created has become its official brand identity. I carefully selected colors that reflect the values of the brand — particularly turquoise, symbolizing cleanliness, renewal, and clarity. The logo was designed using Arabic typography, combining two classic yet still popular calligraphic styles: Thuluth and Diwani.' Ensure the font is bold and sans-serif, similar to image_15.png header but with a premium, casual feel.
+
+Second Contextual Image: As the user scrolls down further, reveal a second, high-resolution photograph (generate a new one) that contextualizes the shop interior in Amman, Jordan. Make it a clean, professional shot of a barber meticulously working with a client, with turquoise light accents and a view through a window to an Amman street, linking the brand to its location. This image should not look like a repeated logo page.
+
+Bottom Palette Cards: At the bottom of this project section, replicate the row of color palette cards and logos from image_15.png, showing the four teal shades with their hex codes (#206D5F, #1D695A, #1A5B50), plus the clean #FFFFFF and #1C1C1C logo cards. All text and hex codes on these cards must be sharp and accurate.
+
+Interactive Effects: Keep all hover and transition effects as previously styled, but apply them only to the project cards and elements within the visible viewport of the scrolled page."

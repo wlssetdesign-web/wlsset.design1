@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import portfolioData from "@/data/portfolio.json";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
+import KhalilProject from "./KhalilProject";
 
 export default function Portfolio() {
   const { t } = useI18n();
@@ -143,35 +144,39 @@ export default function Portfolio() {
       </motion.div>
       )}
 
-      {/* Lightbox Modal */}
-      <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
-        <DialogContent className="max-w-4xl bg-black/95 border-white/10 p-0 overflow-hidden">
-          {selectedItem && (
-            <div className="flex flex-col">
-              <div className="relative aspect-video w-full bg-black">
-                <img 
-                  src={selectedItem.image} 
-                  alt={selectedItem.title}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <h2 className="text-2xl font-bold">{
-                    selectedItem.title === "Eco Packaging" ? t("portfolio.ecoPackaging") :
-                    selectedItem.title === "Lumina Tech Brochure" ? t("portfolio.luminaTechBrochure") :
-                    selectedItem.title
-                  }</h2>
-                  <span className="text-primary text-sm font-medium px-3 py-1 bg-primary/10 rounded-full border border-primary/20">
-                    {getCategoryLabel(selectedItem.category)}
-                  </span>
+      {/* Full-Page Project View or Regular Lightbox Modal */}
+      {selectedItem && selectedItem.title === "Khalil Barber Shop" ? (
+        <KhalilProject onClose={() => setSelectedItem(null)} />
+      ) : (
+        <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
+          <DialogContent className="max-w-4xl bg-black/95 border-white/10 p-0 overflow-hidden">
+            {selectedItem && (
+              <div className="flex flex-col">
+                <div className="relative aspect-video w-full bg-black">
+                  <img 
+                    src={selectedItem.image} 
+                    alt={selectedItem.title}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
-                <p className="text-muted-foreground">{selectedItem.description}</p>
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <h2 className="text-2xl font-bold">{
+                      selectedItem.title === "Eco Packaging" ? t("portfolio.ecoPackaging") :
+                      selectedItem.title === "Lumina Tech Brochure" ? t("portfolio.luminaTechBrochure") :
+                      selectedItem.title
+                    }</h2>
+                    <span className="text-primary text-sm font-medium px-3 py-1 bg-primary/10 rounded-full border border-primary/20">
+                      {getCategoryLabel(selectedItem.category)}
+                    </span>
+                  </div>
+                  <p className="text-muted-foreground">{selectedItem.description}</p>
+                </div>
               </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+            )}
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 }
