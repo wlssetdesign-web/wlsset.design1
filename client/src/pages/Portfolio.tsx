@@ -123,15 +123,28 @@ export default function Portfolio() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               key={item.id}
-              className="group cursor-pointer relative aspect-video overflow-hidden rounded-xl border border-white/10"
+              className={`group cursor-pointer relative aspect-video overflow-hidden rounded-xl border border-white/10 ${
+                item.title === "Khalil Barber Shop" ? "bg-white" : ""
+              }`}
               onClick={() => setSelectedItem(item)}
             >
               <img 
                 src={item.image} 
                 alt={item.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                className={`w-full h-full transition-transform duration-500 ${
+                  item.title === "Khalil Barber Shop"
+                    ? "object-contain p-6 group-hover:scale-100"
+                    : "object-cover group-hover:scale-110"
+                }`}
               />
-              {item.showImageOnHover !== false && (
+              {/* Khalil Barber Shop: Always show hover overlay with text */}
+              {item.title === "Khalil Barber Shop" && (
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center" style={{ backgroundColor: 'rgba(163, 10, 10, 0.6)' }}>
+                  <h3 className="text-2xl font-bold text-white">Khalil Barber Shop</h3>
+                </div>
+              )}
+              {/* Other projects: Show hover overlay only if showImageOnHover is not false */}
+              {item.title !== "Khalil Barber Shop" && item.showImageOnHover !== false && (
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center" style={{ backgroundColor: 'rgba(163, 10, 10, 0.6)' }}>
                   <h3 className="text-2xl font-bold text-white">{
                     item.title === "Eco Packaging" ? t("portfolio.ecoPackaging") :
