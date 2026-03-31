@@ -45,13 +45,7 @@ export default function Portfolio() {
   const filteredItems = useMemo(() => {
     let items = portfolioData;
     
-    // If a filter is selected, filter by category
-    if (filter) {
-      const dataCategory = buttonToCategoryMap[filter];
-      items = items.filter(item => item.category === dataCategory);
-    }
-    
-    // Apply search term
+    // Search takes priority: if user is typing, search ALL projects across all categories
     if (searchTerm.trim()) {
       const searchLower = searchTerm.toLowerCase();
       items = items.filter(item => 
@@ -59,6 +53,10 @@ export default function Portfolio() {
         item.description.toLowerCase().includes(searchLower) ||
         item.category.toLowerCase().includes(searchLower)
       );
+    } else if (filter) {
+      // Only apply category filter if no search term is active
+      const dataCategory = buttonToCategoryMap[filter];
+      items = items.filter(item => item.category === dataCategory);
     }
     
     return items;
@@ -76,7 +74,7 @@ export default function Portfolio() {
           <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#A30A0A] transition-colors group-focus-within:text-[#A30A0A]" />
           <Input
             type="text"
-            placeholder={t("portfolio.searchPlaceholder")}
+            placeholder="Search here"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-14 pr-5 py-4 text-base bg-white border-2 border-gray-200 rounded-2xl focus:border-[#A30A0A] focus:outline-none transition-all duration-300 shadow-sm focus:shadow-lg focus:shadow-[rgba(163,10,10,0.15)]"
