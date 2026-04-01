@@ -58,20 +58,6 @@ export default function KhalilProject({ onClose }: { onClose: () => void }) {
         </div>
       </motion.div>
 
-      {/* Shop Interior Image */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="min-h-screen flex items-center justify-center bg-white px-4"
-      >
-        <img
-          src="/assets/khalil-barber-shop-interior.png"
-          alt="Khalil Barber Shop Interior"
-          className="w-full max-w-4xl object-cover rounded-xl shadow-lg"
-        />
-      </motion.div>
-
       {/* Color Palette Section */}
       <motion.div
         initial={{ opacity: 0 }}
