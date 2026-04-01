@@ -58,18 +58,33 @@ export default function KhalilProject({ onClose }: { onClose: () => void }) {
         </div>
       </motion.div>
 
-      {/* Brand Identity Image */}
+      {/* Color Palette Section */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="min-h-screen flex items-center justify-center bg-white px-4 py-16"
+        className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4 py-16"
       >
-        <img
-          src="/public/image_20.png"
-          alt="Khalil Brand Identity Palette"
-          className="w-full max-w-6xl object-contain"
-        />
+        <h2 className="text-4xl font-bold text-gray-800 mb-12">Color Palette</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 w-full max-w-6xl">
+          {colors.map((color) => (
+            <motion.div
+              key={color.hex}
+              whileHover={{ scale: 1.05 }}
+              className="rounded-2xl overflow-hidden shadow-lg border-2 border-gray-200 transition-all"
+            >
+              <div
+                className="aspect-square"
+                style={{ backgroundColor: color.hex }}
+              />
+              <div className="p-4 bg-white">
+                <p className="font-bold text-gray-800 mb-2">{color.hex}</p>
+                <p className="text-xs text-gray-600 mb-1">RGB: {color.rgb}</p>
+                <p className="text-xs text-gray-600">CMYK: {color.cmyk}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
     </div>
   );
