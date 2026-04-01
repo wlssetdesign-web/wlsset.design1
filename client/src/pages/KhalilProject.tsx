@@ -42,10 +42,10 @@ export default function KhalilProject({ onClose }: { onClose: () => void }) {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="min-h-screen flex items-center justify-center px-4"
+        className="flex items-center justify-center px-4 py-20 m-0"
         style={{ backgroundColor: "#1D695A" }}
       >
-        <div className="max-w-2xl">
+        <div className="max-w-5xl w-full">
           <p className="text-xl md:text-2xl font-bold text-white leading-relaxed">
             Khalil – Men's Barbershop | Amman, Jordan I designed a custom logo
             for Khalil, a men's barbershop located in Amman, Jordan. The
@@ -63,7 +63,7 @@ export default function KhalilProject({ onClose }: { onClose: () => void }) {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="min-h-screen flex items-center justify-center bg-white px-4 py-16"
+        className="flex items-center justify-center bg-white px-4 py-20 m-0"
       >
         <img
           src="/images/KHALIL-LOGO-RGB-palette.jpg"
