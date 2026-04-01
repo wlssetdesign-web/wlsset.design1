@@ -179,8 +179,8 @@ export default function Portfolio() {
           transition={{ duration: 0.5 }}
           className="w-full"
         >
-          {/* Centered Khalil Card - Fixed at Top */}
-          <div className="fixed z-50 pt-6 pb-6" style={{ top: 0, left: 0, right: 0, display: "flex", justifyContent: "center", backgroundColor: "#A30A0A" }}>
+          {/* Centered Khalil Card - Fixed Below Navbar */}
+          <div className="fixed z-40" style={{ top: "80px", left: 0, right: 0, display: "flex", justifyContent: "center", backgroundColor: "#A30A0A", padding: "16px 0" }}>
             <motion.div
               initial={{ scale: 1 }}
               animate={{ scale: 1.1 }}
@@ -188,14 +188,14 @@ export default function Portfolio() {
               className="w-full flex justify-center px-4"
               onClick={() => setKhalilFocused(false)}
             >
-              <div className="cursor-pointer relative aspect-video overflow-hidden rounded-xl border-2 border-white/30 bg-[#A30A0A] w-full max-w-sm shadow-lg flex items-center justify-center">
-                <div className="flex flex-col items-center justify-center gap-4">
+              <div className="cursor-pointer relative overflow-hidden rounded-lg border-2 border-transparent bg-[#A30A0A] w-full max-w-xs shadow-lg flex items-center justify-center py-4">
+                <div className="flex items-center justify-center gap-3">
                   <img 
                     src="/public/images/KHALIL-LOGO-RGB2.jpg"
                     alt="Khalil Barber Shop"
-                    className="w-24 h-24 object-contain"
+                    className="w-16 h-16 object-contain"
                   />
-                  <h3 className="text-2xl font-bold text-white text-center">Khalil Barber Shop</h3>
+                  <h3 className="text-xl font-bold text-white">Khalil Barber Shop</h3>
                 </div>
               </div>
             </motion.div>
