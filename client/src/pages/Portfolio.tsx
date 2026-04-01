@@ -13,6 +13,7 @@ export default function Portfolio() {
   const [filter, setFilter] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedItem, setSelectedItem] = useState<typeof portfolioData[0] | null>(null);
+  const [khalilFocused, setKhalilFocused] = useState(false);
 
   // Clean array of exactly 7 buttons - NO DUPLICATES
   const filterButtons = ["Brands", "Print Design", "Social Media Design", "Image Editing", "Vector Tracing", "Infographic Design", "Video & Motion"];
@@ -104,59 +105,105 @@ export default function Portfolio() {
       </div>
 
       {/* Grid */}
-      {filteredItems.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-16">
-          <p className="text-xl text-muted-foreground text-center">
-            {t("portfolio.noResults")}
-          </p>
-        </div>
-      ) : (
-      <motion.div 
-        layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-      >
-        <AnimatePresence>
-          {filteredItems.map((item) => (
-            <motion.div
+      {!khalilFocused && (
+        <>
+          {filteredItems.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-16">
+              <p className="text-xl text-muted-foreground text-center">
+                {t("portfolio.noResults")}
+              </p>
+            </div>
+          ) : (
+            <motion.div 
               layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              key={item.id}
-              className={`group cursor-pointer relative aspect-video overflow-hidden rounded-xl border border-white/10 ${
-                item.title === "Khalil Barber Shop" ? "bg-white" : ""
-              }`}
-              onClick={() => setSelectedItem(item)}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              <img 
-                src={item.image} 
-                alt={item.title}
-                className={`w-full h-full transition-transform duration-500 ${
-                  item.title === "Khalil Barber Shop"
-                    ? "object-contain p-6 group-hover:scale-100"
-                    : "object-cover group-hover:scale-110"
-                }`}
-              />
-              {/* Khalil Barber Shop: Always show hover overlay with text */}
-              {item.title === "Khalil Barber Shop" && (
+              <AnimatePresence>
+                {filteredItems.map((item) => (
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    key={item.id}
+                    className={`group cursor-pointer relative aspect-video overflow-hidden rounded-xl border border-white/10 ${
+                      item.title === "Khalil Barber Shop" ? "bg-white" : ""
+                    }`}
+                    onClick={() => {
+                      if (item.title === "Khalil Barber Shop") {
+                        setKhalilFocused(true);
+                      } else {
+                        setSelectedItem(item);
+                      }
+                    }}
+                  >
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className={`w-full h-full transition-transform duration-500 ${
+                        item.title === "Khalil Barber Shop"
+                          ? "object-contain p-6 group-hover:scale-100"
+                          : "object-cover group-hover:scale-110"
+                      }`}
+                    />
+                    {/* Khalil Barber Shop: Always show hover overlay with text */}
+                    {item.title === "Khalil Barber Shop" && (
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center" style={{ backgroundColor: 'rgba(163, 10, 10, 0.6)' }}>
+                        <h3 className="text-2xl font-bold text-white">Khalil Barber Shop</h3>
+                      </div>
+                    )}
+                    {/* Other projects: Show hover overlay only if showImageOnHover is not false */}
+                    {item.title !== "Khalil Barber Shop" && item.showImageOnHover !== false && (
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center" style={{ backgroundColor: 'rgba(163, 10, 10, 0.6)' }}>
+                        <h3 className="text-2xl font-bold text-white">{
+                          item.title === "Eco Packaging" ? t("portfolio.ecoPackaging") :
+                          item.title === "Lumina Tech Brochure" ? t("portfolio.luminaTechBrochure") :
+                          item.title
+                        }</h3>
+                      </div>
+                    )}
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          )}
+        </>
+      )}
+
+      {/* Khalil Focused View */}
+      {khalilFocused && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full"
+        >
+          {/* Centered Khalil Card */}
+          <div className="sticky top-0 z-40 bg-background pt-4 pb-8">
+            <motion.div
+              initial={{ scale: 1, y: 0 }}
+              animate={{ scale: 1.2, y: -100 }}
+              transition={{ type: "spring", damping: 20, stiffness: 300 }}
+              className="w-full flex justify-center px-4"
+              onClick={() => setKhalilFocused(false)}
+            >
+              <div className="group cursor-pointer relative aspect-video overflow-hidden rounded-xl border border-white/10 bg-white w-full max-w-md hover:shadow-lg transition-shadow duration-300">
+                <img 
+                  src="/public/images/KHALIL-LOGO-RGB2.jpg"
+                  alt="Khalil Barber Shop"
+                  className="w-full h-full object-contain p-6"
+                />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center" style={{ backgroundColor: 'rgba(163, 10, 10, 0.6)' }}>
                   <h3 className="text-2xl font-bold text-white">Khalil Barber Shop</h3>
                 </div>
-              )}
-              {/* Other projects: Show hover overlay only if showImageOnHover is not false */}
-              {item.title !== "Khalil Barber Shop" && item.showImageOnHover !== false && (
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center" style={{ backgroundColor: 'rgba(163, 10, 10, 0.6)' }}>
-                  <h3 className="text-2xl font-bold text-white">{
-                    item.title === "Eco Packaging" ? t("portfolio.ecoPackaging") :
-                    item.title === "Lumina Tech Brochure" ? t("portfolio.luminaTechBrochure") :
-                    item.title
-                  }</h3>
-                </div>
-              )}
+              </div>
             </motion.div>
-          ))}
-        </AnimatePresence>
-      </motion.div>
+          </div>
+
+          {/* Project Details */}
+          <KhalilProject onClose={() => setKhalilFocused(false)} />
+        </motion.div>
       )}
 
       {/* Full-Page Project View or Regular Lightbox Modal */}
