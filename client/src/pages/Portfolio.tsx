@@ -86,7 +86,7 @@ export default function Portfolio() {
       </div>
 
       {/* Filters - CLEAN 7 BUTTONS ONLY */}
-      <div className="sticky top-0 z-50 flex flex-wrap justify-center gap-3 mb-12 py-6 bg-white/80 backdrop-blur-md">
+      <div className="fixed top-28 left-0 right-0 z-40 flex flex-wrap justify-center gap-3 py-6 bg-white/90 backdrop-blur-md border-b border-gray-200">
         {filterButtons.map((buttonLabel) => (
           <Button
             key={buttonLabel}
@@ -106,18 +106,19 @@ export default function Portfolio() {
 
       {/* Grid */}
       {!activeProject && (
-        <>
-          {filteredItems.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-16">
-              <p className="text-xl text-muted-foreground text-center">
-                {t("portfolio.noResults")}
-              </p>
-            </div>
-          ) : (
-            <motion.div 
-              layout
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
+        <div className="pt-40">
+          <>
+            {filteredItems.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-16">
+                <p className="text-xl text-muted-foreground text-center">
+                  {t("portfolio.noResults")}
+                </p>
+              </div>
+            ) : (
+              <motion.div 
+                layout
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              >
               <AnimatePresence>
                 {filteredItems.map((item) => (
                   <motion.div
@@ -162,8 +163,9 @@ export default function Portfolio() {
                 ))}
               </AnimatePresence>
             </motion.div>
-          )}
-        </>
+            )}
+          </>
+        </div>
       )}
 
       {/* Active Project View - Universal for All Projects */}
@@ -186,7 +188,7 @@ export default function Portfolio() {
             >
               <div className="cursor-pointer relative overflow-hidden rounded-lg bg-[#A30A0A] px-8 py-6 shadow-lg flex flex-col items-center justify-between min-w-max h-32">
                 <div></div>
-                <div className="flex items-center justify-center gap-3 mt-6">
+                <div className="hidden md:flex items-center justify-center gap-3 mt-6">
                   <img 
                     src={activeProject.image}
                     alt={activeProject.title}
@@ -194,7 +196,12 @@ export default function Portfolio() {
                   />
                   <h3 className="text-lg font-bold text-white">{activeProject.title}</h3>
                 </div>
-                <X size={24} className="text-white stroke-2" />
+                <div className="md:hidden flex items-center justify-center">
+                  <X size={16} className="text-white stroke-2" />
+                </div>
+                <div className="hidden md:flex">
+                  <X size={24} className="text-white stroke-2" />
+                </div>
               </div>
             </motion.div>
           </div>
