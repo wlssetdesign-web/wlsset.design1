@@ -93,7 +93,7 @@ export default function Portfolio() {
             variant={filter === buttonLabel ? "default" : "outline"}
             onClick={() => setFilter(buttonLabel)}
             className={`rounded-full font-bold transition-all ${
-              filter === buttonLabel 
+              (filter === buttonLabel || (khalilFocused && buttonLabel === "Brands"))
                 ? 'bg-[#A30A0A] hover:bg-[#8B0808] text-white border-2 border-[#A30A0A]' 
                 : 'border-2 border-gray-300 text-foreground hover:border-[#A30A0A] hover:bg-gray-50'
             }`}
@@ -180,10 +180,10 @@ export default function Portfolio() {
           className="w-full"
         >
           {/* Centered Khalil Card */}
-          <div className="sticky top-0 z-40 bg-background pt-4 pb-8">
+          <div className="fixed z-40 bg-background pt-4 pb-8" style={{ bottom: "5%", left: 0, right: 0, display: "flex", justifyContent: "center" }}>
             <motion.div
-              initial={{ scale: 1, y: 0 }}
-              animate={{ scale: 1.2, y: -100 }}
+              initial={{ scale: 1 }}
+              animate={{ scale: 1.2 }}
               transition={{ type: "spring", damping: 20, stiffness: 300 }}
               className="w-full flex justify-center px-4"
               onClick={() => setKhalilFocused(false)}
