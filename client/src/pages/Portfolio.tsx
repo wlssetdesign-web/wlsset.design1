@@ -5,7 +5,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import portfolioData from "@/data/portfolio.json";
 import { Button } from "@/components/ui/button";
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 import KhalilProject from "./KhalilProject";
 
 export default function Portfolio() {
@@ -180,23 +180,24 @@ export default function Portfolio() {
           className="w-full"
         >
           {/* Khalil Card - Fixed at Left Below Navbar */}
-          <div className="fixed z-40" style={{ top: "80px", left: "20px", display: "flex", justifyContent: "flex-start", padding: "16px 0" }}>
+          <div className="fixed z-50" style={{ top: "80px", left: "20px", display: "flex", justifyContent: "flex-start" }}>
             <motion.div
               initial={{ scale: 1 }}
               animate={{ scale: 1.1 }}
               transition={{ type: "spring", damping: 20, stiffness: 300 }}
-              className="w-full flex justify-center px-4"
+              className="flex justify-center"
               onClick={() => setKhalilFocused(false)}
             >
-              <div className="cursor-pointer relative overflow-hidden rounded-lg border-2 border-transparent bg-[#A30A0A] w-full max-w-xs shadow-lg flex items-center justify-center py-4">
-                <div className="flex items-center justify-center gap-3">
+              <div className="cursor-pointer relative overflow-hidden rounded-lg bg-[#A30A0A] px-8 py-6 shadow-lg flex flex-col items-center justify-center min-w-max">
+                <div className="flex items-center justify-center gap-3 mb-3">
                   <img 
                     src="/public/images/KHALIL-LOGO-RGB2.jpg"
                     alt="Khalil Barber Shop"
-                    className="w-16 h-16 object-contain"
+                    className="w-14 h-14 object-contain"
                   />
-                  <h3 className="text-xl font-bold text-white">Khalil Barber Shop</h3>
+                  <h3 className="text-lg font-bold text-white">Khalil Barber Shop</h3>
                 </div>
+                <X size={24} className="text-white stroke-2" />
               </div>
             </motion.div>
           </div>
