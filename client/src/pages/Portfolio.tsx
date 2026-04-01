@@ -188,8 +188,9 @@ export default function Portfolio() {
               className="flex justify-center"
               onClick={() => setKhalilFocused(false)}
             >
-              <div className="cursor-pointer relative overflow-hidden rounded-lg bg-[#A30A0A] px-8 py-6 shadow-lg flex flex-col items-center justify-center min-w-max">
-                <div className="flex items-center justify-center gap-3 mb-3">
+              <div className="cursor-pointer relative overflow-hidden rounded-lg bg-[#A30A0A] px-8 py-6 shadow-lg flex flex-col items-center justify-between min-w-max h-32">
+                <div></div>
+                <div className="flex items-center justify-center gap-3">
                   <img 
                     src="/public/images/KHALIL-LOGO-RGB2.jpg"
                     alt="Khalil Barber Shop"
