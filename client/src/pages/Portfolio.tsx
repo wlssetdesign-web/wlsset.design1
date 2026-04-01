@@ -186,7 +186,7 @@ export default function Portfolio() {
             >
               <div className="cursor-pointer relative overflow-hidden rounded-lg bg-[#A30A0A] px-8 py-6 shadow-lg flex flex-col items-center justify-between min-w-max h-32">
                 <div></div>
-                <div className="flex items-center justify-center gap-3 mt-6">
+                <div className="hidden md:flex items-center justify-center gap-3 mt-6">
                   <img 
                     src={activeProject.image}
                     alt={activeProject.title}
@@ -194,7 +194,12 @@ export default function Portfolio() {
                   />
                   <h3 className="text-lg font-bold text-white">{activeProject.title}</h3>
                 </div>
-                <X size={24} className="text-white stroke-2" />
+                <div className="md:hidden flex items-center justify-center">
+                  <X size={16} className="text-white stroke-2" />
+                </div>
+                <div className="hidden md:flex">
+                  <X size={24} className="text-white stroke-2" />
+                </div>
               </div>
             </motion.div>
           </div>
