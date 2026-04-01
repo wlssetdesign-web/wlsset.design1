@@ -179,8 +179,8 @@ export default function Portfolio() {
           transition={{ duration: 0.5 }}
           className="w-full"
         >
-          {/* Centered Khalil Card - Fixed Below Navbar */}
-          <div className="fixed z-40" style={{ top: "80px", left: 0, right: 0, display: "flex", justifyContent: "center", backgroundColor: "#A30A0A", padding: "16px 0" }}>
+          {/* Khalil Card - Fixed at Left Below Navbar */}
+          <div className="fixed z-40" style={{ top: "80px", left: "20px", display: "flex", justifyContent: "flex-start", padding: "16px 0" }}>
             <motion.div
               initial={{ scale: 1 }}
               animate={{ scale: 1.1 }}
