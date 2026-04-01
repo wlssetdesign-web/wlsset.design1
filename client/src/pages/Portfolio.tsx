@@ -175,20 +175,8 @@ export default function Portfolio() {
           transition={{ duration: 0.5 }}
           className="w-full"
         >
-          {/* Project Card - Fixed Below Navbar - Responsive */}
-          {/* Mobile: Red banner with small icon on left */}
-          <div className="md:hidden fixed z-50 w-full" style={{ top: "80px", left: 0, right: 0, backgroundColor: "#A30A0A", height: "60px", display: "flex", alignItems: "center", paddingLeft: "16px" }}>
-            <div className="cursor-pointer relative overflow-hidden rounded-lg bg-white w-12 h-12 shadow-md flex items-center justify-center" onClick={() => setActiveProject(null)}>
-              <img 
-                src={activeProject.image}
-                alt={activeProject.title}
-                className="w-8 h-8 object-contain"
-              />
-            </div>
-          </div>
-
-          {/* Desktop: Large card */}
-          <div className="hidden md:flex fixed z-50" style={{ top: "80px", left: "20px", display: "flex", justifyContent: "flex-start" }}>
+          {/* Project Card - Fixed at Left Below Navbar */}
+          <div className="fixed z-50" style={{ top: "80px", left: "20px", display: "flex", justifyContent: "flex-start" }}>
             <motion.div
               initial={{ scale: 1 }}
               animate={{ scale: 1.1 }}
