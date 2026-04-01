@@ -90,10 +90,10 @@ export default function Portfolio() {
         {filterButtons.map((buttonLabel) => (
           <Button
             key={buttonLabel}
-            variant={filter === buttonLabel ? "default" : "outline"}
+            variant={(filter === buttonLabel || (buttonLabel === "Brands" && khalilFocused)) ? "default" : "outline"}
             onClick={() => setFilter(buttonLabel)}
             className={`rounded-full font-bold transition-all ${
-              filter === buttonLabel 
+              filter === buttonLabel || (buttonLabel === "Brands" && khalilFocused)
                 ? 'bg-[#A30A0A] hover:bg-[#8B0808] text-white border-2 border-[#A30A0A]' 
                 : 'border-2 border-gray-300 text-foreground hover:border-[#A30A0A] hover:bg-gray-50'
             }`}
@@ -177,32 +177,27 @@ export default function Portfolio() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full"
+          className="w-full fixed bottom-0 left-0 right-0 z-30 bg-background pt-4 pb-4"
         >
-          {/* Centered Khalil Card */}
-          <div className="sticky top-0 z-40 bg-background pt-4 pb-8">
-            <motion.div
-              initial={{ scale: 1, y: 0 }}
-              animate={{ scale: 1.2, y: -100 }}
-              transition={{ type: "spring", damping: 20, stiffness: 300 }}
-              className="w-full flex justify-center px-4"
-              onClick={() => setKhalilFocused(false)}
-            >
-              <div className="group cursor-pointer relative aspect-video overflow-hidden rounded-xl border border-white/10 bg-white w-full max-w-md hover:shadow-lg transition-shadow duration-300">
-                <img 
-                  src="/public/images/KHALIL-LOGO-RGB2.jpg"
-                  alt="Khalil Barber Shop"
-                  className="w-full h-full object-contain p-6"
-                />
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center" style={{ backgroundColor: 'rgba(163, 10, 10, 0.6)' }}>
-                  <h3 className="text-2xl font-bold text-white">Khalil Barber Shop</h3>
-                </div>
+          {/* Centered Khalil Card - Lowered to Bottom */}
+          <motion.div
+            initial={{ scale: 1, y: 0 }}
+            animate={{ scale: 1.2, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="w-full flex justify-center px-4"
+            onClick={() => setKhalilFocused(false)}
+          >
+            <div className="group cursor-pointer relative aspect-video overflow-hidden rounded-xl border border-white/10 bg-white w-full max-w-md hover:shadow-lg transition-shadow duration-300">
+              <img 
+                src="/public/images/KHALIL-LOGO-RGB2.jpg"
+                alt="Khalil Barber Shop"
+                className="w-full h-full object-contain p-6"
+              />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center" style={{ backgroundColor: 'rgba(163, 10, 10, 0.6)' }}>
+                <h3 className="text-2xl font-bold text-white">Khalil Barber Shop</h3>
               </div>
-            </motion.div>
-          </div>
-
-          {/* Project Details */}
-          <KhalilProject onClose={() => setKhalilFocused(false)} />
+            </div>
+          </motion.div>
         </motion.div>
       )}
 
