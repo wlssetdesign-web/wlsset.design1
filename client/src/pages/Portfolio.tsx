@@ -86,7 +86,7 @@ export default function Portfolio() {
       </div>
 
       {/* Filters - CLEAN 7 BUTTONS ONLY */}
-      <div className="sticky top-0 z-50 flex flex-wrap justify-center gap-3 mb-12 py-6 bg-white/80 backdrop-blur-md">
+      <div className="fixed top-28 left-0 right-0 z-40 flex flex-wrap justify-center gap-3 py-6 bg-white/90 backdrop-blur-md border-b border-gray-200">
         {filterButtons.map((buttonLabel) => (
           <Button
             key={buttonLabel}
@@ -106,18 +106,19 @@ export default function Portfolio() {
 
       {/* Grid */}
       {!activeProject && (
-        <>
-          {filteredItems.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-16">
-              <p className="text-xl text-muted-foreground text-center">
-                {t("portfolio.noResults")}
-              </p>
-            </div>
-          ) : (
-            <motion.div 
-              layout
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
+        <div className="pt-40">
+          <>
+            {filteredItems.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-16">
+                <p className="text-xl text-muted-foreground text-center">
+                  {t("portfolio.noResults")}
+                </p>
+              </div>
+            ) : (
+              <motion.div 
+                layout
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              >
               <AnimatePresence>
                 {filteredItems.map((item) => (
                   <motion.div
@@ -162,8 +163,9 @@ export default function Portfolio() {
                 ))}
               </AnimatePresence>
             </motion.div>
-          )}
-        </>
+            )}
+          </>
+        </div>
       )}
 
       {/* Active Project View - Universal for All Projects */}
