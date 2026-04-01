@@ -13,7 +13,7 @@ export default function Portfolio() {
   const [filter, setFilter] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedItem, setSelectedItem] = useState<typeof portfolioData[0] | null>(null);
-  const [khalilFocused, setKhalilFocused] = useState(false);
+  const [activeProject, setActiveProject] = useState<typeof portfolioData[0] | null>(null);
 
   // Clean array of exactly 7 buttons - NO DUPLICATES
   const filterButtons = ["Brands", "Print Design", "Social Media Design", "Image Editing", "Vector Tracing", "Infographic Design", "Video & Motion"];
@@ -93,7 +93,7 @@ export default function Portfolio() {
             variant={filter === buttonLabel ? "default" : "outline"}
             onClick={() => setFilter(buttonLabel)}
             className={`rounded-full font-bold transition-all ${
-              (filter === buttonLabel || (khalilFocused && buttonLabel === "Brands"))
+              (filter === buttonLabel || (activeProject && categoryToLabelMap[activeProject.category] === buttonLabel))
                 ? 'bg-[#A30A0A] hover:bg-[#8B0808] text-white border-2 border-[#A30A0A]' 
                 : 'border-2 border-gray-300 text-foreground hover:border-[#A30A0A] hover:bg-gray-50'
             }`}
@@ -105,7 +105,7 @@ export default function Portfolio() {
       </div>
 
       {/* Grid */}
-      {!khalilFocused && (
+      {!activeProject && (
         <>
           {filteredItems.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16">
@@ -130,11 +130,7 @@ export default function Portfolio() {
                       item.title === "Khalil Barber Shop" ? "bg-white" : ""
                     }`}
                     onClick={() => {
-                      if (item.title === "Khalil Barber Shop") {
-                        setKhalilFocused(true);
-                      } else {
-                        setSelectedItem(item);
-                      }
+                      setActiveProject(item);
                     }}
                   >
                     <img 
@@ -170,8 +166,8 @@ export default function Portfolio() {
         </>
       )}
 
-      {/* Khalil Focused View */}
-      {khalilFocused && (
+      {/* Active Project View - Universal for All Projects */}
+      {activeProject && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -179,32 +175,51 @@ export default function Portfolio() {
           transition={{ duration: 0.5 }}
           className="w-full"
         >
-          {/* Khalil Card - Fixed at Left Below Navbar */}
+          {/* Project Card - Fixed at Left Below Navbar */}
           <div className="fixed z-50" style={{ top: "80px", left: "20px", display: "flex", justifyContent: "flex-start" }}>
             <motion.div
               initial={{ scale: 1 }}
               animate={{ scale: 1.1 }}
               transition={{ type: "spring", damping: 20, stiffness: 300 }}
               className="flex justify-center"
-              onClick={() => setKhalilFocused(false)}
+              onClick={() => setActiveProject(null)}
             >
               <div className="cursor-pointer relative overflow-hidden rounded-lg bg-[#A30A0A] px-8 py-6 shadow-lg flex flex-col items-center justify-between min-w-max h-32">
                 <div></div>
                 <div className="flex items-center justify-center gap-3 mt-6">
                   <img 
-                    src="/public/images/KHALIL-LOGO-RGB2.jpg"
-                    alt="Khalil Barber Shop"
+                    src={activeProject.image}
+                    alt={activeProject.title}
                     className="w-14 h-14 object-contain"
                   />
-                  <h3 className="text-lg font-bold text-white">Khalil Barber Shop</h3>
+                  <h3 className="text-lg font-bold text-white">{activeProject.title}</h3>
                 </div>
                 <X size={24} className="text-white stroke-2" />
               </div>
             </motion.div>
           </div>
 
-          {/* Project Details */}
-          <KhalilProject onClose={() => setKhalilFocused(false)} />
+          {/* Project Details - Khalil uses dedicated component, others use generic */}
+          {activeProject.title === "Khalil Barber Shop" ? (
+            <KhalilProject onClose={() => setActiveProject(null)} />
+          ) : (
+            <div className="pt-32 pb-12">
+              <div className="flex items-center justify-center px-4 py-20 m-0" style={{ backgroundColor: "#1D695A" }}>
+                <div className="max-w-5xl w-full">
+                  <p className="text-xl md:text-2xl font-bold text-white leading-relaxed">
+                    {activeProject.title} | {activeProject.description}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
+                <img
+                  src={activeProject.image}
+                  alt={activeProject.title}
+                  className="w-full max-w-5xl object-contain"
+                />
+              </div>
+            </div>
+          )}
         </motion.div>
       )}
 
