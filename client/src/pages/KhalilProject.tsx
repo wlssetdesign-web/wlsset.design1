@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import khalilLogo from "@assets/KHALIL-LOGO-RGB2_1774922516039.jpg";
 
 export default function KhalilProject({ onClose }: { onClose: () => void }) {
@@ -13,16 +12,6 @@ export default function KhalilProject({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Close Button */}
-      <div className="fixed top-20 right-4 z-50">
-        <Button
-          onClick={onClose}
-          className="bg-[#A30A0A] hover:bg-[#8B0808] text-white rounded-full px-6"
-        >
-          Close
-        </Button>
-      </div>
-
       {/* Logo Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
