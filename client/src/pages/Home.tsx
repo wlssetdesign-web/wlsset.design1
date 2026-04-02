@@ -18,9 +18,9 @@ export default function Home() {
       >
         <div className="w-full flex justify-center mb-8">
            <img 
-              src="/images/KHALIL-LOGO-RGB.png" 
-              alt="Khalil Barber Shop Logo" 
-              className="h-72 md:h-96 object-contain drop-shadow-2xl"
+              src="/assets/logo.png" 
+              alt="wlsset design" 
+              className="h-56 md:h-80 object-contain drop-shadow-2xl"
             />
         </div>
         
