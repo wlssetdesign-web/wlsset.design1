@@ -10,8 +10,8 @@ export default function KhalilProject({ onClose }: { onClose: () => void }) {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Logo Section */}
+    <div>
+      {/* Logo Section - No Background */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -47,26 +47,29 @@ export default function KhalilProject({ onClose }: { onClose: () => void }) {
       </motion.div>
 
       {/* Brand Palette Image Section */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="flex items-center justify-center bg-white px-4 py-20 m-0"
-      >
-        <img
-          src="/images/KHALIL-LOGO-RGB-palette.jpg"
-          alt="Khalil Brand Palette"
-          className="w-full max-w-5xl object-contain"
-        />
-      </motion.div>
+      <div className="bg-white">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="flex items-center justify-center px-4 py-20 m-0"
+        >
+          <img
+            src="/images/KHALIL-LOGO-RGB-palette.jpg"
+            alt="Khalil Brand Palette"
+            className="w-full max-w-5xl object-contain"
+          />
+        </motion.div>
+      </div>
 
       {/* Color Palette Section */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4 py-16"
-      >
+      <div className="bg-gray-50">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="min-h-screen flex flex-col items-center justify-center px-4 py-16"
+        >
         <h2 className="text-4xl font-bold text-gray-800 mb-12">Color Palette</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 w-full max-w-6xl">
           {colors.map((color) => (
@@ -87,7 +90,8 @@ export default function KhalilProject({ onClose }: { onClose: () => void }) {
             </motion.div>
           ))}
         </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 }
