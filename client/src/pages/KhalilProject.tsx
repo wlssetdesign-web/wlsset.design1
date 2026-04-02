@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import khalilLogo from "@assets/KHALIL-LOGO-RGB2_1774922516039.jpg";
 
 export default function KhalilProject({ onClose }: { onClose: () => void }) {
   const colors = [
@@ -20,7 +19,7 @@ export default function KhalilProject({ onClose }: { onClose: () => void }) {
         className="min-h-screen flex items-center justify-center bg-white px-4"
       >
         <img
-          src={khalilLogo}
+          src="/images/KHALIL-LOGO-RGB.png"
           alt="Khalil Barber Shop Logo"
           className="max-w-md w-full object-contain"
         />
