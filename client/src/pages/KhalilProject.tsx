@@ -21,7 +21,7 @@ export default function KhalilProject({ onClose }: { onClose: () => void }) {
         <img
           src="/images/KHALIL-LOGO-RGB-detail.png"
           alt="Khalil Barber Shop Logo"
-          className="max-w-2xl w-full object-contain"
+          className="max-w-5xl w-full object-contain"
         />
       </motion.div>
 
