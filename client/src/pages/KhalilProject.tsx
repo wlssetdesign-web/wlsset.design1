@@ -46,17 +46,17 @@ export default function KhalilProject({ onClose }: { onClose: () => void }) {
         </div>
       </motion.div>
 
-      {/* Brand Palette Image Section */}
+      {/* Brand Logo Detail Section */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="flex items-center justify-center bg-white px-4 py-20 m-0"
+        className="flex items-center justify-center px-4 py-20 m-0 bg-white"
       >
         <img
-          src="/images/KHALIL-LOGO-RGB-palette.jpg"
-          alt="Khalil Brand Palette"
-          className="w-full max-w-5xl object-contain"
+          src="/images/KHALIL-LOGO-RGB-detail.png"
+          alt="Khalil Barber Shop Logo"
+          className="w-full max-w-2xl object-contain"
         />
       </motion.div>
 
