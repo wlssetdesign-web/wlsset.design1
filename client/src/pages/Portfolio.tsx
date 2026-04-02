@@ -184,7 +184,7 @@ export default function Portfolio() {
               className="flex justify-center"
               onClick={() => setActiveProject(null)}
             >
-              <div className="cursor-pointer relative overflow-hidden rounded-lg bg-[#A30A0A] px-8 py-6 shadow-lg flex flex-col items-center justify-between min-w-max h-32">
+              <div className="cursor-pointer relative overflow-hidden rounded-lg px-8 py-6 shadow-lg flex flex-col items-center justify-between min-w-max h-32" style={{ backgroundColor: 'rgba(163, 10, 10, 0.5)' }}>
                 <div></div>
                 <div className="flex items-center justify-center gap-3 mt-6">
                   <img 
