@@ -16,7 +16,7 @@ export default function KhalilProject({ onClose }: { onClose: () => void }) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="min-h-screen flex items-center justify-center bg-white px-4"
+        className="min-h-screen flex items-center justify-center px-4"
       >
         <img
           src="/images/KHALIL-LOGO-RGB-detail.png"
