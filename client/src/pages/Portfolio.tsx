@@ -219,6 +219,37 @@ export default function Portfolio() {
                 />
               </div>
               {activeProject.title === "North Leaves" && (
+                <div className="bg-white px-4 py-20 m-0">
+                  <div className="max-w-5xl mx-auto w-full">
+                    <h2 className="text-4xl font-bold text-[#1D695A] mb-10 text-center">Color Palette</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      <div className="rounded-2xl overflow-hidden shadow-lg border border-[#1D695A]/10 bg-white">
+                        <div className="h-44" style={{ backgroundColor: "#006653" }} />
+                        <div className="p-5">
+                          <p className="text-lg font-bold text-gray-900">Dark Green</p>
+                          <p className="text-sm text-gray-600">Primary identity color</p>
+                          <p className="mt-3 text-xs font-mono text-[#006653]">#006653</p>
+                        </div>
+                      </div>
+                      <div className="rounded-2xl overflow-hidden shadow-lg border border-[#1D695A]/10 bg-white">
+                        <div className="h-44" style={{ backgroundColor: "#b1dbba" }} />
+                        <div className="p-5">
+                          <p className="text-lg font-bold text-gray-900">Soft Leaf Green</p>
+                          <p className="text-sm text-gray-600">Supportive tone</p>
+                          <p className="mt-3 text-xs font-mono text-[#1D695A]">#b1dbba</p>
+                        </div>
+                      </div>
+                      <div className="rounded-2xl overflow-hidden shadow-lg border border-[#1D695A]/10 bg-white">
+                        <div className="h-44" style={{ backgroundColor: "#dbd399" }} />
+                        <div className="p-5">
+                          <p className="text-lg font-bold text-gray-900">Neutral Beige</p>
+                          <p className="text-sm text-gray-600">Natural accent</p>
+                          <p className="mt-3 text-xs font-mono text-[#1D695A]">#dbd399</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
                   <img
                     src="/images/north-leaves-bottom.jpg"
