@@ -93,13 +93,6 @@ export default function KhalilProject({ onClose }: { onClose: () => void }) {
         </motion.div>
       </div>
 
-      <div className="bg-white flex items-center justify-center px-4 py-20">
-        <img
-          src="/images/north-leaves-bottom.jpg"
-          alt="North Leaves Brand Layout"
-          className="w-full max-w-5xl object-contain"
-        />
-      </div>
     </div>
   );
 }
