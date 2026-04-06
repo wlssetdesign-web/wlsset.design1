@@ -224,11 +224,11 @@ export default function Portfolio() {
                     <h2 className="text-4xl font-bold text-[#1D695A] mb-10 text-center">Color Palette</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div className="rounded-2xl overflow-hidden shadow-lg border border-[#1D695A]/10 bg-white">
-                        <div className="h-44" style={{ backgroundColor: "#006653" }} />
+                        <div className="h-44" style={{ backgroundColor: "#dbd399" }} />
                         <div className="p-5">
-                          <p className="text-lg font-bold text-gray-900">Dark Green</p>
-                          <p className="text-sm text-gray-600">Primary identity color</p>
-                          <p className="mt-3 text-xs font-mono text-[#006653]">#006653</p>
+                          <p className="text-lg font-bold text-gray-900">Neutral Beige</p>
+                          <p className="text-sm text-gray-600">Natural accent</p>
+                          <p className="mt-3 text-xs font-mono text-[#1D695A]">#dbd399</p>
                         </div>
                       </div>
                       <div className="rounded-2xl overflow-hidden shadow-lg border border-[#1D695A]/10 bg-white">
@@ -240,11 +240,11 @@ export default function Portfolio() {
                         </div>
                       </div>
                       <div className="rounded-2xl overflow-hidden shadow-lg border border-[#1D695A]/10 bg-white">
-                        <div className="h-44" style={{ backgroundColor: "#dbd399" }} />
+                        <div className="h-44" style={{ backgroundColor: "#006653" }} />
                         <div className="p-5">
-                          <p className="text-lg font-bold text-gray-900">Neutral Beige</p>
-                          <p className="text-sm text-gray-600">Natural accent</p>
-                          <p className="mt-3 text-xs font-mono text-[#1D695A]">#dbd399</p>
+                          <p className="text-lg font-bold text-gray-900">Dark Green</p>
+                          <p className="text-sm text-gray-600">Primary identity color</p>
+                          <p className="mt-3 text-xs font-mono text-[#1D695A]">#006653</p>
                         </div>
                       </div>
                     </div>
