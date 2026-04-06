@@ -260,11 +260,7 @@ export default function Portfolio() {
                   </div>
                   <div className="bg-white px-4 py-20 m-0">
                     <div className="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <img src="/images/logo_mock_up_1775509698242.jpg" alt="North Leaves logo mockup" className="w-full rounded-2xl object-cover shadow-lg" />
-                      <img src="/images/Free_Square_Roll_Sticker_Mockup_5_1775509702572.jpg" alt="North Leaves sticker roll mockup" className="w-full rounded-2xl object-cover shadow-lg" />
-                      <img src="/images/mockup-card-business-card_1775509706878.jpg" alt="North Leaves business card mockup" className="w-full rounded-2xl object-cover shadow-lg" />
-                      <img src="/images/sticker-mock-up_1775509712596.jpg" alt="North Leaves sticker mockup" className="w-full rounded-2xl object-cover shadow-lg" />
-                      <img src="/images/Free_Iphone_14_Pro_Mockup_5_1775509718479.jpg" alt="North Leaves iPhone mockup" className="w-full rounded-2xl object-cover shadow-lg md:col-span-2" />
+                      <img src="/images/image_1775509956332.png" alt="North Leaves mockup preview" className="w-full rounded-2xl object-contain shadow-lg bg-white" />
                     </div>
                   </div>
                 </>
