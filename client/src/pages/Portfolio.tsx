@@ -258,11 +258,6 @@ export default function Portfolio() {
                     className="w-full max-w-5xl object-contain"
                   />
                   </div>
-                  <div className="bg-white px-4 py-20 m-0">
-                    <div className="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <img src="/images/image_1775509995061.png" alt="North Leaves mockup preview" className="w-full rounded-2xl object-contain shadow-lg bg-white" />
-                    </div>
-                  </div>
                 </>
               )}
             </div>
