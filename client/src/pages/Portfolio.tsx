@@ -40,6 +40,10 @@ export default function Portfolio() {
     "Video": "Video & Motion",
   };
 
+  const shouldShowNorthLeaves = (category: string) => {
+    return category === "Branding" || category === "Print" || category === "Social Media";
+  };
+
   const getCategoryLabel = (category: string): string => {
     return categoryToLabelMap[category] || category;
   };
@@ -59,6 +63,12 @@ export default function Portfolio() {
       // Only apply category filter if no search term is active
       const dataCategory = buttonToCategoryMap[filter];
       items = items.filter(item => item.category === dataCategory);
+      if (shouldShowNorthLeaves(dataCategory)) {
+        const northLeavesItem = portfolioData.find(item => item.title === "North Leaves");
+        if (northLeavesItem && !items.some(item => item.title === "North Leaves")) {
+          items = [northLeavesItem, ...items];
+        }
+      }
     }
     
     return items;
