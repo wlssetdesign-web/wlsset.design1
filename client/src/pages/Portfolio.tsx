@@ -293,7 +293,7 @@ export default function Portfolio() {
                       className="w-full max-w-5xl object-contain"
                     />
                   </div>
-                  <div className="bg-[#1D695A] px-4 py-6 m-0 -mt-8 relative z-10">
+                  <div className="bg-[#1D695A] px-4 py-6 m-0 -mt-24 relative z-20">
                     <div className="max-w-5xl mx-auto w-full">
                       <h3 className="text-3xl md:text-4xl font-bold text-white">Printables</h3>
                     </div>
