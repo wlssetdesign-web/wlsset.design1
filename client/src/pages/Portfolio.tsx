@@ -272,13 +272,6 @@ export default function Portfolio() {
                       className="w-full max-w-5xl object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
-                    <img
-                      src="/images/Free_Iphone_14_Pro_Mockup_5_1775845956461.jpg"
-                      alt="North Leaves iPhone mockup"
-                      className="w-full max-w-5xl object-contain"
-                    />
-                  </div>
                 </>
               )}
             </div>
