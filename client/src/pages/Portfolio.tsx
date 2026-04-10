@@ -272,6 +272,13 @@ export default function Portfolio() {
                       className="w-full max-w-5xl object-contain"
                     />
                   </div>
+                  <div className="w-full bg-[#006653] py-4 px-4">
+                    <div className="max-w-5xl mx-auto w-full text-center">
+                      <span className="text-white font-bold uppercase tracking-wider text-2xl md:text-3xl">
+                        Printables
+                      </span>
+                    </div>
+                  </div>
                   <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
                     <img
                       src="/images/north-leaves-menu-mockup.jpg"
@@ -292,11 +299,6 @@ export default function Portfolio() {
                       alt="North Leaves sticker mockup"
                       className="w-full max-w-5xl object-contain"
                     />
-                  </div>
-                  <div className="bg-[#1D695A] px-4 py-6 m-0 -mt-72 relative z-20">
-                    <div className="max-w-5xl mx-auto w-full">
-                      <h3 className="text-3xl md:text-4xl font-bold text-white">Printables</h3>
-                    </div>
                   </div>
                 </>
               )}
