@@ -268,13 +268,6 @@ export default function Portfolio() {
                     className="w-full max-w-5xl object-contain"
                   />
                   </div>
-                  <div className="bg-[#1D695A] px-4 py-8 m-0">
-                    <div className="max-w-5xl mx-auto w-full">
-                      <p className="text-2xl md:text-3xl leading-relaxed text-white">
-                        North Leaves is a modern brand identity project that blends natural, minimal, and eco-friendly design elements. The branding appears to cater to a business that values sustainability — possibly in the food, herbal, or organic retail sectors.
-                      </p>
-                    </div>
-                  </div>
                   <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
                     <img
                       src="/images/north-leaves-logo-mockup.jpg"
@@ -288,6 +281,13 @@ export default function Portfolio() {
                       alt="North Leaves typography logo"
                       className="w-full max-w-5xl object-contain"
                     />
+                  </div>
+                  <div className="bg-[#1D695A] px-4 py-8 m-0">
+                    <div className="max-w-5xl mx-auto w-full">
+                      <p className="text-2xl md:text-3xl leading-relaxed text-white">
+                        North Leaves is a modern brand identity project that blends natural, minimal, and eco-friendly design elements. The branding appears to cater to a business that values sustainability — possibly in the food, herbal, or organic retail sectors.
+                      </p>
+                    </div>
                   </div>
                   <div className="w-full bg-[#006653] py-4 px-4">
                     <div className="max-w-5xl mx-auto w-full text-center">
