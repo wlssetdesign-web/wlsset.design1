@@ -282,6 +282,13 @@ export default function Portfolio() {
                       className="w-full max-w-5xl object-contain"
                     />
                   </div>
+                  <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
+                    <img
+                      src="/images/north-leaves-second-picture.jpg"
+                      alt="North Leaves typography logo"
+                      className="w-full max-w-5xl object-contain"
+                    />
+                  </div>
                   <div className="w-full bg-[#006653] py-4 px-4">
                     <div className="max-w-5xl mx-auto w-full text-center">
                       <span className="text-white font-bold uppercase tracking-wider text-2xl md:text-3xl">
