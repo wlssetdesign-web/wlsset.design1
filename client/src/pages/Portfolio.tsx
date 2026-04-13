@@ -282,7 +282,7 @@ export default function Portfolio() {
                       className="w-full max-w-5xl object-contain"
                     />
                   </div>
-                  <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
+                  <div className="flex items-center justify-center bg-white px-4 py-10 m-0 -mt-10">
                     <img
                       src="/images/north-leaves-second-picture.jpg"
                       alt="North Leaves typography logo"
