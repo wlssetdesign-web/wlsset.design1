@@ -230,6 +230,13 @@ export default function Portfolio() {
               </div>
               {activeProject.title === "North Leaves" && (
                 <>
+                  <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
+                    <img
+                      src="/images/north-leaves-logo-mockup.jpg"
+                      alt="North Leaves logo mockup"
+                      className="w-full max-w-5xl object-contain"
+                    />
+                  </div>
                   <div className="bg-white px-4 py-20 m-0">
                     <div className="max-w-5xl mx-auto w-full">
                       <h2 className="text-4xl font-bold text-[#1D695A] mb-10 text-center">Color Palette</h2>
@@ -262,11 +269,11 @@ export default function Portfolio() {
                     </div>
                   </div>
                   <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
-                  <img
-                    src="/images/north-leaves-bottom.jpg"
-                    alt="North Leaves Brand Layout"
-                    className="w-full max-w-5xl object-contain"
-                  />
+                    <img
+                      src="/images/north-leaves-bottom.jpg"
+                      alt="North Leaves Brand Layout"
+                      className="w-full max-w-5xl object-contain"
+                    />
                   </div>
                   <div className="bg-[#1D695A] px-4 py-8 m-0">
                     <div className="max-w-5xl mx-auto w-full">
