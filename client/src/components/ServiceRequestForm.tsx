@@ -126,7 +126,7 @@ export default function ServiceRequestForm({
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -140,7 +140,7 @@ export default function ServiceRequestForm({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 20, stiffness: 300 }}
-            className="relative w-full max-w-lg bg-white border border-gray-300 rounded-2xl p-8 shadow-2xl"
+            className="relative w-full max-w-lg bg-white border border-gray-300 rounded-2xl p-5 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -152,11 +152,11 @@ export default function ServiceRequestForm({
 
             {!isSubmitted ? (
               <>
-                <div className="mb-6">
-                  <h2 className="text-3xl font-bold text-[#A30A0A] mb-2">
+                <div className="mb-5 sm:mb-6">
+                  <h2 className="text-2xl sm:text-3xl font-bold text-[#A30A0A] mb-2">
                     {serviceName}
                   </h2>
-                  <p className="text-base text-gray-600">
+                  <p className="text-sm sm:text-base text-gray-600">
                     Step {step} of 2
                   </p>
                   <div className="mt-3 h-1 bg-white/10 rounded-full overflow-hidden">
@@ -185,9 +185,9 @@ export default function ServiceRequestForm({
                             name="name"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-base font-semibold text-black">{t("form.fullName")}</FormLabel>
+                          <FormLabel className="text-sm sm:text-base font-semibold text-black">{t("form.fullName")}</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="Mohammed Al Dmour" {...field} className="bg-white border-2 border-gray-300 text-black text-base placeholder:text-gray-500" />
+                                  <Input placeholder="Mohammed Al Dmour" {...field} className="bg-white border-2 border-gray-300 text-black text-sm sm:text-base placeholder:text-gray-500" />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -199,9 +199,9 @@ export default function ServiceRequestForm({
                             name="phone"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-base font-semibold text-black">{t("form.phone")}</FormLabel>
+                          <FormLabel className="text-sm sm:text-base font-semibold text-black">{t("form.phone")}</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="+962 (799) 123-456" {...field} className="bg-white border-2 border-gray-300 text-black text-base placeholder:text-gray-500" />
+                                  <Input placeholder="+962 (799) 123-456" {...field} className="bg-white border-2 border-gray-300 text-black text-sm sm:text-base placeholder:text-gray-500" />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -213,9 +213,9 @@ export default function ServiceRequestForm({
                             name="email"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-base font-semibold text-black">{t("form.email")}</FormLabel>
+                          <FormLabel className="text-sm sm:text-base font-semibold text-black">{t("form.email")}</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="mohammed.aldmour@gmail.com" type="email" {...field} className="bg-white border-2 border-gray-300 text-black text-base placeholder:text-gray-500" />
+                                  <Input placeholder="mohammed.aldmour@gmail.com" type="email" {...field} className="bg-white border-2 border-gray-300 text-black text-sm sm:text-base placeholder:text-gray-500" />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -225,7 +225,7 @@ export default function ServiceRequestForm({
                           <div className="flex gap-3 pt-4">
                             <Button
                               type="submit"
-                              className="flex-1 bg-[#A30A0A] hover:bg-[#8B0808] text-white text-base font-semibold py-3"
+                              className="flex-1 bg-[#A30A0A] hover:bg-[#8B0808] text-white text-sm sm:text-base font-semibold py-3"
                             >
                               {t("form.next")}
                               <ChevronRight className="ml-2 w-4 h-4" />
@@ -249,10 +249,10 @@ export default function ServiceRequestForm({
                             name="preferredColors"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-base font-semibold text-black">{t("form.preferredColors")}</FormLabel>
+                          <FormLabel className="text-sm sm:text-base font-semibold text-black">{t("form.preferredColors")}</FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                   <FormControl>
-                                    <SelectTrigger className="bg-white border-2 border-gray-300 text-black text-base">
+                                    <SelectTrigger className="bg-white border-2 border-gray-300 text-black text-sm sm:text-base">
                                       <SelectValue placeholder="Select colors" />
                                     </SelectTrigger>
                                   </FormControl>
@@ -274,10 +274,10 @@ export default function ServiceRequestForm({
                             name="fontStyle"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-base font-semibold text-black">{t("form.fontStyle")}</FormLabel>
+                          <FormLabel className="text-sm sm:text-base font-semibold text-black">{t("form.fontStyle")}</FormLabel>
                                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                                   <FormControl>
-                                    <SelectTrigger className="bg-white border-2 border-gray-300 text-black text-base">
+                                    <SelectTrigger className="bg-white border-2 border-gray-300 text-black text-sm sm:text-base">
                                       <SelectValue placeholder="Select font style" />
                                     </SelectTrigger>
                                   </FormControl>
@@ -299,11 +299,11 @@ export default function ServiceRequestForm({
                             name="designNotes"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-base font-semibold text-black">{t("form.designNotes")}</FormLabel>
+                          <FormLabel className="text-sm sm:text-base font-semibold text-black">{t("form.designNotes")}</FormLabel>
                                 <FormControl>
                                   <Textarea 
                                     placeholder="Tell us about your vision, specific requirements, inspiration, or any other details..."
-                                    className="min-h-[100px] bg-white border-2 border-gray-300 text-black text-base placeholder:text-gray-500"
+                                    className="min-h-[100px] bg-white border-2 border-gray-300 text-black text-sm sm:text-base placeholder:text-gray-500"
                                     {...field}
                                   />
                                 </FormControl>
@@ -317,7 +317,7 @@ export default function ServiceRequestForm({
                               type="button"
                               variant="outline"
                               onClick={() => setStep(1)}
-                              className="flex-1 border-2 border-gray-300 text-black text-base font-semibold hover:bg-gray-100"
+                              className="flex-1 border-2 border-gray-300 text-black text-sm sm:text-base font-semibold hover:bg-gray-100"
                             >
                               <ChevronLeft className="mr-2 w-4 h-4" />
                               {t("form.back")}
@@ -325,7 +325,7 @@ export default function ServiceRequestForm({
                             <Button
                               type="submit"
                               disabled={isSubmitting}
-                              className="flex-1 bg-[#A30A0A] hover:bg-[#8B0808] text-white text-base font-semibold py-3"
+                              className="flex-1 bg-[#A30A0A] hover:bg-[#8B0808] text-white text-sm sm:text-base font-semibold py-3"
                             >
                               {isSubmitting ? "Submitting..." : "Submit Request"}
                             </Button>

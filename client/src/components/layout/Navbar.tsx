@@ -22,14 +22,14 @@ export function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-black/5 bg-white/80 backdrop-blur-md">
-      <div className="container mx-auto px-4 h-28 flex items-center justify-between">
+      <div className="container mx-auto px-4 h-20 md:h-28 flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
           <a className="flex items-center gap-2">
             <img 
               src="/assets/logo.png" 
               alt="wlsset design" 
-              className="h-14 w-auto object-contain transition-transform hover:scale-105"
+              className="h-10 md:h-14 w-auto object-contain transition-transform hover:scale-105"
             />
           </a>
         </Link>
@@ -67,24 +67,24 @@ export function Navbar() {
             variant="ghost" 
             size="icon" 
             onClick={toggleLanguage}
-            className="rounded-full hover:bg-black/5"
+            className="rounded-full hover:bg-black/5 h-10 w-10"
           >
             <span className="font-bold text-xs">{language.toUpperCase()}</span>
           </Button>
 
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="h-10 w-10">
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side={language === 'ar' ? 'right' : 'left'} className="w-[300px] border-black/5 bg-white/95 backdrop-blur-xl">
-              <div className="flex flex-col gap-8 mt-10">
+            <SheetContent side={language === 'ar' ? 'right' : 'left'} className="w-[85vw] max-w-sm border-black/5 bg-white/95 backdrop-blur-xl px-6">
+              <div className="flex flex-col gap-6 mt-12">
                 {links.map((link) => (
                   <Link key={link.href} href={link.href}>
                     <a 
                       onClick={() => setIsOpen(false)}
-                      className={`text-lg font-medium transition-colors hover:text-primary ${
+                      className={`text-2xl font-semibold transition-colors hover:text-primary ${
                         isActive(link.href) ? "text-primary" : "text-foreground"
                       }`}
                     >
@@ -94,7 +94,7 @@ export function Navbar() {
                 ))}
                 <Link href="/contact">
                   <Button 
-                    className="w-full font-bold bg-primary hover:bg-primary/90"
+                    className="w-full font-bold bg-primary hover:bg-primary/90 py-6 text-lg"
                     onClick={() => setIsOpen(false)}
                   >
                     {t("hero.cta")}
