@@ -96,7 +96,7 @@ export default function Portfolio() {
       </div>
 
       {/* Filters - CLEAN 7 BUTTONS ONLY */}
-      <div className="sticky top-0 z-50 flex flex-wrap justify-center gap-3 mb-12 py-6 bg-white/80 backdrop-blur-md md:static md:mb-12">
+      <div className="sticky top-16 z-50 flex flex-wrap justify-center gap-3 mb-12 py-4 px-4 bg-white shadow-md backdrop-blur-md md:static md:mb-12 md:px-0 md:py-6 md:shadow-none md:bg-white/80">
         {filterButtons.map((buttonLabel) => (
           <Button
             key={buttonLabel}
