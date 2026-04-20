@@ -33,7 +33,7 @@ export default function About() {
             </div>
 
             <div className="space-y-3">
-              <h2 className="text-2xl md:text-3xl font-bold text-white">{t("about.storyTitle")}</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-[#A30A0A]">{t("about.storyTitle")}</h2>
               <p className="text-base md:text-lg leading-8 text-muted-foreground">
                 {t("about.storyText")}
               </p>
@@ -57,7 +57,7 @@ export default function About() {
           <div className="space-y-6">
             <Card className="bg-card/50 backdrop-blur border-white/5">
               <CardContent className={`p-6 md:p-8 space-y-3 ${isRTL ? "text-right" : "text-left"}`}>
-                <h3 className="text-2xl font-bold text-white">{t("about.goalTitle")}</h3>
+                <h3 className="text-2xl font-bold text-[#A30A0A]">{t("about.goalTitle")}</h3>
                 <p className="text-base md:text-lg leading-8 text-muted-foreground">
                   {t("about.goalText")}
                 </p>
@@ -66,7 +66,7 @@ export default function About() {
 
             <Card className="bg-card/50 backdrop-blur border-white/5">
               <CardContent className={`p-6 md:p-8 space-y-3 ${isRTL ? "text-right" : "text-left"}`}>
-                <h3 className="text-2xl font-bold text-white">{t("about.closingTitle")}</h3>
+                <h3 className="text-2xl font-bold text-[#A30A0A]">{t("about.closingTitle")}</h3>
                 <p className="text-base md:text-lg leading-8 text-muted-foreground">
                   {t("about.closingText")}
                 </p>
