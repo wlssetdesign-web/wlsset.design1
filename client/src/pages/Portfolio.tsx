@@ -137,21 +137,19 @@ export default function Portfolio() {
                     exit={{ opacity: 0, scale: 0.9 }}
                     key={item.id}
                     className={`group cursor-pointer relative aspect-video overflow-hidden rounded-xl border border-white/10 ${
-                      item.title === "Khalil Barber Shop" || item.title === "Kick Off"
-                        ? "lg:col-span-2 bg-transparent"
-                        : ""
+                      item.title === "Khalil Barber Shop" ? "bg-white" : ""
                     }`}
                     onClick={() => {
                       setActiveProject(item);
                     }}
                   >
-                    <div className={`w-full h-full ${item.title === "Khalil Barber Shop" || item.title === "Kick Off" ? "bg-transparent" : "bg-white"}`}>
+                    <div className="w-full h-full bg-white">
                       <img 
                         src={item.image} 
                         alt={item.title}
                         className={`w-full h-full transition-transform duration-500 ${
                           item.title === "Khalil Barber Shop" || item.title === "Kick Off"
-                            ? "object-contain p-12 md:p-16 group-hover:scale-100"
+                            ? "object-contain p-12 group-hover:scale-100"
                             : "object-cover group-hover:scale-110"
                         }`}
                       />
