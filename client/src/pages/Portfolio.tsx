@@ -148,8 +148,8 @@ export default function Portfolio() {
                         src={item.image} 
                         alt={item.title}
                         className={`w-full h-full transition-transform duration-500 ${
-                          item.title === "Khalil Barber Shop" || item.title === "Kick Off"
-                            ? "object-contain p-12 group-hover:scale-100"
+                        item.title === "Khalil Barber Shop" || item.title === "Kick Off"
+                            ? "object-contain p-6 sm:p-8 md:p-12 group-hover:scale-100"
                             : "object-cover group-hover:scale-110"
                         }`}
                       />
