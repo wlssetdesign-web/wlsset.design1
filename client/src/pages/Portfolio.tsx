@@ -137,13 +137,13 @@ export default function Portfolio() {
                     exit={{ opacity: 0, scale: 0.9 }}
                     key={item.id}
                     className={`group cursor-pointer relative aspect-video overflow-hidden rounded-xl border border-white/10 ${
-                      item.title === "Khalil Barber Shop" ? "bg-white" : ""
+                      item.title === "Khalil Barber Shop" || item.title === "Kick Off" ? "bg-transparent" : ""
                     }`}
                     onClick={() => {
                       setActiveProject(item);
                     }}
                   >
-                    <div className="w-full h-full bg-white">
+                    <div className={`w-full h-full ${item.title === "Khalil Barber Shop" || item.title === "Kick Off" ? "bg-transparent" : "bg-white"}`}>
                       <img 
                         src={item.image} 
                         alt={item.title}
