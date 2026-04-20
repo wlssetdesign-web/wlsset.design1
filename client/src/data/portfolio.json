@@ -10,10 +10,11 @@
   },
   {
     "id": 2,
-    "title": "Lumina Tech Brochure",
-    "category": "Print",
-    "image": "https://images.unsplash.com/photo-1626785774573-4b7993143a26?q=80&w=1470&auto=format&fit=crop",
-    "description": "High-gloss corporate brochure design."
+    "title": "Kick Off",
+    "category": "Branding",
+    "image": "/images/kick-off.png",
+    "description": "Dynamic logo and identity design for Kick Off.",
+    "showImageOnHover": false
   },
   {
     "id": 3,
