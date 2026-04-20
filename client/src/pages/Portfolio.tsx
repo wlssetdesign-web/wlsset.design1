@@ -149,7 +149,7 @@ export default function Portfolio() {
                         alt={item.title}
                         className={`w-full h-full transition-transform duration-500 ${
                         item.title === "Khalil Barber Shop" || item.title === "Kick Off"
-                            ? "object-contain p-4 sm:p-6 md:p-8 group-hover:scale-100"
+                            ? "object-contain p-2 sm:p-4 md:p-6 group-hover:scale-100"
                             : "object-cover group-hover:scale-110"
                         }`}
                       />
