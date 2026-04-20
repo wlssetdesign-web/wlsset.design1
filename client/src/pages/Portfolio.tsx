@@ -143,19 +143,26 @@ export default function Portfolio() {
                       setActiveProject(item);
                     }}
                   >
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className={`w-full h-full transition-transform duration-500 ${
-                        item.title === "Khalil Barber Shop"
-                          ? "object-contain p-6 group-hover:scale-100"
-                          : "object-cover group-hover:scale-110"
-                      }`}
-                    />
+                    <div className="w-full h-full bg-white">
+                      <img 
+                        src={item.image} 
+                        alt={item.title}
+                        className={`w-full h-full transition-transform duration-500 ${
+                          item.title === "Khalil Barber Shop" || item.title === "Kick Off"
+                            ? "object-contain p-12 group-hover:scale-100"
+                            : "object-cover group-hover:scale-110"
+                        }`}
+                      />
+                    </div>
                     {/* Khalil Barber Shop: Always show hover overlay with text */}
                     {item.title === "Khalil Barber Shop" && (
                       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center" style={{ backgroundColor: 'rgba(163, 10, 10, 0.6)' }}>
                         <h3 className="text-2xl font-bold text-white">Khalil Barber Shop</h3>
+                      </div>
+                    )}
+                    {item.title === "Kick Off" && (
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center" style={{ backgroundColor: 'rgba(163, 10, 10, 0.6)' }}>
+                        <h3 className="text-2xl font-bold text-white">Kick Off</h3>
                       </div>
                     )}
                     {/* Other projects: Show hover overlay only if showImageOnHover is not false */}
