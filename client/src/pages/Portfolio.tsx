@@ -235,6 +235,15 @@ export default function Portfolio() {
                   className="w-full max-w-5xl object-contain"
                 />
               </div>
+              {activeProject.title === "Kick Off" && (
+                <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
+                  <img
+                    src="/images/kick-off-secondary.jpg"
+                    alt="Kick Off secondary logo"
+                    className="w-full max-w-5xl object-contain"
+                  />
+                </div>
+              )}
               {activeProject.title === "North Leaves" && (
                 <>
                   <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
