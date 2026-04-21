@@ -282,7 +282,7 @@ export default function Portfolio() {
                 <div className="bg-transparent px-4 mt-10 pb-20 m-0">
                   <div className="max-w-3xl mx-auto">
                     <img
-                      src="/images/Business_Card_On_Fabric_Mockup_2_1776804780588.png"
+                      src="/images/Free_Logo_Mockup_2_1776804476547.png"
                       alt="Kick Off Logo Mockup"
                       className="w-full h-auto object-contain mx-auto"
                     />
