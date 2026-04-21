@@ -244,6 +244,31 @@ export default function Portfolio() {
                   />
                 </div>
               )}
+              {activeProject.title === "Kick Off" && (
+                <div className="bg-white px-4 py-20 m-0">
+                  <div className="max-w-5xl mx-auto w-full">
+                    <h2 className="text-4xl font-bold text-[#A51E1E] mb-10 text-center">Color Palette</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="rounded-2xl overflow-hidden shadow-lg border border-[#A51E1E]/10 bg-white">
+                        <div className="h-44" style={{ backgroundColor: "#A51E1E" }} />
+                        <div className="p-5">
+                          <p className="text-lg font-bold text-gray-900">Kick Off Red</p>
+                          <p className="text-sm text-gray-600">Primary brand color</p>
+                          <p className="mt-3 text-xs font-mono text-[#A51E1E]">#A51E1E</p>
+                        </div>
+                      </div>
+                      <div className="rounded-2xl overflow-hidden shadow-lg border border-[#A51E1E]/10 bg-white">
+                        <div className="h-44" style={{ backgroundColor: "#124073" }} />
+                        <div className="p-5">
+                          <p className="text-lg font-bold text-gray-900">Kick Off Blue</p>
+                          <p className="text-sm text-gray-600">Supporting accent color</p>
+                          <p className="mt-3 text-xs font-mono text-[#A51E1E]">#124073</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
               {activeProject.title === "North Leaves" && (
                 <>
                   <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
