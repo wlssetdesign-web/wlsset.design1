@@ -12,6 +12,20 @@ import { X, ChevronRight, ChevronLeft, Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useI18n } from "@/lib/i18n";
 
+const serviceProductOptions: Record<string, string[]> = {
+  "Brand Identity Design": ["Logo Design", "Brand Guidelines", "Color Palette", "Typography System", "Rebranding"],
+  "Print Design": ["Business Cards", "Brochures", "Posters", "Menus", "Flyers", "Roll-Up Banners", "Packaging"],
+  "Social Media Design": ["Instagram Posts", "Instagram Stories", "Facebook Covers", "Ad Creatives", "Content Grids"],
+  "Image Editing": ["Retouching", "Background Removal", "Color Correction", "Compositing"],
+  "Vector Tracing": ["Logo Vectorization", "Sketch to Vector", "High-Resolution Scaling"],
+  "Infographic Design": ["Data Visualization", "Process Flowcharts", "Educational Graphics"],
+  "Video & Motion": ["Video Editing", "Intro/Outro", "Social Media Video", "Motion Graphics", "VFX"],
+};
+
+const colorOptions = ["Red", "Blue", "Green", "Yellow", "Black", "White", "Gray", "Gold", "Silver", "Purple", "Orange", "Pink", "Brown"];
+const englishFonts = ["Montserrat", "Playfair Display", "Helvetica", "Roboto", "Lora"];
+const arabicFonts = ["Tajawal", "Cairo", "Almarai", "Amiri", "Dubai Font"];
+
 const userInfoSchema = z.object({
   name: z.string().min(2, "Name is required"),
   phone: z.string().min(10, "Valid phone number required"),
@@ -19,6 +33,7 @@ const userInfoSchema = z.object({
 });
 
 const projectDetailsSchema = z.object({
+  requiredProduct: z.string().min(1, "Please select a required product"),
   preferredColors: z.string().min(1, "Please select preferred colors"),
   fontStyle: z.string().min(1, "Please select a font style"),
   designNotes: z.string().min(10, "Please provide design details"),
@@ -57,6 +72,7 @@ export default function ServiceRequestForm({
   const projectForm = useForm<ProjectDetailsFormData>({
     resolver: zodResolver(projectDetailsSchema),
     defaultValues: {
+      requiredProduct: "",
       preferredColors: "",
       fontStyle: "",
       designNotes: "",
@@ -76,6 +92,7 @@ export default function ServiceRequestForm({
       email: userInfo?.email,
       phone: userInfo?.phone,
       service: serviceName,
+      requiredProduct: values.requiredProduct,
       preferredColors: values.preferredColors,
       fontStyle: values.fontStyle,
       designNotes: values.designNotes,
@@ -246,6 +263,29 @@ export default function ServiceRequestForm({
                         <form onSubmit={projectForm.handleSubmit(handleProjectDetailsSubmit)} className="space-y-4">
                           <FormField
                             control={projectForm.control}
+                            name="requiredProduct"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="text-sm sm:text-base font-semibold text-black">Required Product</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <FormControl>
+                                    <SelectTrigger className="bg-white border-2 border-gray-300 text-black text-sm sm:text-base">
+                                      <SelectValue placeholder="Select product" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent className="bg-[#1E1E1E] border-white/10">
+                                    {(serviceProductOptions[serviceName] || []).map((product) => (
+                                      <SelectItem key={product} value={product} className="text-white">{product}</SelectItem>
+                                    ))}
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+
+                          <FormField
+                            control={projectForm.control}
                             name="preferredColors"
                             render={({ field }) => (
                               <FormItem>
@@ -257,11 +297,9 @@ export default function ServiceRequestForm({
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent className="bg-[#1E1E1E] border-white/10">
-                                    <SelectItem value="vibrant" className="text-white">{t("form.vibrant")}</SelectItem>
-                                    <SelectItem value="minimal" className="text-white">{t("form.minimal")}</SelectItem>
-                                    <SelectItem value="warm" className="text-white">{t("form.warm")}</SelectItem>
-                                    <SelectItem value="cool" className="text-white">{t("form.cool")}</SelectItem>
-                                    <SelectItem value="custom" className="text-white">{t("form.custom")}</SelectItem>
+                                    {colorOptions.map((color) => (
+                                      <SelectItem key={color} value={color} className="text-white">{color}</SelectItem>
+                                    ))}
                                   </SelectContent>
                                 </Select>
                                 <FormMessage />
@@ -282,11 +320,14 @@ export default function ServiceRequestForm({
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent className="bg-[#1E1E1E] border-white/10">
-                                    <SelectItem value="modern" className="text-white">{t("form.modern")}</SelectItem>
-                                    <SelectItem value="serif" className="text-white">{t("form.serif")}</SelectItem>
-                                    <SelectItem value="display" className="text-white">{t("form.display")}</SelectItem>
-                                    <SelectItem value="minimal" className="text-white">{t("form.minimal")}</SelectItem>
-                                    <SelectItem value="playful" className="text-white">{t("form.playful")}</SelectItem>
+                                    <div className="px-3 py-2 text-xs uppercase tracking-wider text-white/60">English</div>
+                                    {englishFonts.map((font) => (
+                                      <SelectItem key={font} value={font} className="text-white">{font}</SelectItem>
+                                    ))}
+                                    <div className="px-3 py-2 text-xs uppercase tracking-wider text-white/60">Arabic</div>
+                                    {arabicFonts.map((font) => (
+                                      <SelectItem key={font} value={font} className="text-white">{font}</SelectItem>
+                                    ))}
                                   </SelectContent>
                                 </Select>
                                 <FormMessage />
