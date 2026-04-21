@@ -271,17 +271,10 @@ export default function Portfolio() {
               )}
               {activeProject.title === "Kick Off" && (
                 <div className="bg-[#A51E1E] px-4 py-20 m-0">
-                  <div className="max-w-5xl mx-auto w-full flex flex-col items-center">
-                    <p className="text-2xl md:text-3xl font-bold leading-relaxed text-white text-center">
+                  <div className="max-w-5xl mx-auto w-full">
+                    <p className="text-2xl md:text-3xl font-bold leading-relaxed text-white">
                       Kick Off – Sports Channel Branding &amp; Identity Design : The concept focuses on a bold and energetic visual identity, using strong geometric shapes and a red–blue color palette to reflect the passion and excitement of the game. The result is a consistent, recognizable, and modern brand presence across all platforms.
                     </p>
-                    <div className="mt-8 w-full flex justify-center">
-                      <img
-                        src="@assets/Free_Logo_Mockup_2_1776803809125.png"
-                        alt="Kick Off logo mockup"
-                        className="w-full max-w-4xl h-auto rounded-2xl shadow-lg object-contain"
-                      />
-                    </div>
                   </div>
                 </div>
               )}
