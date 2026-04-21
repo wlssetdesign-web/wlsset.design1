@@ -278,6 +278,17 @@ export default function Portfolio() {
                   </div>
                 </div>
               )}
+              {activeProject.title === "Kick Off" && (
+                <div className="bg-transparent px-4 mt-10 pb-20 m-0">
+                  <div className="max-w-md mx-auto">
+                    <img
+                      src="/images/Free_Logo_Mockup_2_1776804318976.png"
+                      alt="Kick Off Logo Mockup"
+                      className="w-full h-auto object-contain"
+                    />
+                  </div>
+                </div>
+              )}
               {activeProject.title === "North Leaves" && (
                 <>
                   <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
