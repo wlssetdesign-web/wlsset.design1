@@ -221,7 +221,7 @@ export default function Portfolio() {
             <KhalilProject onClose={() => setActiveProject(null)} />
           ) : (
             <div className="pt-32 pb-12">
-              <div className="flex items-center justify-center px-4 py-20 m-0" style={{ backgroundColor: "#1D695A" }}>
+              <div className="flex items-center justify-center px-4 py-20 m-0" style={{ backgroundColor: activeProject.title === "Kick Off" ? "#A51E1E" : "#1D695A" }}>
                 <div className="max-w-5xl w-full">
                   <p className="text-xl md:text-2xl font-bold text-white leading-relaxed">
                     {activeProject.title} | {activeProject.description}
