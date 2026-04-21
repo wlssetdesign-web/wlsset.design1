@@ -280,7 +280,7 @@ export default function Portfolio() {
               )}
               {activeProject.title === "Kick Off" && (
                 <div className="bg-transparent px-4 mt-10 pb-20 m-0">
-                  <div className="max-w-md mx-auto">
+                  <div className="max-w-xl mx-auto">
                     <img
                       src="/images/Free_Logo_Mockup_2_1776804476547.png"
                       alt="Kick Off Logo Mockup"
