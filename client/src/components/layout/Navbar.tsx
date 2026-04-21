@@ -73,7 +73,7 @@ export function Navbar() {
         {/* Mobile Nav */}
         <div className="md:hidden flex items-center gap-2">
           <a
-            href="https://www.instagram.com/wlsset.design"
+            href="https://www.behance.net/essamzibdeh3"
             target="_blank"
             rel="noreferrer"
             className="text-foreground transition-all duration-200 hover:text-primary hover:scale-110"
@@ -111,7 +111,7 @@ export function Navbar() {
                   </Link>
                 ))}
                 <a
-                  href="https://www.instagram.com/wlsset.design"
+                  href="https://www.behance.net/essamzibdeh3"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-3 text-foreground font-semibold transition-colors hover:text-primary"
