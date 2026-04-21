@@ -2,7 +2,7 @@ import { Link, useLocation } from "wouter";
 import { useI18n } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Globe } from "lucide-react";
+import { Menu, Globe, Instagram } from "lucide-react";
 import { useState } from "react";
 
 export function Navbar() {
@@ -49,6 +49,15 @@ export function Navbar() {
           ))}
           
           <div className="flex items-center gap-4 ml-4">
+            <a
+              href="https://www.instagram.com/wlsset.design"
+              target="_blank"
+              rel="noreferrer"
+              className="text-foreground transition-all duration-200 hover:text-primary hover:scale-110"
+              aria-label="Instagram"
+            >
+              <Instagram className="h-6 w-6" />
+            </a>
             <Button 
               variant="ghost" 
               size="icon" 
@@ -63,6 +72,15 @@ export function Navbar() {
 
         {/* Mobile Nav */}
         <div className="md:hidden flex items-center gap-2">
+          <a
+            href="https://www.instagram.com/wlsset.design"
+            target="_blank"
+            rel="noreferrer"
+            className="text-foreground transition-all duration-200 hover:text-primary hover:scale-110"
+            aria-label="Instagram"
+          >
+            <Instagram className="h-5 w-5" />
+          </a>
           <Button 
             variant="ghost" 
             size="icon" 
@@ -92,6 +110,15 @@ export function Navbar() {
                     </a>
                   </Link>
                 ))}
+                <a
+                  href="https://www.instagram.com/wlsset.design"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 text-foreground font-semibold transition-colors hover:text-primary"
+                >
+                  <Instagram className="h-5 w-5" />
+                  Instagram
+                </a>
                 <Link href="/contact">
                   <Button 
                     className="w-full font-bold bg-primary hover:bg-primary/90 py-6 text-lg"
