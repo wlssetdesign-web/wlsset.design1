@@ -58,6 +58,15 @@ export function Navbar() {
             >
               <Instagram className="h-6 w-6" />
             </a>
+            <a
+              href="https://www.behance.net/essamzibdeh3"
+              target="_blank"
+              rel="noreferrer"
+              className="text-foreground transition-all duration-200 hover:text-primary hover:scale-110"
+              aria-label="Behance"
+            >
+              <Instagram className="h-6 w-6" />
+            </a>
             <Button 
               variant="ghost" 
               size="icon" 
@@ -73,11 +82,20 @@ export function Navbar() {
         {/* Mobile Nav */}
         <div className="md:hidden flex items-center gap-2">
           <a
-            href="https://www.behance.net/essamzibdeh3"
+            href="https://www.instagram.com/wlsset.design"
             target="_blank"
             rel="noreferrer"
             className="text-foreground transition-all duration-200 hover:text-primary hover:scale-110"
             aria-label="Instagram"
+          >
+            <Instagram className="h-5 w-5" />
+          </a>
+          <a
+            href="https://www.behance.net/essamzibdeh3"
+            target="_blank"
+            rel="noreferrer"
+            className="text-foreground transition-all duration-200 hover:text-primary hover:scale-110"
+            aria-label="Behance"
           >
             <Instagram className="h-5 w-5" />
           </a>
@@ -111,13 +129,22 @@ export function Navbar() {
                   </Link>
                 ))}
                 <a
-                  href="https://www.behance.net/essamzibdeh3"
+                  href="https://www.instagram.com/wlsset.design"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-3 text-foreground font-semibold transition-colors hover:text-primary"
                 >
                   <Instagram className="h-5 w-5" />
                   Instagram
+                </a>
+                <a
+                  href="https://www.behance.net/essamzibdeh3"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 text-foreground font-semibold transition-colors hover:text-primary"
+                >
+                  <Instagram className="h-5 w-5" />
+                  Behance
                 </a>
                 <Link href="/contact">
                   <Button 
