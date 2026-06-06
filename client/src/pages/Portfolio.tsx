@@ -229,7 +229,7 @@ export default function Portfolio() {
                 <div className="flex items-center justify-center px-4 py-20 m-0" style={{ backgroundColor: activeProject.title === "Kick Off" ? "#A51E1E" : activeProject.title === "مناحل نابلس" ? "#E8C832" : "#1D695A" }}>
                   <div className="max-w-5xl w-full">
                     <p className={`text-xl md:text-2xl font-bold leading-relaxed ${activeProject.title === "مناحل نابلس" ? "text-[#333333]" : "text-white"}`}>
-                      {activeProject.title === "مناحل نابلس" ? "مناحل نابلس | logo features four geometric shapes arranged in a honeycomb-inspired grid, representing the structure of a beehive. The warm golden yellow color directly reflects the natural tone of pure honey, while the modern Arabic typography grounds the design with elegance. A perfect blend of tradition and contemporary style." : `${activeProject.title} | ${activeProject.description}`}
+                      {activeProject.title === "مناحل نابلس" ? "logo features four geometric shapes arranged in a honeycomb-inspired grid, representing the structure of a beehive. The warm golden yellow color directly reflects the natural tone of pure honey, while the modern Arabic typography grounds the design with elegance. A perfect blend of tradition and contemporary style." : `${activeProject.title} | ${activeProject.description}`}
                     </p>
                   </div>
                 </div>
