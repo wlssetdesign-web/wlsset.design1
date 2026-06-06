@@ -9,7 +9,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen flex flex-col relative bg-background" dir={direction}>
       {/* Animated Background */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-20 overflow-hidden">
-        <div
+        <div 
           className="absolute inset-[-100px] animate-fall"
           style={{
             backgroundImage: "url('/assets/pattern.png')",
@@ -22,8 +22,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </div>
 
       <Navbar />
-
-      <main className="flex-1 relative z-10">
+      
+      <main className="flex-1 pt-28 relative z-10">
         {children}
       </main>
 
