@@ -45,5 +45,12 @@
     "category": "Branding",
     "image": "/images/tawasol.jpg",
     "description": "Modern brand identity design for Tawasel, featuring a distinctive blue and green chat bubble logo and professional typography."
+  },
+  {
+    "id": 7,
+    "title": "Al Mamlaka TV NFC",
+    "category": "Print",
+    "image": "/images/almamlaka.png",
+    "description": "Premium NFC business card design for Al Mamlaka TV featuring a distinctive red pixel pattern with QR code and bilingual branding."
   }
 ]
