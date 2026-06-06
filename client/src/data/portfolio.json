@@ -23,5 +23,13 @@
     "image": "/images/north-leaves.png",
     "description": "Logo: A clean, much larger typographic logo with a circular emblem containing a stylized leaf. The font used is \"SINGO\" giving North Leaves a very bold, strong, and contemporary feel.",
     "projectLink": "https://www.behance.net/gallery/232212525/North-Leaves"
+  },
+  {
+    "id": 4,
+    "title": "Dry Eyes Problems",
+    "category": "Social Media",
+    "tags": ["Social Media", "Infographic Design"],
+    "image": "/images/dry-eyes-problems.jpg",
+    "description": "Informative medical infographic design about dry eyes causes, symptoms, and treatment."
   }
 ]

@@ -44,6 +44,10 @@ export default function Portfolio() {
     return category === "Branding" || category === "Print" || category === "Social Media";
   };
 
+  const shouldShowDryEyes = (category: string) => {
+    return category === "Social Media" || category === "Infographic Design";
+  };
+
   const getCategoryLabel = (category: string): string => {
     return categoryToLabelMap[category] || category;
   };
@@ -62,7 +66,7 @@ export default function Portfolio() {
     } else if (filter) {
       // Only apply category filter if no search term is active
       const dataCategory = buttonToCategoryMap[filter];
-      items = items.filter(item => item.category === dataCategory);
+      items = items.filter(item => item.category === dataCategory || (item.tags && item.tags.includes(dataCategory)));
       if (shouldShowNorthLeaves(dataCategory)) {
         const northLeavesItem = portfolioData.find(item => item.title === "North Leaves");
         if (northLeavesItem && !items.some(item => item.title === "North Leaves")) {
