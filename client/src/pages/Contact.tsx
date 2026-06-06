@@ -80,7 +80,7 @@ export default function Contact() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-16 flex justify-center">
+    <div className="container mx-auto px-4 py-16 min-h-screen flex justify-center">
       <Card className="w-full max-w-2xl bg-card/50 backdrop-blur border-white/5">
         <CardHeader>
           <CardTitle className="text-3xl font-bold text-center text-primary">

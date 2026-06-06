@@ -79,7 +79,7 @@ export default function Portfolio() {
   }, [filter, searchTerm]);
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 py-16 min-h-screen">
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">{t("portfolio.title")}</h1>
       </div>
