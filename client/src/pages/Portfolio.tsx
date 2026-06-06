@@ -234,7 +234,7 @@ export default function Portfolio() {
                   </div>
                 </div>
               )}
-              <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
+              <div className={`flex items-center justify-center bg-white px-4 py-20 m-0 ${activeProject.title === "Dry Eyes Problems" ? "mt-10" : ""}`}>
                 <img
                   src={activeProject.image}
                   alt={activeProject.title}
