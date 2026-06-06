@@ -18,7 +18,7 @@ export default function Services() {
 
   const getServiceItems = (key: string) => {
     const items = t(`${key}.items`);
-    return items.split(", ");
+    return items.split(/\s*[,،]\s*/u);
   };
 
   const services = [
