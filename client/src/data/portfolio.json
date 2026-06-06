@@ -31,5 +31,13 @@
     "tags": ["Social Media", "Infographic Design"],
     "image": "/images/dry-eyes-problems.jpg",
     "description": "Informative medical infographic design about dry eyes causes, symptoms, and treatment."
+  },
+  {
+    "id": 5,
+    "title": "مناحل نابلس",
+    "category": "Branding",
+    "image": "/images/manahel-nablus.png",
+    "description": "Brand identity design for Manahil Nablus, featuring a distinctive golden honeycomb-inspired logo and modern typography.",
+    "showImageOnHover": false
   }
 ]
