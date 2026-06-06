@@ -9,30 +9,26 @@ export default function Home() {
   const isRTL = language === 'ar';
 
   return (
-    <div className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center text-center px-4">
+    <div className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center text-center px-4 py-16">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="max-w-4xl mx-auto space-y-8"
+        className="max-w-4xl mx-auto"
       >
-        <div className="w-full flex justify-center mb-8">
+        <div className="w-full flex justify-center mb-12">
            <img 
               src="/assets/logo.png" 
               alt="wlsset design" 
-              className="h-56 md:h-80 object-contain drop-shadow-2xl"
+              className="h-36 md:h-48 object-contain drop-shadow-2xl"
             />
         </div>
-        
-        <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-[#191919]">
-          {t("hero.intro")}
-        </h1>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 1.2 }}
-          className="h-20 flex items-center justify-center"
+          className="flex items-center justify-center mb-10"
         >
           <p 
             className="text-2xl md:text-4xl font-bold text-[#A30A0A] tracking-wide"
@@ -42,11 +38,11 @@ export default function Home() {
           </p>
         </motion.div>
         
-        <p className="text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-lg md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-12">
           {t("hero.subtitle")}
         </p>
 
-        <div className="pt-8">
+        <div>
           <Link href="/services">
             <Button size="lg" className="text-lg px-8 py-6 rounded-full group bg-[#A30A0A] hover:bg-[#8B0808] shadow-lg hover:shadow-[0_0_30px_rgba(163,10,10,0.6)] transition-all duration-300 text-white">
               {t("hero.cta")}

@@ -5,15 +5,8 @@ export function Footer() {
   
   return (
     <footer className="border-t border-white/10 bg-background py-8 mt-auto z-10 relative">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
-           <img 
-              src="/assets/logo.png" 
-              alt="wlsset design" 
-              className="h-16 w-auto opacity-80 transition-transform hover:opacity-100"
-            />
-        </div>
-        <p className="text-sm text-muted-foreground text-center md:text-right">
+      <div className="container mx-auto px-4 flex flex-col items-center justify-center gap-4">
+        <p className="text-sm text-muted-foreground text-center">
           {t("footer.rights")}
         </p>
       </div>
