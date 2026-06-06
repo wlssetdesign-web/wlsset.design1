@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "wouter";
 
-const pageOrder = ["/", "/about", "/services", "/portfolio", "/contact"];
+const pageOrder = ["/", "/portfolio", "/about", "/contact"];
 
 function getScrollableParent(): HTMLElement {
   return document.documentElement;
@@ -45,6 +45,7 @@ export function useScrollNavigate() {
           isTransitioning.current = true;
           lastScrollTime.current = now;
           navigate(pageOrder[currentIndex + 1]);
+          window.scrollTo({ top: 0, behavior: "instant" });
           setTimeout(() => {
             isTransitioning.current = false;
           }, 800);
@@ -56,6 +57,7 @@ export function useScrollNavigate() {
           isTransitioning.current = true;
           lastScrollTime.current = now;
           navigate(pageOrder[currentIndex - 1]);
+          window.scrollTo({ top: 0, behavior: "instant" });
           setTimeout(() => {
             isTransitioning.current = false;
           }, 800);
@@ -95,6 +97,7 @@ export function useScrollNavigate() {
           isTransitioning.current = true;
           lastScrollTime.current = now;
           navigate(pageOrder[currentIndex + 1]);
+          window.scrollTo({ top: 0, behavior: "instant" });
           setTimeout(() => {
             isTransitioning.current = false;
           }, 800);
@@ -105,6 +108,7 @@ export function useScrollNavigate() {
           isTransitioning.current = true;
           lastScrollTime.current = now;
           navigate(pageOrder[currentIndex - 1]);
+          window.scrollTo({ top: 0, behavior: "instant" });
           setTimeout(() => {
             isTransitioning.current = false;
           }, 800);
