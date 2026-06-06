@@ -12,9 +12,9 @@ export function Navbar() {
 
   const links = [
     { href: "/", label: "nav.home" },
-    { href: "/about", label: "nav.about" },
-    { href: "/services", label: "nav.services" },
     { href: "/portfolio", label: "nav.portfolio" },
+    { href: "/services", label: "nav.services" },
+    { href: "/about", label: "nav.about" },
     { href: "/contact", label: "nav.contact" },
   ];
 
