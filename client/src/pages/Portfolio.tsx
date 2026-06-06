@@ -225,15 +225,13 @@ export default function Portfolio() {
             <KhalilProject onClose={() => setActiveProject(null)} />
           ) : (
             <div className="pt-32 pb-12">
-              {activeProject.title !== "Dry Eyes Problems" && (
-                <div className="flex items-center justify-center px-4 py-20 m-0" style={{ backgroundColor: activeProject.title === "Kick Off" ? "#A51E1E" : "#1D695A" }}>
-                  <div className="max-w-5xl w-full">
-                    <p className="text-xl md:text-2xl font-bold text-white leading-relaxed">
-                      {activeProject.title} | {activeProject.description}
-                    </p>
-                  </div>
+              <div className="flex items-center justify-center px-4 py-20 m-0" style={{ backgroundColor: activeProject.title === "Kick Off" ? "#A51E1E" : activeProject.title === "Dry Eyes Problems" ? "#0A1A3B" : "#1D695A" }}>
+                <div className="max-w-5xl w-full">
+                  <p className="text-xl md:text-2xl font-bold text-white leading-relaxed">
+                    {activeProject.title} | {activeProject.description}
+                  </p>
                 </div>
-              )}
+              </div>
               <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
                 <img
                   src={activeProject.image}
@@ -292,6 +290,15 @@ export default function Portfolio() {
                       alt="Kick Off Logo Mockup"
                       className="w-full h-auto object-contain mx-auto"
                     />
+                  </div>
+                </div>
+              )}
+              {activeProject.title === "Dry Eyes Problems" && (
+                <div className="bg-[#0A1A3B] px-4 py-20 m-0">
+                  <div className="max-w-5xl mx-auto w-full">
+                    <p className="text-2xl md:text-3xl font-bold leading-relaxed text-white">
+                      This infographic highlights the key benefits of using trains for travel. From reducing environmental impact and saving costs, to offering comfort, speed, and scenic journeys trains combine efficiency with sustainability. Designed to visually engage and inform, this project aims to inspire greener and smarter travel choices.
+                    </p>
                   </div>
                 </div>
               )}
