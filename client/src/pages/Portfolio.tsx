@@ -234,6 +234,15 @@ export default function Portfolio() {
                   </div>
                 </div>
               )}
+              {activeProject.title === "Dry Eyes Problems" && (
+                <div className="bg-[#0A1A3B] px-4 py-20 m-0">
+                  <div className="max-w-5xl mx-auto w-full">
+                    <p className="text-2xl md:text-3xl font-bold leading-relaxed text-white">
+                      This infographic highlights the key benefits of using trains for travel. From reducing environmental impact and saving costs, to offering comfort, speed, and scenic journeys trains combine efficiency with sustainability. Designed to visually engage and inform, this project aims to inspire greener and smarter travel choices.
+                    </p>
+                  </div>
+                </div>
+              )}
               <div className={`flex items-center justify-center bg-white px-4 py-20 m-0 ${activeProject.title === "Dry Eyes Problems" ? "mt-10" : ""}`}>
                 <img
                   src={activeProject.image}
@@ -292,15 +301,6 @@ export default function Portfolio() {
                       alt="Kick Off Logo Mockup"
                       className="w-full h-auto object-contain mx-auto"
                     />
-                  </div>
-                </div>
-              )}
-              {activeProject.title === "Dry Eyes Problems" && (
-                <div className="bg-[#0A1A3B] px-4 py-20 m-0">
-                  <div className="max-w-5xl mx-auto w-full">
-                    <p className="text-2xl md:text-3xl font-bold leading-relaxed text-white">
-                      This infographic highlights the key benefits of using trains for travel. From reducing environmental impact and saving costs, to offering comfort, speed, and scenic journeys trains combine efficiency with sustainability. Designed to visually engage and inform, this project aims to inspire greener and smarter travel choices.
-                    </p>
                   </div>
                 </div>
               )}
