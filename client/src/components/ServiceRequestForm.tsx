@@ -204,7 +204,7 @@ export default function ServiceRequestForm({
                               <FormItem>
                           <FormLabel className="text-sm sm:text-base font-semibold text-black">{t("form.fullName")}</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="Mohammed Al Dmour" {...field} className="bg-white border-2 border-gray-300 text-black text-sm sm:text-base placeholder:text-gray-500" />
+                                  <Input placeholder="Your Name" {...field} className="bg-white border-2 border-gray-300 text-black text-sm sm:text-base placeholder:text-gray-500" />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -232,7 +232,7 @@ export default function ServiceRequestForm({
                               <FormItem>
                           <FormLabel className="text-sm sm:text-base font-semibold text-black">{t("form.email")}</FormLabel>
                                 <FormControl>
-                                  <Input placeholder="mohammed.aldmour@gmail.com" type="email" {...field} className="bg-white border-2 border-gray-300 text-black text-sm sm:text-base placeholder:text-gray-500" />
+                                  <Input placeholder="Example@gmail.com" type="email" {...field} className="bg-white border-2 border-gray-300 text-black text-sm sm:text-base placeholder:text-gray-500" />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
