@@ -9,7 +9,7 @@ export default function Home() {
   const isRTL = language === 'ar';
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center text-center px-4 pt-28">
+    <div className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center text-center px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
