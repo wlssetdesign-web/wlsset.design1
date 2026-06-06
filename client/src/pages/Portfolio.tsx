@@ -377,7 +377,7 @@ export default function Portfolio() {
                   </div>
                   <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
                     <img
-                      src="/images/north-leaves-business-card-mockup.jpg"
+                      src="/images/business-card.jpg"
                       alt="North Leaves business card mockup"
                       className="w-full max-w-5xl object-contain"
                     />
