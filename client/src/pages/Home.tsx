@@ -16,23 +16,19 @@ export default function Home() {
         transition={{ duration: 0.8 }}
         className="max-w-4xl mx-auto space-y-8"
       >
-        <div className="w-full flex justify-center mb-8">
-           <img 
-              src="/assets/logo.png" 
-              alt="wlsset design" 
-              className="h-56 md:h-80 object-contain drop-shadow-2xl"
+        <div className="w-full flex justify-center mb-12">
+           <img
+              src="/assets/logo.png"
+              alt="wlsset design"
+              className="h-40 md:h-56 object-contain drop-shadow-2xl"
             />
         </div>
-        
-        <h1 className="text-4xl md:text-7xl font-bold tracking-tight text-[#191919]">
-          {t("hero.intro")}
-        </h1>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 1.2 }}
-          className="h-20 flex items-center justify-center"
+          className="h-20 flex items-center justify-center pt-4"
         >
           <p 
             className="text-2xl md:text-4xl font-bold text-[#A30A0A] tracking-wide"
