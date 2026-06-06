@@ -82,7 +82,7 @@ export default function Services() {
   };
 
   return (
-    <div id="services" className="container mx-auto px-4 py-16">
+    <div id="services" className="container mx-auto px-4 py-16 min-h-screen">
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">{t("services.title")}</h1>
         <p className="text-muted-foreground max-w-2xl mx-auto">
