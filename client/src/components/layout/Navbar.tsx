@@ -65,9 +65,7 @@ export function Navbar() {
               className="text-foreground transition-all duration-200 hover:text-primary hover:scale-110"
               aria-label="Behance"
             >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden="true">
-                <path d="M14.5 11.2c.9-.5 1.5-1.4 1.5-2.6 0-2-1.5-3.3-4-3.3H5v13h7c2.7 0 4.5-1.4 4.5-3.7 0-1.7-1-2.9-2-3.4Zm-5.7-3.5h2.7c.9 0 1.4.4 1.4 1.1 0 .8-.6 1.2-1.5 1.2H8.8V7.7Zm3.1 7H8.8v-2.7h3c1 0 1.7.5 1.7 1.3 0 .9-.7 1.4-1.6 1.4ZM17.5 7.5h4v1.2h-4V7.5Zm4 3h-4v7h4v-7Z" />
-              </svg>
+              <img src="/assets/behance.png" alt="Behance" className="h-6 w-6 object-contain" />
             </a>
             <Button 
               variant="ghost" 
@@ -99,9 +97,7 @@ export function Navbar() {
             className="text-foreground transition-all duration-200 hover:text-primary hover:scale-110"
             aria-label="Behance"
           >
-            <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
-              <path d="M14.5 11.2c.9-.5 1.5-1.4 1.5-2.6 0-2-1.5-3.3-4-3.3H5v13h7c2.7 0 4.5-1.4 4.5-3.7 0-1.7-1-2.9-2-3.4Zm-5.7-3.5h2.7c.9 0 1.4.4 1.4 1.1 0 .8-.6 1.2-1.5 1.2H8.8V7.7Zm3.1 7H8.8v-2.7h3c1 0 1.7.5 1.7 1.3 0 .9-.7 1.4-1.6 1.4ZM17.5 7.5h4v1.2h-4V7.5Zm4 3h-4v7h4v-7Z" />
-            </svg>
+            <img src="/assets/behance.png" alt="Behance" className="h-5 w-5 object-contain" />
           </a>
           <Button 
             variant="ghost" 
@@ -147,9 +143,7 @@ export function Navbar() {
                   rel="noreferrer"
                   className="flex items-center gap-3 text-foreground font-semibold transition-colors hover:text-primary"
                 >
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
-                    <path d="M14.5 11.2c.9-.5 1.5-1.4 1.5-2.6 0-2-1.5-3.3-4-3.3H5v13h7c2.7 0 4.5-1.4 4.5-3.7 0-1.7-1-2.9-2-3.4Zm-5.7-3.5h2.7c.9 0 1.4.4 1.4 1.1 0 .8-.6 1.2-1.5 1.2H8.8V7.7Zm3.1 7H8.8v-2.7h3c1 0 1.7.5 1.7 1.3 0 .9-.7 1.4-1.6 1.4ZM17.5 7.5h4v1.2h-4V7.5Zm4 3h-4v7h4v-7Z" />
-                  </svg>
+                  <img src="/assets/behance.png" alt="Behance" className="h-5 w-5 object-contain" />
                   Behance
                 </a>
                 <Link href="/contact">
