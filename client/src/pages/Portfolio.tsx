@@ -250,6 +250,22 @@ export default function Portfolio() {
                   className="w-full max-w-5xl object-contain"
                 />
               </div>
+              {activeProject.title === "Meet Me Again" && (
+                <div className="bg-white px-4 py-20 m-0">
+                  <div className="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <img
+                      src="/images/coffee-sticker.jpeg"
+                      alt="Meet Me Again coffee packaging"
+                      className="w-full object-contain rounded-lg"
+                    />
+                    <img
+                      src="/images/coffee-sticker-2.jpeg"
+                      alt="Meet Me Again coffee packaging detail"
+                      className="w-full object-contain rounded-lg"
+                    />
+                  </div>
+                </div>
+              )}
               {activeProject.title === "Kick Off" && (
                 <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
                   <img
