@@ -52,5 +52,12 @@
     "category": "Print",
     "image": "/images/almamlaka.png",
     "description": "Premium NFC business card design for Al Mamlaka TV featuring a distinctive red pixel pattern with QR code and bilingual branding."
+  },
+  {
+    "id": 8,
+    "title": "Meet Me Again",
+    "category": "Print",
+    "image": "/images/meet-me-again.png",
+    "description": "Elegant minimalist logo design for Meet Me Again, featuring a refined monogram and warm earth-toned color palette."
   }
 ]
