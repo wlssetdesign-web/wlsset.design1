@@ -59,5 +59,13 @@
     "category": "Print",
     "image": "/images/meet-me-again.png",
     "description": "Elegant minimalist logo design for Meet Me Again, featuring a refined monogram and warm earth-toned color palette."
+  },
+  {
+    "id": 9,
+    "title": "Honey Masters.jo",
+    "category": "Branding",
+    "tags": ["Print"],
+    "image": "/images/honey-masters-jo.jpeg",
+    "description": "Premium honey brand identity featuring a cute bee mascot with honeycomb background, crafted for Honey Masters.jo."
   }
 ]
