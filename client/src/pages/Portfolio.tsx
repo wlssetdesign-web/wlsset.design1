@@ -250,6 +250,15 @@ export default function Portfolio() {
                   className="w-full max-w-5xl object-contain"
                 />
               </div>
+              {activeProject.title === "Honey Masters.jo" && (
+                <div className="flex items-center justify-center bg-white px-4 py-20 m-0">
+                  <img
+                    src="/images/honey.jpeg"
+                    alt="Honey Masters.jo honey jar"
+                    className="w-full max-w-5xl object-contain"
+                  />
+                </div>
+              )}
               {activeProject.title === "Meet Me Again" && (
                 <div className="bg-white px-4 py-20 m-0">
                   <div className="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-6">
