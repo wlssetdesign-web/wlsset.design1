@@ -4,24 +4,28 @@ import { storage } from "./storage";
 import passport from "./auth";
 import { ensureAuthenticated } from "./auth";
 import multer from "multer";
-import path from "path";
-import { randomUUID } from "crypto";
-import fs from "fs";
+import { v2 as cloudinary } from "cloudinary";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
 
-const imagesDir = path.resolve(process.cwd(), "client", "public", "images");
-if (!fs.existsSync(imagesDir)) {
-  fs.mkdirSync(imagesDir, { recursive: true });
-}
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 const upload = multer({
-  storage: multer.diskStorage({
-    destination: (_req, _file, cb) => cb(null, imagesDir),
-    filename: (_req, file, cb) => {
-      const ext = path.extname(file.originalname);
-      cb(null, `${randomUUID()}${ext}`);
+  storage: new CloudinaryStorage({
+    cloudinary,
+    params: async (_req, file) => {
+      const isVideo = /\.(mp4|webm|mov|avi|mkv)$/i.test(file.originalname);
+      return {
+        resource_type: isVideo ? "video" : "image",
+        folder: "wlsset-uploads",
+        public_id: `${Date.now()}-${file.originalname.replace(/\.[^/.]+$/, "")}`,
+      };
     },
   }),
-  limits: { fileSize: 10 * 1024 * 1024 },
+  limits: { fileSize: 50 * 1024 * 1024 },
 });
 
 export async function registerRoutes(
@@ -190,10 +194,9 @@ export async function registerRoutes(
     if (!req.file) {
       return res.status(400).json({ message: "No file uploaded" });
     }
-    const url = `/images/${req.file.filename}`;
-    const ext = path.extname(req.file.filename).toLowerCase();
-    const isVideo = [".mp4", ".webm", ".mov", ".avi", ".mkv"].includes(ext);
-    res.json({ url, filename: req.file.filename, type: isVideo ? "video" : "image" });
+    const url = (req.file as any).path;
+    const isVideo = (req.file as any).resource_type === "video";
+    res.json({ url, filename: (req.file as any).public_id, type: isVideo ? "video" : "image" });
   });
 
   app.post(`${api}/upload-multiple`, ensureAuthenticated, upload.array("files", 20), (req, res) => {
@@ -202,10 +205,9 @@ export async function registerRoutes(
       return res.status(400).json({ message: "No files uploaded" });
     }
     const items = files.map((f) => {
-      const url = `/images/${f.filename}`;
-      const ext = path.extname(f.filename).toLowerCase();
-      const isVideo = [".mp4", ".webm", ".mov", ".avi", ".mkv"].includes(ext);
-      return { url, filename: f.filename, type: isVideo ? "video" : "image" };
+      const url = (f as any).path;
+      const isVideo = (f as any).resource_type === "video";
+      return { url, filename: (f as any).public_id, type: isVideo ? "video" : "image" };
     });
     res.json({ items });
   });
