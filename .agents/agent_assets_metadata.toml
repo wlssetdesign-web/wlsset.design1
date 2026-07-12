@@ -1,8 +1,0 @@
-uploads = []
-outputs = []
-
-[[generated]]
-id = "xvbhL6yyv4aHBrG4UqUrJ"
-uri = "file://client/public/assets/khalil-barber-shop-interior.png"
-type = "image"
-title = "Barber shop interior with Amman street view"
