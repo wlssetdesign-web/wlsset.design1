@@ -6,8 +6,6 @@ import { ShoppingBag, MessageCircle, Instagram, Calendar, User, Phone, Mail } fr
 type OrderItem = {
   title: string;
   requiredProduct: string;
-  preferredColors: string;
-  fontStyle: string;
   designNotes: string;
 };
 
@@ -88,8 +86,6 @@ export default function AdminOrders() {
                       <p className="text-sm font-semibold text-[#f5f5f5]">{item.title}</p>
                       <div className="mt-1 text-xs text-zinc-400 space-y-0.5">
                         <p>Product: {item.requiredProduct}</p>
-                        <p>Colors: {item.preferredColors}</p>
-                        <p>Font: {item.fontStyle}</p>
                         {item.designNotes && (
                           <p className="line-clamp-2">Notes: {item.designNotes}</p>
                         )}

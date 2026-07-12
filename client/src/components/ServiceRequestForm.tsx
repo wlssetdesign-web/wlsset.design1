@@ -22,10 +22,6 @@ type PortfolioItem = {
   tags?: string | null;
 };
 
-const colorOptions = ["Red", "Blue", "Green", "Yellow", "Black", "White", "Gray", "Gold", "Silver", "Purple", "Orange", "Pink", "Brown"];
-const englishFonts = ["Montserrat", "Playfair Display", "Helvetica", "Roboto", "Lora"];
-const arabicFonts = ["Tajawal", "Cairo", "Almarai", "Amiri", "Dubai Font"];
-
 const userInfoSchema = z.object({
   name: z.string().min(2, "Name is required"),
   phone: z.string().min(10, "Valid phone number required"),
@@ -34,9 +30,7 @@ const userInfoSchema = z.object({
 
 const projectDetailsSchema = z.object({
   requiredProduct: z.string().min(1, "Please select a required product"),
-  preferredColors: z.string().min(1, "Please select preferred colors"),
-  fontStyle: z.string().min(1, "Please select a font style"),
-  designNotes: z.string().min(10, "Please provide design details"),
+  designNotes: z.string().optional(),
 });
 
 type UserInfoFormData = z.infer<typeof userInfoSchema>;
@@ -80,8 +74,6 @@ export default function ServiceRequestForm({
     resolver: zodResolver(projectDetailsSchema),
     defaultValues: {
       requiredProduct: "",
-      preferredColors: "",
-      fontStyle: "",
       designNotes: "",
     },
   });
@@ -107,9 +99,7 @@ export default function ServiceRequestForm({
         phone: userInfo?.phone || "",
         email: userInfo?.email || "",
         requiredProduct: projectDetails.requiredProduct,
-        preferredColors: projectDetails.preferredColors,
-        fontStyle: projectDetails.fontStyle,
-        designNotes: projectDetails.designNotes,
+        designNotes: projectDetails.designNotes || "",
       },
     });
 
@@ -289,61 +279,10 @@ export default function ServiceRequestForm({
 
                           <FormField
                             control={projectForm.control}
-                            name="preferredColors"
-                            render={({ field }) => (
-                              <FormItem>
-                          <FormLabel className="text-sm sm:text-base font-semibold text-black">{t("form.preferredColors")}</FormLabel>
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                  <FormControl>
-                                    <SelectTrigger className="bg-white border-2 border-gray-300 text-black text-sm sm:text-base">
-                                      <SelectValue placeholder="Select colors" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent position="item-aligned" className="bg-white border-gray-300 text-black">
-                                    {colorOptions.map((color) => (
-                                      <SelectItem key={color} value={color}>{color}</SelectItem>
-                                    ))}
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          
-                          <FormField
-                            control={projectForm.control}
-                            name="fontStyle"
-                            render={({ field }) => (
-                              <FormItem>
-                          <FormLabel className="text-sm sm:text-base font-semibold text-black">{t("form.fontStyle")}</FormLabel>
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                  <FormControl>
-                                    <SelectTrigger className="bg-white border-2 border-gray-300 text-black text-sm sm:text-base">
-                                      <SelectValue placeholder="Select font style" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent position="item-aligned" className="bg-white border-gray-300 text-black">
-                                    <div className="px-3 py-2 text-xs uppercase tracking-wider text-gray-500">English</div>
-                                    {englishFonts.map((font) => (
-                                      <SelectItem key={font} value={font}>{font}</SelectItem>
-                                    ))}
-                                    <div className="px-3 py-2 text-xs uppercase tracking-wider text-gray-500">Arabic</div>
-                                    {arabicFonts.map((font) => (
-                                      <SelectItem key={font} value={font}>{font}</SelectItem>
-                                    ))}
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          
-                          <FormField
-                            control={projectForm.control}
                             name="designNotes"
                             render={({ field }) => (
                               <FormItem>
-                          <FormLabel className="text-sm sm:text-base font-semibold text-black">{t("form.designNotes")}</FormLabel>
+                          <FormLabel className="text-sm sm:text-base font-semibold text-black">Description</FormLabel>
                                 <FormControl>
                                   <Textarea 
                                     placeholder="Tell us about your vision, specific requirements, inspiration, or any other details..."

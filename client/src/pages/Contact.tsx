@@ -46,8 +46,6 @@ export default function Contact() {
           email: values.email,
           phone: "",
           service: "General Inquiry",
-          preferredColors: "",
-          fontStyle: "",
           designNotes: values.message,
         }),
       });

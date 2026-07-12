@@ -9,8 +9,6 @@ export type BasketItem = {
     phone: string;
     email: string;
     requiredProduct: string;
-    preferredColors: string;
-    fontStyle: string;
     designNotes: string;
   };
 };

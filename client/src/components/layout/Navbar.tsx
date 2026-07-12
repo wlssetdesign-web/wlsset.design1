@@ -183,8 +183,6 @@ function BasketNavButton() {
       lines.push(`Phone: ${item.details.phone}`);
       lines.push(`Email: ${item.details.email}`);
       lines.push(`Required Product: ${item.details.requiredProduct}`);
-      lines.push(`Preferred Colors: ${item.details.preferredColors}`);
-      lines.push(`Font Style: ${item.details.fontStyle}`);
       lines.push(`Design Notes: ${item.details.designNotes}`);
     });
     return lines.join("\n");
@@ -202,8 +200,6 @@ function BasketNavButton() {
         items: items.map((i) => ({
           title: i.title,
           requiredProduct: i.details.requiredProduct,
-          preferredColors: i.details.preferredColors,
-          fontStyle: i.details.fontStyle,
           designNotes: i.details.designNotes,
         })),
       });
@@ -284,8 +280,6 @@ function BasketNavButton() {
                     <p className="text-sm font-semibold text-gray-900">{item.title}</p>
                     <div className="mt-1 text-xs text-gray-500 space-y-0.5">
                       <p>Product: {item.details.requiredProduct}</p>
-                      <p>Colors: {item.details.preferredColors}</p>
-                      <p>Font: {item.details.fontStyle}</p>
                       {item.details.designNotes && (
                         <p className="truncate" title={item.details.designNotes}>
                           Notes: {item.details.designNotes}
