@@ -75,7 +75,6 @@ app.use((req, res, next) => {
 });
 
 (async () => {
-  // Create default admin user if not exists
   const adminUsername = process.env.ADMIN_USERNAME || "admin";
   const adminPassword = process.env.ADMIN_PASSWORD || "wlsset2026";
   const existingAdmin = await storage.getUserByUsername(adminUsername);

@@ -8,6 +8,9 @@ import {
   type Order, type InsertOrder,
 } from "@shared/schema";
 import { randomUUID } from "crypto";
+import { drizzle } from "drizzle-orm/node-postgres";
+import { users, portfolioItems, services, aboutSections, contactInfo, orders } from "@shared/schema";
+import { eq, sql } from "drizzle-orm";
 
 export interface IStorage {
   // Users / Auth
@@ -273,4 +276,166 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+const pgPool = (() => {
+  if (!process.env.DATABASE_URL) {
+    console.warn("DATABASE_URL not set – falling back to in-memory storage");
+    return null;
+  }
+  const { Pool } = require("pg");
+  return new Pool({ connectionString: process.env.DATABASE_URL });
+})();
+
+const db = pgPool ? drizzle(pgPool) : null;
+
+export class DatabaseStorage implements IStorage {
+  private pool: any;
+  private db: any;
+
+  constructor() {
+    this.pool = pgPool;
+    this.db = db;
+  }
+
+  async getUser(id: string): Promise<User | undefined> {
+    const rows = await this.db.select().from(users).where(eq(users.id, id));
+    return rows[0] as User | undefined;
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    const rows = await this.db.select().from(users).where(eq(users.username, username));
+    return rows[0] as User | undefined;
+  }
+
+  async createUser(user: InsertUser): Promise<User> {
+    const id = randomUUID();
+    const rows = await this.db.insert(users).values({ ...user, id }).returning();
+    return rows[0] as User;
+  }
+
+  async getPortfolioItems(): Promise<PortfolioItem[]> {
+    const rows = await this.db.select().from(portfolioItems);
+    return rows as PortfolioItem[];
+  }
+
+  async getPortfolioItem(id: string): Promise<PortfolioItem | undefined> {
+    const rows = await this.db.select().from(portfolioItems).where(eq(portfolioItems.id, id));
+    return rows[0] as PortfolioItem | undefined;
+  }
+
+  async getPortfolioItemsByTag(tag: string): Promise<PortfolioItem[]> {
+    const rows = await this.db.select().from(portfolioItems).where(sql`${portfolioItems.tags} ILIKE ${"%" + tag + "%"}`);
+    return rows as PortfolioItem[];
+  }
+
+  async createPortfolioItem(item: InsertPortfolio): Promise<PortfolioItem> {
+    const id = randomUUID();
+    const rows = await this.db.insert(portfolioItems).values({ ...item, id }).returning();
+    return rows[0] as PortfolioItem;
+  }
+
+  async updatePortfolioItem(id: string, item: Partial<InsertPortfolio>): Promise<PortfolioItem | undefined> {
+    const rows = await this.db.update(portfolioItems).set(item).where(eq(portfolioItems.id, id)).returning();
+    return rows[0] as PortfolioItem | undefined;
+  }
+
+  async deletePortfolioItem(id: string): Promise<boolean> {
+    const rows = await this.db.delete(portfolioItems).where(eq(portfolioItems.id, id)).returning();
+    return rows.length > 0;
+  }
+
+  async updatePortfolioBlocks(id: string, blocks: ProjectBlock[]): Promise<PortfolioItem | undefined> {
+    const rows = await this.db.update(portfolioItems).set({ blocks: blocks as any }).where(eq(portfolioItems.id, id)).returning();
+    return rows[0] as PortfolioItem | undefined;
+  }
+
+  async getServices(): Promise<Service[]> {
+    const rows = await this.db.select().from(services);
+    return rows as Service[];
+  }
+
+  async getService(id: string): Promise<Service | undefined> {
+    const rows = await this.db.select().from(services).where(eq(services.id, id));
+    return rows[0] as Service | undefined;
+  }
+
+  async createService(service: InsertService): Promise<Service> {
+    const id = randomUUID();
+    const rows = await this.db.insert(services).values({ ...service, id }).returning();
+    return rows[0] as Service;
+  }
+
+  async updateService(id: string, service: Partial<InsertService>): Promise<Service | undefined> {
+    const rows = await this.db.update(services).set(service).where(eq(services.id, id)).returning();
+    return rows[0] as Service | undefined;
+  }
+
+  async deleteService(id: string): Promise<boolean> {
+    const rows = await this.db.delete(services).where(eq(services.id, id)).returning();
+    return rows.length > 0;
+  }
+
+  async getAboutSections(): Promise<AboutSection[]> {
+    const rows = await this.db.select().from(aboutSections);
+    return rows as AboutSection[];
+  }
+
+  async getAboutSection(id: string): Promise<AboutSection | undefined> {
+    const rows = await this.db.select().from(aboutSections).where(eq(aboutSections.id, id));
+    return rows[0] as AboutSection | undefined;
+  }
+
+  async createAboutSection(section: InsertAboutSection): Promise<AboutSection> {
+    const id = randomUUID();
+    const rows = await this.db.insert(aboutSections).values({ ...section, id }).returning();
+    return rows[0] as AboutSection;
+  }
+
+  async updateAboutSection(id: string, section: Partial<InsertAboutSection>): Promise<AboutSection | undefined> {
+    const rows = await this.db.update(aboutSections).set(section).where(eq(aboutSections.id, id)).returning();
+    return rows[0] as AboutSection | undefined;
+  }
+
+  async deleteAboutSection(id: string): Promise<boolean> {
+    const rows = await this.db.delete(aboutSections).where(eq(aboutSections.id, id)).returning();
+    return rows.length > 0;
+  }
+
+  async getContactInfo(): Promise<ContactInfoItem[]> {
+    const rows = await this.db.select().from(contactInfo);
+    return rows as ContactInfoItem[];
+  }
+
+  async getContactInfoItem(id: string): Promise<ContactInfoItem | undefined> {
+    const rows = await this.db.select().from(contactInfo).where(eq(contactInfo.id, id));
+    return rows[0] as ContactInfoItem | undefined;
+  }
+
+  async createContactInfoItem(item: InsertContactInfo): Promise<ContactInfoItem> {
+    const id = randomUUID();
+    const rows = await this.db.insert(contactInfo).values({ ...item, id }).returning();
+    return rows[0] as ContactInfoItem;
+  }
+
+  async updateContactInfoItem(id: string, item: Partial<InsertContactInfo>): Promise<ContactInfoItem | undefined> {
+    const rows = await this.db.update(contactInfo).set(item).where(eq(contactInfo.id, id)).returning();
+    return rows[0] as ContactInfoItem | undefined;
+  }
+
+  async deleteContactInfoItem(id: string): Promise<boolean> {
+    const rows = await this.db.delete(contactInfo).where(eq(contactInfo.id, id)).returning();
+    return rows.length > 0;
+  }
+
+  async getOrders(): Promise<Order[]> {
+    const rows = await this.db.select().from(orders);
+    return (rows as Order[]).sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+  }
+
+  async createOrder(order: InsertOrder): Promise<Order> {
+    const id = randomUUID();
+    const rows = await this.db.insert(orders).values({ ...order, id }).returning();
+    return rows[0] as Order;
+  }
+}
+
+export const storage: IStorage = pgPool ? new DatabaseStorage() : new MemStorage();
