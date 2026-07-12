@@ -190,26 +190,40 @@ export async function registerRoutes(
   });
 
   // ===== UPLOAD =====
-  app.post(`${api}/upload`, ensureAuthenticated, upload.single("file"), (req, res) => {
-    if (!req.file) {
-      return res.status(400).json({ message: "No file uploaded" });
-    }
-    const url = (req.file as any).path;
-    const isVideo = (req.file as any).resource_type === "video";
-    res.json({ url, filename: (req.file as any).public_id, type: isVideo ? "video" : "image" });
+  app.post(`${api}/upload`, ensureAuthenticated, (req, res) => {
+    upload.single("file")(req, res, (err) => {
+      if (err) {
+        console.error("Upload error:", err.message, err);
+        return res.status(400).json({ message: "Upload failed", error: err.message });
+      }
+      if (!req.file) {
+        return res.status(400).json({ message: "No file uploaded" });
+      }
+      const url = (req.file as any).secure_url || (req.file as any).path;
+      const resourceType = (req.file as any).resource_type || "image";
+      const isVideo = resourceType === "video";
+      res.json({ url, filename: (req.file as any).public_id, type: isVideo ? "video" : "image" });
+    });
   });
 
-  app.post(`${api}/upload-multiple`, ensureAuthenticated, upload.array("files", 20), (req, res) => {
-    const files = req.files as Express.Multer.File[];
-    if (!files || files.length === 0) {
-      return res.status(400).json({ message: "No files uploaded" });
-    }
-    const items = files.map((f) => {
-      const url = (f as any).path;
-      const isVideo = (f as any).resource_type === "video";
-      return { url, filename: (f as any).public_id, type: isVideo ? "video" : "image" };
+  app.post(`${api}/upload-multiple`, ensureAuthenticated, (req, res) => {
+    upload.array("files", 20)(req, res, (err) => {
+      if (err) {
+        console.error("Upload multiple error:", err.message, err);
+        return res.status(400).json({ message: "Upload failed", error: err.message });
+      }
+      const files = req.files as Express.Multer.File[];
+      if (!files || files.length === 0) {
+        return res.status(400).json({ message: "No files uploaded" });
+      }
+      const items = files.map((f) => {
+        const url = (f as any).secure_url || (f as any).path;
+        const resourceType = (f as any).resource_type || "image";
+        const isVideo = resourceType === "video";
+        return { url, filename: (f as any).public_id, type: isVideo ? "video" : "image" };
+      });
+      res.json({ items });
     });
-    res.json({ items });
   });
 
   return httpServer;
