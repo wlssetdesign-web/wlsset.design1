@@ -6,33 +6,33 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: 0 0% 100%; /* Pure White #FFFFFF */
-  --color-foreground: 0 0% 12%; /* Dark Text */
+  --color-background: #ffffff;
+  --color-foreground: #1e1e1e;
   
-  --color-card: 0 0% 98%; 
-  --color-card-foreground: 0 0% 12%;
+  --color-card: #fafafa;
+  --color-card-foreground: #1e1e1e;
   
-  --color-popover: 0 0% 100%;
-  --color-popover-foreground: 0 0% 12%;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1e1e1e;
   
-  --color-primary: 0 88% 34%; /* #A30A0A - Primary Red */
-  --color-primary-foreground: 0 0% 100%;
+  --color-primary: #A30A0A;
+  --color-primary-foreground: #ffffff;
   
-  --color-secondary: 0 0% 96%;
-  --color-secondary-foreground: 0 0% 12%;
+  --color-secondary: #f5f5f5;
+  --color-secondary-foreground: #1e1e1e;
   
-  --color-muted: 0 0% 96%;
-  --color-muted-foreground: 0 0% 45%;
+  --color-muted: #f5f5f5;
+  --color-muted-foreground: #737373;
   
-  --color-accent: 0 88% 34%;
-  --color-accent-foreground: 0 0% 100%;
+  --color-accent: #A30A0A;
+  --color-accent-foreground: #ffffff;
   
-  --color-destructive: 0 84.2% 60.2%;
-  --color-destructive-foreground: 0 0% 98%;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fafafa;
   
-  --color-border: 0 0% 90%;
-  --color-input: 0 0% 90%;
-  --color-ring: 0 88% 34%;
+  --color-border: #e5e5e5;
+  --color-input: #e5e5e5;
+  --color-ring: #A30A0A;
   
   --radius-sm: 0.2rem;
   --radius-md: 0.4rem;

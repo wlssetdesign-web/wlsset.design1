@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,18 +8,18 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { X, ChevronRight, ChevronLeft, Check } from "lucide-react";
+import { X, ChevronRight, ChevronLeft, Check, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useI18n } from "@/lib/i18n";
+import { useBasket } from "@/lib/BasketContext";
 
-const serviceProductOptions: Record<string, string[]> = {
-  "Brand Identity Design": ["Logo Design", "Brand Guidelines", "Color Palette", "Typography System", "Rebranding"],
-  "Print Design": ["Business Cards", "Brochures", "Posters", "Menus", "Flyers", "Roll-Up Banners", "Packaging"],
-  "Social Media Design": ["Instagram Posts", "Instagram Stories", "Facebook Covers", "Ad Creatives", "Content Grids"],
-  "Image Editing": ["Retouching", "Background Removal", "Color Correction", "Compositing"],
-  "Vector Tracing": ["Logo Vectorization", "Sketch to Vector", "High-Resolution Scaling"],
-  "Infographic Design": ["Data Visualization", "Process Flowcharts", "Educational Graphics"],
-  "Video & Motion": ["Video Editing", "Intro/Outro", "Social Media Video", "Motion Graphics", "VFX"],
+type PortfolioItem = {
+  id: string;
+  title: string;
+  category: string;
+  image: string;
+  description: string;
+  tags?: string | null;
 };
 
 const colorOptions = ["Red", "Blue", "Green", "Yellow", "Black", "White", "Gray", "Gold", "Silver", "Purple", "Orange", "Pink", "Brown"];
@@ -46,19 +46,26 @@ interface ServiceRequestFormProps {
   isOpen: boolean;
   onClose: () => void;
   serviceName: string;
+  serviceKey: string;
+  productOptions: string[];
 }
 
 export default function ServiceRequestForm({
   isOpen,
   onClose,
   serviceName,
+  serviceKey,
+  productOptions,
 }: ServiceRequestFormProps) {
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [userInfo, setUserInfo] = useState<UserInfoFormData | null>(null);
+  const [projectDetails, setProjectDetails] = useState<ProjectDetailsFormData | null>(null);
+  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
+  const [portfolioLoading, setPortfolioLoading] = useState(false);
   const { toast } = useToast();
   const { t } = useI18n();
+  const { addItem } = useBasket();
 
   const userForm = useForm<UserInfoFormData>({
     resolver: zodResolver(userInfoSchema),
@@ -84,50 +91,46 @@ export default function ServiceRequestForm({
     setStep(2);
   };
 
-  const handleProjectDetailsSubmit = async (values: ProjectDetailsFormData) => {
-    setIsSubmitting(true);
-    
-    const fullFormData = {
-      name: userInfo?.name,
-      email: userInfo?.email,
-      phone: userInfo?.phone,
-      service: serviceName,
-      requiredProduct: values.requiredProduct,
-      preferredColors: values.preferredColors,
-      fontStyle: values.fontStyle,
-      designNotes: values.designNotes,
-    };
-
-    try {
-      const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxWVnj9zrbB3VnRrrBMdxpp-b2Z2YDd8kMPDI4oiiwZVmo045TnxHl1kti0CHeZWU4/exec";
-      
-      const response = await fetch(APPS_SCRIPT_URL, {
-        method: "POST",
-        body: JSON.stringify(fullFormData),
-      });
-      
-      const result = await response.json();
-      
-      if (result.success) {
-        setIsSubmitted(true);
-      } else {
-        toast({
-          title: "Error",
-          description: result.message || "Failed to submit form",
-          variant: "destructive",
-        });
-      }
-    } catch (error) {
-      console.error("Submission error:", error);
-      toast({
-        title: "Error",
-        description: "Failed to submit form. Please try again.",
-        variant: "destructive",
-      });
-    }
-    
-    setIsSubmitting(false);
+  const handleProjectDetailsSubmit = (values: ProjectDetailsFormData) => {
+    setProjectDetails(values);
+    setStep(3);
   };
+
+  const handleFinalSubmit = () => {
+    if (!projectDetails) return;
+    addItem({
+      id: "",
+      serviceKey,
+      title: serviceName,
+      details: {
+        name: userInfo?.name || "",
+        phone: userInfo?.phone || "",
+        email: userInfo?.email || "",
+        requiredProduct: projectDetails.requiredProduct,
+        preferredColors: projectDetails.preferredColors,
+        fontStyle: projectDetails.fontStyle,
+        designNotes: projectDetails.designNotes,
+      },
+    });
+
+    toast({
+      title: "Added to basket",
+      description: `${serviceName} has been added to your request basket.`,
+    });
+
+    setIsSubmitted(true);
+  };
+
+  useEffect(() => {
+    if (step === 3 && projectDetails?.requiredProduct) {
+      setPortfolioLoading(true);
+      fetch(`/api/portfolio/by-tag/${encodeURIComponent(projectDetails.requiredProduct)}`)
+        .then((res) => res.json())
+        .then((data) => setPortfolioItems(data))
+        .catch(() => setPortfolioItems([]))
+        .finally(() => setPortfolioLoading(false));
+    }
+  }, [step, projectDetails?.requiredProduct]);
 
   const handleClose = () => {
     if (isSubmitted) {
@@ -174,13 +177,13 @@ export default function ServiceRequestForm({
                     {serviceName}
                   </h2>
                   <p className="text-sm sm:text-base text-gray-600">
-                    Step {step} of 2
+                    Step {step} of 3
                   </p>
                   <div className="mt-3 h-1 bg-white/10 rounded-full overflow-hidden">
                     <motion.div
                       className="h-full bg-[#A30A0A]"
                       initial={{ width: 0 }}
-                      animate={{ width: step === 1 ? "50%" : "100%" }}
+                      animate={{ width: step === 1 ? "33%" : step === 2 ? "66%" : "100%" }}
                       transition={{ duration: 0.3 }}
                     />
                   </div>
@@ -251,7 +254,7 @@ export default function ServiceRequestForm({
                         </form>
                       </Form>
                     </motion.div>
-                  ) : (
+                  ) : step === 2 ? (
                     <motion.div
                       key="step2"
                       initial={{ opacity: 0, x: 20 }}
@@ -274,7 +277,7 @@ export default function ServiceRequestForm({
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent className="bg-[#1E1E1E] border-white/10">
-                                    {(serviceProductOptions[serviceName] || []).map((product) => (
+                                    {productOptions.map((product) => (
                                       <SelectItem key={product} value={product} className="text-white">{product}</SelectItem>
                                     ))}
                                   </SelectContent>
@@ -365,14 +368,88 @@ export default function ServiceRequestForm({
                             </Button>
                             <Button
                               type="submit"
-                              disabled={isSubmitting}
                               className="flex-1 bg-[#A30A0A] hover:bg-[#8B0808] text-white text-sm sm:text-base font-semibold py-3"
                             >
-                              {isSubmitting ? "Submitting..." : "Submit Request"}
+                              Next
+                              <ChevronRight className="ml-2 w-4 h-4" />
                             </Button>
                           </div>
                         </form>
                       </Form>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="step3"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="space-y-4">
+                        <div>
+                          <h3 className="text-lg font-semibold text-black">Here's some of our related work</h3>
+                          <p className="text-sm text-gray-500 mt-1">
+                            Examples matching "{projectDetails?.requiredProduct}"
+                          </p>
+                        </div>
+
+                        {portfolioLoading ? (
+                          <div className="flex items-center justify-center py-8">
+                            <Loader2 className="h-6 w-6 animate-spin text-[#A30A0A]" />
+                          </div>
+                        ) : portfolioItems.length > 0 ? (
+                          <div className="grid grid-cols-2 gap-3">
+                            {portfolioItems.map((item) => (
+                              <div
+                                key={item.id}
+                                className="group rounded-lg overflow-hidden border border-gray-200 bg-white hover:border-[#A30A0A]/30 hover:shadow-md transition-all"
+                              >
+                                <div className="aspect-[4/3] overflow-hidden bg-gray-100">
+                                  <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                    onError={(e) => {
+                                      (e.target as HTMLImageElement).src = "";
+                                      (e.target as HTMLImageElement).style.display = "none";
+                                    }}
+                                  />
+                                </div>
+                                <div className="p-2.5">
+                                  <p className="text-sm font-medium text-black truncate">{item.title}</p>
+                                  <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{item.description}</p>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="text-center py-8 bg-gray-50 rounded-lg border border-dashed border-gray-300">
+                            <p className="text-gray-500 font-medium">More examples coming soon!</p>
+                            <p className="text-xs text-gray-400 mt-1">
+                              We're building more portfolio examples for this category.
+                            </p>
+                          </div>
+                        )}
+
+                        <div className="flex gap-3 pt-2">
+                          <Button
+                            type="button"
+                            variant="outline"
+                            onClick={() => setStep(2)}
+                            className="flex-1 border-2 border-gray-300 text-black text-sm sm:text-base font-semibold hover:bg-gray-100"
+                          >
+                            <ChevronLeft className="mr-2 w-4 h-4" />
+                            Back
+                          </Button>
+                          <Button
+                            type="button"
+                            onClick={handleFinalSubmit}
+                            className="flex-1 bg-[#A30A0A] hover:bg-[#8B0808] text-white text-sm sm:text-base font-semibold py-3"
+                          >
+                            Looks good, Add to Basket
+                          </Button>
+                        </div>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -394,16 +471,16 @@ export default function ServiceRequestForm({
                   <Check className="w-8 h-8 text-[#A30A0A]" />
                 </motion.div>
                 
-                <h3 className="text-xl font-bold mb-2">Request Sent Successfully!</h3>
+                <h3 className="text-xl font-bold mb-2">Added to Basket!</h3>
                 <p className="text-muted-foreground mb-6">
-                  Thank you for your interest in our {serviceName} service. We'll review your request and get back to you shortly.
+                  {serviceName} has been added to your request basket. View the basket icon in the navbar to review all items.
                 </p>
                 
                 <Button
                   onClick={handleClose}
                   className="w-full bg-[#A30A0A] hover:bg-[#8B0808] text-white"
                 >
-                  Close
+                  Done
                 </Button>
               </motion.div>
             )}
