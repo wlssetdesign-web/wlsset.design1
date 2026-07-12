@@ -276,9 +276,9 @@ export default function ServiceRequestForm({
                                       <SelectValue placeholder="Select product" />
                                     </SelectTrigger>
                                   </FormControl>
-                                  <SelectContent className="bg-[#1E1E1E] border-white/10">
+                                  <SelectContent position="item-aligned" className="bg-white border-gray-300 text-black">
                                     {productOptions.map((product) => (
-                                      <SelectItem key={product} value={product} className="text-white">{product}</SelectItem>
+                                      <SelectItem key={product} value={product}>{product}</SelectItem>
                                     ))}
                                   </SelectContent>
                                 </Select>
@@ -299,9 +299,9 @@ export default function ServiceRequestForm({
                                       <SelectValue placeholder="Select colors" />
                                     </SelectTrigger>
                                   </FormControl>
-                                  <SelectContent className="bg-[#1E1E1E] border-white/10">
+                                  <SelectContent position="item-aligned" className="bg-white border-gray-300 text-black">
                                     {colorOptions.map((color) => (
-                                      <SelectItem key={color} value={color} className="text-white">{color}</SelectItem>
+                                      <SelectItem key={color} value={color}>{color}</SelectItem>
                                     ))}
                                   </SelectContent>
                                 </Select>
@@ -322,14 +322,14 @@ export default function ServiceRequestForm({
                                       <SelectValue placeholder="Select font style" />
                                     </SelectTrigger>
                                   </FormControl>
-                                  <SelectContent className="bg-[#1E1E1E] border-white/10">
-                                    <div className="px-3 py-2 text-xs uppercase tracking-wider text-white/60">English</div>
+                                  <SelectContent position="item-aligned" className="bg-white border-gray-300 text-black">
+                                    <div className="px-3 py-2 text-xs uppercase tracking-wider text-gray-500">English</div>
                                     {englishFonts.map((font) => (
-                                      <SelectItem key={font} value={font} className="text-white">{font}</SelectItem>
+                                      <SelectItem key={font} value={font}>{font}</SelectItem>
                                     ))}
-                                    <div className="px-3 py-2 text-xs uppercase tracking-wider text-white/60">Arabic</div>
+                                    <div className="px-3 py-2 text-xs uppercase tracking-wider text-gray-500">Arabic</div>
                                     {arabicFonts.map((font) => (
-                                      <SelectItem key={font} value={font} className="text-white">{font}</SelectItem>
+                                      <SelectItem key={font} value={font}>{font}</SelectItem>
                                     ))}
                                   </SelectContent>
                                 </Select>
