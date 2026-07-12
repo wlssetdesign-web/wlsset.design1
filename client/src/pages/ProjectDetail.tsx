@@ -82,7 +82,7 @@ export default function ProjectDetail() {
           />
         </div>
         <div className="absolute inset-0 z-20 flex flex-col justify-end p-6 md:p-12">
-          <div className="max-w-5xl mx-auto w-full">
+          <div className="max-w-5xl w-full">
             <Link href="/portfolio">
               <span className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors mb-6 cursor-pointer">
                 <ArrowLeft className="w-4 h-4" />
@@ -92,7 +92,7 @@ export default function ProjectDetail() {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-6xl font-bold text-white mb-3"
+              className="text-4xl md:text-6xl font-bold text-white mb-3 text-left"
             >
               {project.title}
             </motion.h1>
