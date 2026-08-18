@@ -17,6 +17,7 @@ export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
+  deleteAllUsers(): Promise<void>;
 
   // Portfolio
   getPortfolioItems(): Promise<PortfolioItem[]>;
@@ -122,6 +123,10 @@ export class MemStorage implements IStorage {
     const user: User = { ...insertUser, id };
     this.users.set(id, user);
     return user;
+  }
+
+  async deleteAllUsers(): Promise<void> {
+    this.users.clear();
   }
 
   // Portfolio
@@ -310,6 +315,10 @@ export class DatabaseStorage implements IStorage {
     const id = randomUUID();
     const rows = await this.db.insert(users).values({ ...user, id }).returning();
     return rows[0] as User;
+  }
+
+  async deleteAllUsers(): Promise<void> {
+    await this.db.delete(users);
   }
 
   async getPortfolioItems(): Promise<PortfolioItem[]> {

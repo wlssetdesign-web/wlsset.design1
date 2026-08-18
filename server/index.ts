@@ -75,13 +75,15 @@ app.use((req, res, next) => {
 });
 
 (async () => {
+  // >>> TEMPORARY CODE - REMOVE AFTER ADMIN RESET <<<
+  // This forces a fresh admin account on every startup to recover access.
+  // DELETE THIS BLOCK once admin login is confirmed working.
   const adminUsername = process.env.ADMIN_USERNAME || "admin";
   const adminPassword = process.env.ADMIN_PASSWORD || "wlsset2026";
-  const existingAdmin = await storage.getUserByUsername(adminUsername);
-  if (!existingAdmin) {
-    await storage.createUser({ username: adminUsername, password: adminPassword });
-    log("Default admin user created");
-  }
+  await storage.deleteAllUsers();
+  await storage.createUser({ username: adminUsername, password: adminPassword });
+  log("TEMP: All users deleted and default admin recreated");
+  // >>> END TEMPORARY CODE <<
 
   await registerRoutes(httpServer, app);
 
